@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "260934796307",
+    "firebase_url": "https://minutegoals.firebaseio.com",
+    "project_id": "minutegoals",
+    "storage_bucket": "minutegoals.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:260934796307:android:a60593695233e1b3",
+        "android_client_info": {
+          "package_name": "com.Devarn.x15MinuteGoals"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "260934796307-2kluamcqu6h1aqehec4shtab4v64d54a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChUsC2qfYjkdHQGYVWh37eAZM5NdAoW9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "260934796307-2kluamcqu6h1aqehec4shtab4v64d54a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
