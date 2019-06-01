@@ -11,7 +11,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 
-namespace _15MinuteGoals.CustomViews
+namespace _15MinuteGoals.UI.CustomViews
 {
     public class SmallPostPanel : LinearLayout
     {

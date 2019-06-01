@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace _15MinuteGoals.Activities
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/Theme.AppCompat.NoActionBar", Icon = "@drawable/main_logo", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "@string/app_name", Theme = "@style/Theme.AppCompat.NoActionBar", Icon = "@drawable/main_logo", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class SignUpOrLogin : AppCompatActivity, GoogleApiClient.IConnectionCallbacks, GoogleApiClient.IOnConnectionFailedListener
     {
         private GoogleApiClient mgoogleApiClient;

@@ -3,7 +3,7 @@ using Android.Support.V4.App;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
-using _15MinuteGoals.CustomViews;
+using _15MinuteGoals.UI.CustomViews;
 using Java.Lang;
 
 namespace _15MinuteGoals.Fragments

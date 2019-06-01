@@ -39,6 +39,15 @@
     <AotAssemblies>false</AotAssemblies>
     <EnableLLVM>false</EnableLLVM>
     <BundleAssemblies>false</BundleAssemblies>
+    <MandroidI18n />
+  </PropertyGroup>
+  <PropertyGroup>
+    <AndroidEnableProguard>True</AndroidEnableProguard>
+    <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
+    <AndroidEnableDesugar>True</AndroidEnableDesugar>
+    <!--New properties-->
+    <AndroidDexTool>d8</AndroidDexTool>
+    <AndroidLinkTool>r8</AndroidLinkTool>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
@@ -50,7 +59,7 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
-    <AndroidLinkMode>None</AndroidLinkMode>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <AotAssemblies>false</AotAssemblies>
     <EnableLLVM>false</EnableLLVM>
@@ -58,6 +67,9 @@
     <MandroidI18n />
     <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
+    <AndroidLinkSkip>System.Core;System.Runtime.Serialization</AndroidLinkSkip>
+    <AndroidLinkTool>r8</AndroidLinkTool>
+    <AndroidDexTool>d8</AndroidDexTool>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -73,8 +85,8 @@
     <Compile Include="App.cs" />
     <Compile Include="Authentication\FacebookAuthentication.cs" />
     <Compile Include="Authentication\GoogleAuthentication.cs" />
-    <Compile Include="CustomViews\GoalPanel.cs" />
-    <Compile Include="CustomViews\SmallPostPanel.cs" />
+    <Compile Include="UI\CustomViews\GoalPanel.cs" />
+    <Compile Include="UI\CustomViews\SmallPostPanel.cs" />
     <Compile Include="Data\Models\Facebook.cs" />
     <Compile Include="Data\Models\Google.cs" />
     <Compile Include="Data\ViewModels\ViewModelLocator.cs" />
@@ -177,9 +189,6 @@
     <AndroidResource Include="Resources\drawable\user.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\custom_GoalPanel.axml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\custom_SmallPostPanel.axml" />
   </ItemGroup>
   <ItemGroup>
@@ -211,13 +220,31 @@
     <AndroidResource Include="Resources\drawable\bk_title_bottom_shadow.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\bk_selector.xml" />
+    <AndroidResource Include="Resources\drawable\bk_shadow_selector.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\bk_shadow_normal.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\bk_shadow_pressed.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\custom_GoalPanel.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bk_notif_animation.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bk_notif_end.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bk_notif_start.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\goBtn_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\custom_NotifBar.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

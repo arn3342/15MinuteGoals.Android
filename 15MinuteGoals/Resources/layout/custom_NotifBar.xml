@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/notif_mainLayout"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:background="@drawable/bk_notif_animation"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+  <LinearLayout
+      android:layout_width="0dp"
+      android:layout_weight=".8"
+      android:layout_height="wrap_content"
+      android:gravity="center_vertical"
+      android:orientation="vertical"
+      android:layout_marginTop="15dp"
+      android:layout_marginLeft="15dp"
+      android:layout_marginBottom="15dp"
+      android:paddingLeft="15dp">
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Brian, you're missing out!"
+        android:maxLength="50"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:layout_marginBottom="15dp"/>
+    <android.support.v7.widget.AppCompatTextView
+    android:text="Complete your profile &amp; achieve more"
+    android:fontFamily="sans-serif"
+    android:textColor="#fff"
+    android:textStyle="normal"
+    android:textSize="15dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+  </LinearLayout>
+  <ImageView
+      android:background="@drawable/goBtn_icon"
+      android:layout_width="9dp"
+      android:layout_height="16dp"
+      android:layout_marginRight="20dp"/>
+</LinearLayout>

@@ -6,7 +6,7 @@ using Android.Views;
 using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
 
-namespace _15MinuteGoals.CustomViews
+namespace _15MinuteGoals.UI.CustomViews
 {
     public class GoalPanel : LinearLayout
     {
