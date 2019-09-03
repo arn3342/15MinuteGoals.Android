@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
+﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Java.Security;
+using System;
 
 namespace _15MinuteGoals
 {
@@ -23,7 +15,7 @@ namespace _15MinuteGoals
 
             // Create your application here
             PackageInfo info = this.PackageManager.GetPackageInfo("com.Devarn.x15MinuteGoals", PackageInfoFlags.Signatures);
-            foreach(Android.Content.PM.Signature signs in info.Signatures)
+            foreach (Android.Content.PM.Signature signs in info.Signatures)
             {
                 MessageDigest md = MessageDigest.GetInstance("SHA");
                 md.Update(signs.ToByteArray());

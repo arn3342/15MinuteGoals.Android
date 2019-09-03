@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/headerbar"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:background="@drawable/bg_postbox"
+    android:focusableInTouchMode="true"
+    android:minWidth="25dp"
+    android:minHeight="25dp"
+    android:paddingBottom="15dp"
+    android:layout_margin="15dp">
+    <EditText
+        android:id="@+id/user_headerbar_title"
+        android:background="@null"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Aousaf, share something inspiring!"
+        android:textColor="#027bd0"
+        android:paddingTop="18dp"
+        android:paddingBottom="18dp"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:textSize="14dp"
+        app:layout_constraintRight_toLeftOf="@id/penico"
+        app:layout_constraintLeft_toRightOf="@id/topBar_user_image"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/topBar_user_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/demo_user"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="@id/user_headerbar_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@id/user_headerbar_title"/>
+    <ImageView
+        android:id="@+id/penico"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/icon_pen"
+        app:layout_constraintBottom_toBottomOf="@id/topBar_user_image"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/topBar_user_image"/>
+
+</android.support.constraint.ConstraintLayout>
