@@ -95,12 +95,12 @@
     <Compile Include="Authentication\FacebookAuthentication.cs" />
     <Compile Include="Authentication\GoogleAuthentication.cs" />
     <Compile Include="Data\Models\PostRegular.cs" />
+    <Compile Include="Data\ViewPagerAdapter.cs" />
     <Compile Include="UI\CustomViews\GoalPanel.cs" />
     <Compile Include="Data\Models\Facebook.cs" />
     <Compile Include="Data\Models\Google.cs" />
     <Compile Include="Data\ViewModelLocator.cs" />
     <Compile Include="Data\ViewModels\Vm_GoalPanel.cs" />
-    <Compile Include="Data\ViewPagerAdapter.cs" />
     <Compile Include="UI\Fragments\Fragment_Explore.cs" />
     <Compile Include="UI\Fragments\Fragment_Home.cs" />
     <Compile Include="Activities\MainActivity.cs" />
