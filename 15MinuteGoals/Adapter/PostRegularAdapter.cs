@@ -25,9 +25,9 @@ namespace _15MinuteGoals.Adapter
         {
             PostRegularViewHolder vh = holder as PostRegularViewHolder;
             vh.userFullName.Text = postCollection[position].UserFullName;
-            ImageService.Instance.LoadUrl(postCollection[position].UserImageUrl).Into(vh.userImg);
+            ImageService.Instance.LoadUrl(postCollection[position].UserImageUrl).IntoAsync(vh.userImg).GetAwaiter().GetResult();
             vh.postBody.Text = postCollection[position].PostBody;
-            //vh.inspireCount.Text = postCollection[position].InspireCount;
+            vh.inspireCount.Text = postCollection[position].InspireCount;
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
@@ -49,7 +49,7 @@ namespace _15MinuteGoals.Adapter
                 userImg = itemView.FindViewById<ImageView>(Resource.Id.feed_user_image);
                 userFullName = itemView.FindViewById<TextView>(Resource.Id.username);
                 postBody = itemView.FindViewById<TextView>(Resource.Id.postself);
-                //inspireCount = itemView.FindViewById<TextView>(Resource.Id.totalinspired);
+                inspireCount = itemView.FindViewById<TextView>(Resource.Id.totalinspired);
             }
         }
     }

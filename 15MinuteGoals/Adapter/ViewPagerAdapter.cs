@@ -3,12 +3,12 @@ using Android.Support.V4.App;
 using System;
 using System.Collections.Generic;
 
-namespace _15MinuteGoals.Data
+namespace _15MinuteGoals.Adapter
 {
     public class ViewPagerAdapter : FragmentStatePagerAdapter
     {
         public List<Fragment> FragmentsList = new List<Fragment>();
-        public ViewPagerAdapter(Android.Support.V4.App.FragmentManager fm) : base(fm)
+        public ViewPagerAdapter(FragmentManager fm) : base(fm)
         {
         }
         public ViewPagerAdapter(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
@@ -26,5 +26,6 @@ namespace _15MinuteGoals.Data
         {
             FragmentsList.Add(fragment);
         }
+        public override void 
     }
 }
