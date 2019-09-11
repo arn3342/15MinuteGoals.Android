@@ -1,4 +1,4 @@
-﻿using _15MinuteGoals.Data.ViewModels;
+﻿using _15MinuteGoals.Data;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Threading;
 using GalaSoft.MvvmLight.Views;

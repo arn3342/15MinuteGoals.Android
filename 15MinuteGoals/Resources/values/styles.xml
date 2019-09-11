@@ -7,6 +7,12 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="Theme.AppBlueTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@color/appThemeBlue</item>
+    </style>
+
     <string name="facebook_app_id">365038010784654</string>
     <string name="fb_login_protocol_scheme">fb365038010784654</string>
 </resources>

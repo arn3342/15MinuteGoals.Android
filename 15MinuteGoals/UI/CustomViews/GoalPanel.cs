@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using _15MinuteGoals.Data.ViewModels;
+﻿using _15MinuteGoals.Data.ViewModels;
 using Android.Content;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
+using System.Collections.Generic;
 
 namespace _15MinuteGoals.UI.CustomViews
 {
@@ -37,14 +37,14 @@ namespace _15MinuteGoals.UI.CustomViews
         private void Initialize(Context ctx)
         {
             //Inflating the layout
-            mainViewModel = new Vm_GoalPanel();
-            var inflatorService = (LayoutInflater)ctx.GetSystemService(Context.LayoutInflaterService);
-            MainView = inflatorService.Inflate(Resource.Layout.custom_GoalPanel, this, false);
-            this.AddView(MainView);
+            //mainViewModel = new Vm_GoalPanel();
+            //var inflatorService = (LayoutInflater)ctx.GetSystemService(Context.LayoutInflaterService);
+            //MainView = inflatorService.Inflate(Resource.Layout.custom_GoalPanel, this, false);
+            //this.AddView(MainView);
 
-            //Get view(s) instances
-            GoalHeader = MainView.FindViewById<TextView>(Resource.Id.goal_header);
-            BindProperties();
+            ////Get view(s) instances
+            //GoalHeader = MainView.FindViewById<TextView>(Resource.Id.goal_header);
+            //BindProperties();
         }
 
         public void BindProperties()

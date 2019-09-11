@@ -1,20 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
+﻿using Android.Content;
 using Android.Gms.Auth.Api;
 using Android.Gms.Auth.Api.SignIn;
 using Android.Gms.Common.Apis;
-using Android.Graphics;
-using Android.OS;
-using Android.Provider;
-using Android.Runtime;
 using Android.Support.V4.App;
-using Android.Views;
-using Android.Widget;
 
 namespace _15MinuteGoals.Authentication
 {
