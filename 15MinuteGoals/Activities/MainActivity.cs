@@ -1,4 +1,5 @@
-﻿using _15MinuteGoals.Data;
+﻿using System;
+using _15MinuteGoals.Data;
 using _15MinuteGoals.UI.Fragments;
 using Android.App;
 using Android.Content.PM;
@@ -7,6 +8,7 @@ using Android.Runtime;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Android.Support.V7.App;
+using static Android.Support.Design.Widget.TabLayout;
 
 namespace _15MinuteGoals.Activities
 {
@@ -49,6 +51,40 @@ namespace _15MinuteGoals.Activities
             for (int i = 0; i < Icons.Length; i++)
             {
                 mTabLayout.GetTabAt(i).SetIcon(Icons[i]);
+            }
+
+            mTabLayout.AddOnTabSelectedListener(new TabChangeListner(ExploreFragment));
+        }
+
+        public class TabChangeListner : Java.Lang.Object, IOnTabSelectedListener
+        {
+            public Android.Support.V4.App.Fragment RequiredFragment;
+            public TabChangeListner(Android.Support.V4.App.Fragment fragment)
+            {
+                RequiredFragment = fragment;
+            }
+            public new void Dispose()
+            {
+                //throw new NotImplementedException();
+            }
+
+            public void OnTabReselected(Tab tab)
+            {
+                //throw new NotImplementedException();
+            }
+
+            public void OnTabSelected(Tab tab)
+            {
+                if (tab.Position == 1)
+                {
+                    Fragment_Explore fragment_Explore = (Fragment_Explore)RequiredFragment;
+                    fragment_Explore.PopulateWithPosts();
+                }
+            }
+
+            public void OnTabUnselected(Tab tab)
+            {
+                //throw new NotImplementedException();
             }
         }
     }

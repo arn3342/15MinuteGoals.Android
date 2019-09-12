@@ -26,6 +26,5 @@ namespace _15MinuteGoals.Adapter
         {
             FragmentsList.Add(fragment);
         }
-        public override void 
     }
 }

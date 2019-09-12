@@ -32,16 +32,12 @@ namespace _15MinuteGoals.UI.Fragments
             base.OnViewCreated(view, savedInstanceState);
         }
 
-        public override void OnHiddenChanged(bool hidden)
+        public void PopulateWithPosts()
         {
-            base.OnHiddenChanged(hidden);
-            if (!hidden)
-            {
-                posts.Add(new PostRegular() { InspireCount = "3k", PostBody = "A new post 1", UserFullName = "Aousaf", UserImageUrl = "https://www.netfort.com/assets/user.png" });
-                posts.Add(new PostRegular() { InspireCount = "1k", PostBody = "A new post 2", UserFullName = "Aousaf Rashid", UserImageUrl = "https://www.netfort.com/assets/user.png" });
-                posts.Add(new PostRegular() { InspireCount = "5k", PostBody = "A new post 3", UserFullName = "Aousaf Rahman", UserImageUrl = "https://www.netfort.com/assets/user.png" });
-                postRegularAdapter.NotifyItemInserted(posts.Count - 1);
-            }
+            posts.Add(new PostRegular() { InspireCount = "3k", PostBody = "A new post 1", UserFullName = "Aousaf", UserImageUrl = "https://www.netfort.com/assets/user.png" });
+            posts.Add(new PostRegular() { InspireCount = "1k", PostBody = "A new post 2", UserFullName = "Aousaf Rashid", UserImageUrl = "https://www.netfort.com/assets/user.png" });
+            posts.Add(new PostRegular() { InspireCount = "5k", PostBody = "A new post 3", UserFullName = "Aousaf Rahman", UserImageUrl = "https://www.netfort.com/assets/user.png" });
+            postRegularAdapter.NotifyItemInserted(posts.Count - 1);
         }
     }
 }
