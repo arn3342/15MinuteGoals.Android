@@ -36,6 +36,8 @@ namespace _15MinuteGoals.Activities
             mViewPager.Adapter = adapter;
             ////Populating the TabLayout with icons
             PopulateMainTabIcons();
+
+            
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {

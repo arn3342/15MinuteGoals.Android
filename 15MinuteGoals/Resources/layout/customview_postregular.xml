@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+
+
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -69,18 +75,28 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/feed_user_image"
         app:layout_constraintBottom_toBottomOf="@id/feed_user_image" />
+    <ImageView
+        android:id="@+id/inspireicon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/inspire"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintTop_toTopOf="@+id/feedbackbtn"
+        app:layout_constraintBottom_toBottomOf="@+id/feedbackbtn"
+        app:layout_constraintLeft_toLeftOf="@id/postself"/>
     <TextView
         android:id="@+id/inspireCount"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent=".3"
+        app:layout_constraintWidth_percent=".18"
         android:layout_height="wrap_content"
-        android:text="5k Inspired"
+        android:text="5k"
+        android:textStyle="bold"
         android:textSize="14dp"
-        android:paddingLeft="15dp"
         android:textColor="#14a0fc"
         app:layout_constraintTop_toTopOf="@+id/feedbackbtn"
         app:layout_constraintBottom_toBottomOf="@+id/feedbackbtn"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/inspireicon"
         app:layout_constraintRight_toLeftOf="@+id/feedbackbtn"/>
     <Button
         android:id="@+id/feedbackbtn"
@@ -115,8 +131,8 @@
         android:textSize="13dp"
         android:textStyle="normal"
         android:textColor="#636363"
-        android:drawablePadding="5dp"
-        android:paddingLeft="20dp"
+        android:drawablePadding="0dp"
+        android:paddingLeft="25dp"
         android:paddingRight="15dp"
         app:layout_constraintTop_toTopOf="@id/feedbackbtn"
         app:layout_constraintLeft_toRightOf="@id/feedbackbtn"
@@ -132,3 +148,4 @@
         app:layout_constraintTop_toBottomOf="@id/postself"
         />
 </android.support.constraint.ConstraintLayout>
+</LinearLayout>
