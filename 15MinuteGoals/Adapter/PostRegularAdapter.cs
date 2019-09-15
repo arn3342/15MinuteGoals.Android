@@ -9,64 +9,70 @@ namespace _15MinuteGoals.Adapter
 {
     public class PostRegularAdapter : RecyclerView.Adapter
     {
-        public List<PostRegular> postCollection;
+        public List<object> postCollection;
         public string UserFirstName;
+
+        const int WritePost = 0; const int RegularPost = 1;
         public override int ItemCount
         {
-            get
+            get { return postCollection.Count; }
+        }
+
+        public override int GetItemViewType(int position)
+        {
+            if (postCollection[position] is string)
             {
-                if (postCollection != null)
-                {
-                    return postCollection.Count;
-                }
-                return 1;
+                return WritePost;
+            }
+            else
+            {
+                return RegularPost;
             }
         }
 
-        public PostRegularAdapter(List<PostRegular> postList = null, string userFirstName = null)
+        public PostRegularAdapter(List<object> itemList)
         {
-            if (postList != null)
-            {
-                postCollection = postList;
-            }
-            UserFirstName = userFirstName;
+            postCollection = itemList;
         }
-        public override int GetItemViewType(int position)
-        {
-            return position % 2 * 2;
-        }
+
+        //public override int GetItemViewType(int position)
+        //{
+        //    return position % 2 * 2;
+        //}
+
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-            if (postCollection == null)
+            switch(holder.ItemViewType)
             {
-                #region Creating posts
-                CreatePostViewHolder vh2 = holder as CreatePostViewHolder;
-                vh2.userFirstName.Text = UserFirstName + ", share something inspiring!";
-                #endregion
+                case WritePost:
+                    CreatePostViewHolder vh2 = holder as CreatePostViewHolder;
+                    vh2.userFirstName.Text = UserFirstName + ", share something inspiring!";
+                    break;
+
+                case RegularPost:
+                    PostRegularViewHolder vh = holder as PostRegularViewHolder;
+                    PostRegular post = postCollection[position] as PostRegular;
+                    vh.userFullName.Text = post.UserFullName;
+                    ImageService.Instance.LoadUrl(post.UserImageUrl).Into(vh.userImg);
+                    vh.postBody.Text = post.PostBody;
+                    vh.inspireCount.Text = post.InspireCount;
+                    break;
             }
-            #region Create 'writing-post' bar
-            else
-            {
-                PostRegularViewHolder vh = holder as PostRegularViewHolder;
-                vh.userFullName.Text = postCollection[position].UserFullName;
-                ImageService.Instance.LoadUrl(postCollection[position].UserImageUrl).Into(vh.userImg);
-                vh.postBody.Text = postCollection[position].PostBody;
-                vh.inspireCount.Text = postCollection[position].InspireCount;
-            }
-            #endregion
+
         }
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
-            if (postCollection == null)
+            RecyclerView.ViewHolder vh = null;
+            switch (viewType)
             {
-                RecyclerView.ViewHolder vh = new CreatePostViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_user_writepostbar, parent, false));
-                return vh;
+                case WritePost:
+                    vh = new CreatePostViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_user_writepostbar, parent, false));
+                    break;
+                case RegularPost:
+                    vh = new PostRegularViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_postregular, parent, false));
+                    break;
             }
-            else
-            {
-                RecyclerView.ViewHolder vh2 = new PostRegularViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_postregular, parent, false));
-                return vh2;
-            }
+            return vh;
         }
 
         public class PostRegularViewHolder : RecyclerView.ViewHolder
