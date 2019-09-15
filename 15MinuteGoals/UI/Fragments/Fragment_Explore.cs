@@ -39,11 +39,11 @@ namespace _15MinuteGoals.UI.Fragments
         {
             if (posts.Count == 0)
             {
-                //if (!IsWritePostCreated)
-                //{
-                //    posts.Add("Aousaf");
-                //    IsWritePostCreated = true;
-                //}
+                if (!IsWritePostCreated)
+                {
+                    posts.Add("Aousaf");
+                    IsWritePostCreated = true;
+                }
                 await Task.Delay(300);
                 posts.Add(new PostRegular() { InspireCount = "3k", PostBody = "A new post 1", UserFullName = "Aousaf", UserImageUrl = "https://www.netfort.com/assets/user.png" });
                 posts.Add(new PostRegular() { InspireCount = "1k", PostBody = "A new post 2", UserFullName = "Aousaf Rashid", UserImageUrl = "https://www.netfort.com/assets/user.png" });
