@@ -13,20 +13,18 @@ namespace _15MinuteGoals.UI.Fragments
     {
         private View mainView;
         private RecyclerView recyclerView;
-        private List<object> posts = new List<object>();
+        private List<object> contents = new List<object>();
         private PostRegularAdapter postRegularAdapter;
         private bool IsWritePostCreated;
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             mainView = inflater.Inflate(Resource.Layout.screen_explore, container, false);
             recyclerView = mainView.FindViewById<RecyclerView>(Resource.Id.explore_feed_maincontainer);
-            //var layoutManager = new LinearLayoutManager(Context, LinearLayoutManager.Vertical, false);
-            //recyclerView.SetLayoutManager(layoutManager);
 
             recyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
-            postRegularAdapter = new PostRegularAdapter(posts);
+            postRegularAdapter = new PostRegularAdapter(contents);
             recyclerView.SetAdapter(postRegularAdapter);
-            recyclerView.SetItemAnimator(new DefaultItemAnimator());
+
             return mainView;
         }
 
@@ -37,18 +35,19 @@ namespace _15MinuteGoals.UI.Fragments
 
         public async void PopulateWithPosts()
         {
-            if (posts.Count == 0)
+            if (contents.Count == 0)
             {
                 if (!IsWritePostCreated)
                 {
-                    posts.Add("Aousaf");
+                    contents.Add("Aousaf");
                     IsWritePostCreated = true;
+                    postRegularAdapter.NotifyItemInserted(contents.Count - 1);
                 }
                 await Task.Delay(300);
-                posts.Add(new PostRegular() { InspireCount = "3k", PostBody = "A new post 1", UserFullName = "Aousaf", UserImageUrl = "https://www.netfort.com/assets/user.png" });
-                posts.Add(new PostRegular() { InspireCount = "1k", PostBody = "A new post 2", UserFullName = "Aousaf Rashid", UserImageUrl = "https://www.netfort.com/assets/user.png" });
-                posts.Add(new PostRegular() { InspireCount = "5k", PostBody = "A new post 3", UserFullName = "Aousaf Rahman", UserImageUrl = "https://www.netfort.com/assets/user.png" });
-                postRegularAdapter.NotifyItemInserted(posts.Count - 1);
+                contents.Add(new PostRegular() { InspireCount = "3k", PostBody = "A new post 1", UserFullName = "Aousaf", UserImageUrl = "https://www.netfort.com/assets/user.png" });
+                contents.Add(new PostRegular() { InspireCount = "1k", PostBody = "A new post 2", UserFullName = "Aousaf Rashid", UserImageUrl = "https://www.netfort.com/assets/user.png" });
+                contents.Add(new PostRegular() { InspireCount = "5k", PostBody = "A new post 3", UserFullName = "Aousaf Rahman", UserImageUrl = "https://www.netfort.com/assets/user.png" });
+                postRegularAdapter.NotifyItemInserted(contents.Count - 1);
             }
         }
     }

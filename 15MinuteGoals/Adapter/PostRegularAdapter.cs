@@ -9,18 +9,17 @@ namespace _15MinuteGoals.Adapter
 {
     public class PostRegularAdapter : RecyclerView.Adapter
     {
-        public List<object> postCollection;
-        public string UserFirstName;
-
+        public List<object> contentCollection;
         const int WritePost = 0; const int RegularPost = 1;
+
         public override int ItemCount
         {
-            get { return postCollection.Count; }
+            get { return contentCollection.Count; }
         }
 
         public override int GetItemViewType(int position)
         {
-            if (postCollection[position] is string)
+            if (contentCollection[position] is string)
             {
                 return WritePost;
             }
@@ -32,13 +31,8 @@ namespace _15MinuteGoals.Adapter
 
         public PostRegularAdapter(List<object> itemList)
         {
-            postCollection = itemList;
+            contentCollection = itemList;
         }
-
-        //public override int GetItemViewType(int position)
-        //{
-        //    return position % 2 * 2;
-        //}
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
@@ -46,12 +40,12 @@ namespace _15MinuteGoals.Adapter
             {
                 case WritePost:
                     CreatePostViewHolder vh2 = holder as CreatePostViewHolder;
-                    vh2.userFirstName.Text = UserFirstName + ", share something inspiring!";
+                    vh2.userFirstName.Text = contentCollection[position] + ", share something inspiring!";
                     break;
 
                 case RegularPost:
                     PostRegularViewHolder vh = holder as PostRegularViewHolder;
-                    PostRegular post = postCollection[position] as PostRegular;
+                    PostRegular post = contentCollection[position] as PostRegular;
                     vh.userFullName.Text = post.UserFullName;
                     ImageService.Instance.LoadUrl(post.UserImageUrl).Into(vh.userImg);
                     vh.postBody.Text = post.PostBody;
