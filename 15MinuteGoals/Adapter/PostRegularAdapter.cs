@@ -39,8 +39,8 @@ namespace _15MinuteGoals.Adapter
             switch(holder.ItemViewType)
             {
                 case WritePost:
-                    CreatePostViewHolder vh2 = holder as CreatePostViewHolder;
-                    vh2.userFirstName.Text = contentCollection[position] + ", share something inspiring!";
+                    TopBarViewHolder vh2 = holder as TopBarViewHolder;
+                    vh2.title.Text = contentCollection[position].ToString();
                     break;
 
                 case RegularPost:
@@ -60,7 +60,7 @@ namespace _15MinuteGoals.Adapter
             switch (viewType)
             {
                 case WritePost:
-                    vh = new CreatePostViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_user_writepostbar, parent, false));
+                    vh = new TopBarViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_topbar, parent, false));
                     break;
                 case RegularPost:
                     vh = new PostRegularViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_postregular, parent, false));
@@ -84,14 +84,14 @@ namespace _15MinuteGoals.Adapter
                 inspireCount = itemView.FindViewById<TextView>(Resource.Id.inspireCount);
             }
         }
-        public class CreatePostViewHolder : RecyclerView.ViewHolder
+        public class TopBarViewHolder : RecyclerView.ViewHolder
         {
             public ImageView userImg { get; set; }
-            public TextView userFirstName { get; set; }
-            public CreatePostViewHolder(View itemView) : base(itemView)
+            public TextView title { get; set; }
+            public TopBarViewHolder(View itemView) : base(itemView)
             {
                 userImg = itemView.FindViewById<ImageView>(Resource.Id.topBar_user_image);
-                userFirstName = itemView.FindViewById<TextView>(Resource.Id.user_headerbar_title);
+                title = itemView.FindViewById<TextView>(Resource.Id.headerTitle);
             }
         }
     }
