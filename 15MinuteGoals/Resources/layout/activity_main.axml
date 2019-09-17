@@ -8,6 +8,7 @@
     android:layout_height="match_parent"
     android:background="#dfe7ed"
     android:orientation="vertical">
+    
     <android.support.v4.view.ViewPager
         android:id="@+id/mainviewpager"
         android:layout_width="match_parent"

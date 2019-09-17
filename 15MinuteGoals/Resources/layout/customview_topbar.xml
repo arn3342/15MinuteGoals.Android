@@ -9,8 +9,7 @@
     android:background="@drawable/bg_postbox"
     android:focusableInTouchMode="true"
     android:minWidth="25dp"
-    android:minHeight="25dp"
-    android:layout_marginBottom="5dp">
+    android:minHeight="25dp">
     <android.support.constraint.ConstraintLayout
         android:layout_width="60dp"
         android:layout_height="65dp"
@@ -21,14 +20,14 @@
             android:id="@+id/spacer"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent=".1"
+            app:layout_constraintVertical_weight=".2"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/iconbtn"/>
         <ImageView
             android:id="@+id/iconbtn"
             android:layout_width="20dp"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent=".3"
+            app:layout_constraintVertical_weight=".25"
             android:background="@drawable/icon_search"
             app:layout_constraintTop_toBottomOf="@id/spacer"
             app:layout_constraintBottom_toTopOf="@+id/buttontext"
@@ -38,7 +37,7 @@
             android:id="@+id/buttontext"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent=".3"
+            app:layout_constraintVertical_weight=".3"
             android:text="Search"
             android:textSize="10dp"
             app:layout_constraintBottom_toBottomOf="parent"

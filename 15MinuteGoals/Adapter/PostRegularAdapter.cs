@@ -10,7 +10,7 @@ namespace _15MinuteGoals.Adapter
     public class PostRegularAdapter : RecyclerView.Adapter
     {
         public List<object> contentCollection;
-        const int WritePost = 0; const int RegularPost = 1;
+        const int TopBar = 0; const int WritePost = 1; const int RegularPost = 2;
 
         public override int ItemCount
         {
@@ -20,6 +20,10 @@ namespace _15MinuteGoals.Adapter
         public override int GetItemViewType(int position)
         {
             if (contentCollection[position] is string)
+            {
+                return TopBar;
+            }
+            else if(contentCollection[position] is int)
             {
                 return WritePost;
             }
@@ -38,18 +42,21 @@ namespace _15MinuteGoals.Adapter
         {
             switch(holder.ItemViewType)
             {
-                case WritePost:
-                    TopBarViewHolder vh2 = holder as TopBarViewHolder;
-                    vh2.title.Text = contentCollection[position].ToString();
+                case TopBar:
+                    TopBarViewHolder vh = holder as TopBarViewHolder;
+                    vh.title.Text = contentCollection[position].ToString();
                     break;
-
+                case WritePost:
+                    CreatePostViewHolder vh2 = holder as CreatePostViewHolder;
+                    vh2.totalInspire.Text.Replace("xx", contentCollection[position].ToString());
+                    break;
                 case RegularPost:
-                    PostRegularViewHolder vh = holder as PostRegularViewHolder;
+                    PostRegularViewHolder vh3 = holder as PostRegularViewHolder;
                     PostRegular post = contentCollection[position] as PostRegular;
-                    vh.userFullName.Text = post.UserFullName;
-                    ImageService.Instance.LoadUrl(post.UserImageUrl).Into(vh.userImg);
-                    vh.postBody.Text = post.PostBody;
-                    vh.inspireCount.Text = post.InspireCount;
+                    vh3.userFullName.Text = post.UserFullName;
+                    ImageService.Instance.LoadUrl(post.UserImageUrl).Into(vh3.userImg);
+                    vh3.postBody.Text = post.PostBody;
+                    vh3.inspireCount.Text = post.InspireCount;
                     break;
             }
 
@@ -59,8 +66,11 @@ namespace _15MinuteGoals.Adapter
             RecyclerView.ViewHolder vh = null;
             switch (viewType)
             {
-                case WritePost:
+                case TopBar:
                     vh = new TopBarViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_topbar, parent, false));
+                    break;
+                case WritePost:
+                    vh = new CreatePostViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_user_writepostbar, parent, false));
                     break;
                 case RegularPost:
                     vh = new PostRegularViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_postregular, parent, false));
@@ -92,6 +102,15 @@ namespace _15MinuteGoals.Adapter
             {
                 userImg = itemView.FindViewById<ImageView>(Resource.Id.topBar_user_image);
                 title = itemView.FindViewById<TextView>(Resource.Id.headerTitle);
+            }
+        }
+
+        public class CreatePostViewHolder : RecyclerView.ViewHolder
+        {
+            public TextView totalInspire { get; set; }
+            public CreatePostViewHolder(View itemView) : base(itemView)
+            {
+                totalInspire = itemView.FindViewById<TextView>(Resource.Id.canInspire);
             }
         }
     }

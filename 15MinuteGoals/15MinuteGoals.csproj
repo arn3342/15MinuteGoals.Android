@@ -101,6 +101,7 @@
     <Compile Include="Data\Models\Google.cs" />
     <Compile Include="Data\ViewModelLocator.cs" />
     <Compile Include="Data\ViewModels\Vm_GoalPanel.cs" />
+    <Compile Include="UI\CustomViews\TopBar.cs" />
     <Compile Include="UI\Fragments\Fragment_Explore.cs" />
     <Compile Include="UI\Fragments\Fragment_Home.cs" />
     <Compile Include="Activities\MainActivity.cs" />

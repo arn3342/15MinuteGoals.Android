@@ -10,40 +10,49 @@
     android:focusableInTouchMode="true"
     android:minWidth="25dp"
     android:minHeight="25dp"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp"
-    android:layout_marginBottom="15dp">
+    android:layout_marginBottom="2dp">
+    <TextView
+        android:id="@+id/headerTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:text="Hey, Aousaf!"
+        android:textColor="#bfbfbf"
+        android:textSize="13dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:id="@+id/bodyText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Share something inspiring!"
+        android:textColor="#38cdff"
+        android:textSize="16dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="@id/headerTitle"
+        app:layout_constraintTop_toBottomOf="@id/headerTitle"/>
+    <TextView
+        android:id="@+id/canInspire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You can inspire xx people!"
+        android:textColor="#bfbfbf"
+        android:textSize="13dp"
+        app:layout_constraintTop_toBottomOf="@id/bodyText"
+        app:layout_constraintLeft_toLeftOf="@id/headerTitle"
+        android:layout_marginTop="10dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#fff"
+        app:layout_constraintTop_toBottomOf="@id/canInspire"/>
     <ImageView
-        android:id="@+id/penico"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
-        android:layout_marginRight="20dp"
-        android:src="@drawable/icon_pen"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-     <ImageView
-        android:id="@+id/topBar_user_image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/demo_user"
-        android:layout_marginLeft="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-    <EditText
-        android:id="@+id/user_headerbar_title"
-        android:background="@null"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Aousaf, share something inspiring!"
-        android:textColor="#027bd0"
-        android:paddingTop="18dp"
-        android:paddingBottom="18dp"
-        android:paddingLeft="15dp"
-        android:textSize="14dp"
-        app:layout_constraintRight_toLeftOf="@id/penico"
-        app:layout_constraintLeft_toRightOf="@id/topBar_user_image"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:layout_marginRight="20dp"
+        android:src="@drawable/icon_pen"/>
 </android.support.constraint.ConstraintLayout>

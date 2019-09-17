@@ -4210,8 +4210,8 @@ namespace _15MinuteGoals
 			// aapt resource value: 0x7f0f0046
 			public const int add = 2131689542;
 			
-			// aapt resource value: 0x7f0f0128
-			public const int addgoal = 2131689768;
+			// aapt resource value: 0x7f0f0127
+			public const int addgoal = 2131689767;
 			
 			// aapt resource value: 0x7f0f0024
 			public const int adjust_height = 2131689508;
@@ -4245,6 +4245,9 @@ namespace _15MinuteGoals
 			
 			// aapt resource value: 0x7f0f0084
 			public const int blocking = 2131689604;
+			
+			// aapt resource value: 0x7f0f0104
+			public const int bodyText = 2131689732;
 			
 			// aapt resource value: 0x7f0f0038
 			public const int bottom = 2131689528;
@@ -4281,6 +4284,9 @@ namespace _15MinuteGoals
 			
 			// aapt resource value: 0x7f0f00e6
 			public const int by_textview = 2131689702;
+			
+			// aapt resource value: 0x7f0f0105
+			public const int canInspire = 2131689733;
 			
 			// aapt resource value: 0x7f0f0117
 			public const int cancel_action = 2131689751;
@@ -4615,8 +4621,8 @@ namespace _15MinuteGoals
 			// aapt resource value: 0x7f0f00bc
 			public const int mainviewpager = 2131689660;
 			
-			// aapt resource value: 0x7f0f012a
-			public const int masked = 2131689770;
+			// aapt resource value: 0x7f0f0129
+			public const int masked = 2131689769;
 			
 			// aapt resource value: 0x7f0f0119
 			public const int media_actions = 2131689753;
@@ -4701,9 +4707,6 @@ namespace _15MinuteGoals
 			
 			// aapt resource value: 0x7f0f00c7
 			public const int passwordinput = 2131689671;
-			
-			// aapt resource value: 0x7f0f0104
-			public const int penico = 2131689732;
 			
 			// aapt resource value: 0x7f0f007a
 			public const int percent = 2131689594;
@@ -4945,9 +4948,6 @@ namespace _15MinuteGoals
 			// aapt resource value: 0x7f0f003a
 			public const int top = 2131689530;
 			
-			// aapt resource value: 0x7f0f0127
-			public const int topBar_swipe_text = 2131689767;
-			
 			// aapt resource value: 0x7f0f0102
 			public const int topBar_user_image = 2131689730;
 			
@@ -4987,9 +4987,6 @@ namespace _15MinuteGoals
 			// aapt resource value: 0x7f0f0045
 			public const int useLogo = 2131689541;
 			
-			// aapt resource value: 0x7f0f0105
-			public const int user_headerbar_title = 2131689733;
-			
 			// aapt resource value: 0x7f0f00fa
 			public const int usercreds = 2131689722;
 			
@@ -4999,8 +4996,8 @@ namespace _15MinuteGoals
 			// aapt resource value: 0x7f0f001b
 			public const int view_offset_helper = 2131689499;
 			
-			// aapt resource value: 0x7f0f0129
-			public const int visible = 2131689769;
+			// aapt resource value: 0x7f0f0128
+			public const int visible = 2131689768;
 			
 			// aapt resource value: 0x7f0f00cb
 			public const int webview = 2131689675;
