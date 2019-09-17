@@ -6,22 +6,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:background="@drawable/bg_postbox"
+    android:background="@drawable/bg_writepost"
     android:focusableInTouchMode="true"
     android:minWidth="25dp"
     android:minHeight="25dp"
-    android:layout_marginBottom="2dp">
+    android:layout_margin="5dp">
+    <ImageView
+        android:id="@+id/smallUserImg"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/demo_user"/>
     <TextView
         android:id="@+id/headerTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="5dp"
         android:text="Hey, Aousaf!"
-        android:textColor="#bfbfbf"
-        android:textSize="13dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="10dp"/>
+        android:textColor="#8a8a8a"
+        android:textSize="15dp"
+        app:layout_constraintTop_toTopOf="@id/smallUserImg"
+        app:layout_constraintLeft_toRightOf="@id/smallUserImg"
+        app:layout_constraintBottom_toBottomOf="@id/smallUserImg" />
     <TextView
         android:id="@+id/bodyText"
         android:layout_width="wrap_content"
@@ -29,8 +38,8 @@
         android:text="Share something inspiring!"
         android:textColor="#38cdff"
         android:textSize="16dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintLeft_toLeftOf="@id/headerTitle"
+        android:layout_marginTop="15dp"
+        app:layout_constraintLeft_toLeftOf="@id/smallUserImg"
         app:layout_constraintTop_toBottomOf="@id/headerTitle"/>
     <TextView
         android:id="@+id/canInspire"
@@ -40,12 +49,11 @@
         android:textColor="#bfbfbf"
         android:textSize="13dp"
         app:layout_constraintTop_toBottomOf="@id/bodyText"
-        app:layout_constraintLeft_toLeftOf="@id/headerTitle"
-        android:layout_marginTop="10dp"/>
+        app:layout_constraintLeft_toLeftOf="@id/smallUserImg"
+        android:layout_marginTop="15dp"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"
-        android:background="#fff"
         app:layout_constraintTop_toBottomOf="@id/canInspire"/>
     <ImageView
         android:layout_width="18dp"
