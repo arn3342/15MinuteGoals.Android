@@ -39,7 +39,6 @@ namespace _15MinuteGoals.UI.Fragments
             {
                 if (!IsWritePostCreated)
                 {
-                    contents.Add("Explore");
                     contents.Add(350);
                     IsWritePostCreated = true;
                     postRegularAdapter.NotifyItemInserted(contents.Count - 1);

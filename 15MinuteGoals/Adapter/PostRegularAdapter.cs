@@ -10,7 +10,7 @@ namespace _15MinuteGoals.Adapter
     public class PostRegularAdapter : RecyclerView.Adapter
     {
         public List<object> contentCollection;
-        const int TopBar = 0; const int WritePost = 1; const int RegularPost = 2;
+        const int WritePost = 0; const int RegularPost = 1;
 
         public override int ItemCount
         {
@@ -19,11 +19,7 @@ namespace _15MinuteGoals.Adapter
 
         public override int GetItemViewType(int position)
         {
-            if (contentCollection[position] is string)
-            {
-                return TopBar;
-            }
-            else if(contentCollection[position] is int)
+            if (contentCollection[position] is int)
             {
                 return WritePost;
             }
@@ -42,10 +38,6 @@ namespace _15MinuteGoals.Adapter
         {
             switch(holder.ItemViewType)
             {
-                case TopBar:
-                    TopBarViewHolder vh = holder as TopBarViewHolder;
-                    vh.title.Text = contentCollection[position].ToString();
-                    break;
                 case WritePost:
                     CreatePostViewHolder vh2 = holder as CreatePostViewHolder;
                     vh2.totalInspire.Text.Replace("xx", contentCollection[position].ToString());
@@ -66,9 +58,6 @@ namespace _15MinuteGoals.Adapter
             RecyclerView.ViewHolder vh = null;
             switch (viewType)
             {
-                case TopBar:
-                    vh = new TopBarViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_topbar, parent, false));
-                    break;
                 case WritePost:
                     vh = new CreatePostViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_user_writepostbar, parent, false));
                     break;
@@ -92,16 +81,6 @@ namespace _15MinuteGoals.Adapter
                 userFullName = itemView.FindViewById<TextView>(Resource.Id.username);
                 postBody = itemView.FindViewById<TextView>(Resource.Id.postself);
                 inspireCount = itemView.FindViewById<TextView>(Resource.Id.inspireCount);
-            }
-        }
-        public class TopBarViewHolder : RecyclerView.ViewHolder
-        {
-            public ImageView userImg { get; set; }
-            public TextView title { get; set; }
-            public TopBarViewHolder(View itemView) : base(itemView)
-            {
-                userImg = itemView.FindViewById<ImageView>(Resource.Id.topBar_user_image);
-                title = itemView.FindViewById<TextView>(Resource.Id.headerTitle);
             }
         }
 

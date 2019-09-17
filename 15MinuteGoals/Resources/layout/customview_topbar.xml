@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:background="@drawable/bg_postbox"
+    android:background="@drawable/bg_topbar"
     android:focusableInTouchMode="true"
     android:minWidth="25dp"
     android:minHeight="25dp">
@@ -40,6 +40,8 @@
             app:layout_constraintVertical_weight=".3"
             android:text="Search"
             android:textSize="10dp"
+            android:textStyle="bold"
+            android:textColor="#fff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iconbtn"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -64,6 +66,6 @@
         android:textSize="18dp"
         android:textStyle="bold"
         android:text="Explore"
-        android:textColor="#26a5ff"
+        android:textColor="#fff"
         android:paddingLeft="12dp" />
 </android.support.constraint.ConstraintLayout>
