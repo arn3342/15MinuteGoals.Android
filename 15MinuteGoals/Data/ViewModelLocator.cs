@@ -14,18 +14,18 @@ namespace _15MinuteGoals.Data
             SimpleIoc.Default.Register<Vm_GoalPanel>();
             SimpleIoc.Default.Register<Vm_TopBar>();
         }
-        public static Vm_GoalPanel ViewModel_GoalPanel
+        public Vm_GoalPanel ViewModel_GoalPanel
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<Vm_GoalPanel>(new Guid().ToString());
+                return ServiceLocator.Current.GetInstance<Vm_GoalPanel>();
             }
         }
-        public static Vm_TopBar ViewModel_TopBar
+        public Vm_TopBar ViewModel_TopBar
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<Vm_TopBar>(new Guid().ToString());
+                return ServiceLocator.Current.GetInstance<Vm_TopBar>();
             }
         }
         public static void Cleanup()

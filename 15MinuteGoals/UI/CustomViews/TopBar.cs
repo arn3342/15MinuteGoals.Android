@@ -15,13 +15,7 @@ namespace _15MinuteGoals.UI.CustomViews
     {
         private View MainView;
         private List<Binding> bindings = new List<Binding>();
-        public Vm_TopBar mainViewModel
-        {
-            get
-            {
-                return ViewModelLocator.ViewModel_TopBar;
-            }
-        }
+        public Vm_TopBar mainViewModel;
 
         public TextView HeaderTitle { get; private set; }
         public TextView ButtonText { get; private set; }
@@ -46,7 +40,7 @@ namespace _15MinuteGoals.UI.CustomViews
         #endregion
         private void Initialize(Context ctx)
         {
-           
+            mainViewModel = new Vm_TopBar();
             var inflatorService = (LayoutInflater)ctx.GetSystemService(Context.LayoutInflaterService);
             MainView = inflatorService.Inflate(Resource.Layout.customview_topbar, this, false);
             this.AddView(MainView);

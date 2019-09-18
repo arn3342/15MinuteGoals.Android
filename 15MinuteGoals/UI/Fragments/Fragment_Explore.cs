@@ -57,7 +57,6 @@ namespace _15MinuteGoals.UI.Fragments
                 {
                     contents.Add(350);
                     IsWritePostCreated = true;
-                    postRegularAdapter.NotifyItemInserted(contents.Count - 1);
                 }
                 await Task.Delay(300);
                 contents.Add(new PostRegular() { InspireCount = "3k", PostBody = "A new post 1", UserFullName = "Aousaf", UserImageUrl = "https://www.netfort.com/assets/user.png" });

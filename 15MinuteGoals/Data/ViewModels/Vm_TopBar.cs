@@ -10,7 +10,11 @@ namespace _15MinuteGoals.Data.ViewModels
         public string Title
         {
             get { return _title; }
-            set { Set(ref _title, value); }
+            set
+            {
+                _title = value;
+                RaisePropertyChanged(propertyName: nameof(Title));
+            }
         }
         public int IconSource
         {
