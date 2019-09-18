@@ -1,4 +1,5 @@
-﻿using Android.Graphics.Drawables;
+﻿using _15MinuteGoals.UI.CustomViews;
+using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
@@ -14,11 +15,13 @@ namespace _15MinuteGoals.UI.Fragments
         public static ScrollView mScrollView { get; private set; }
         public static LinearLayout mProfileBox { get; private set; }
         public static int mProfileBoxHeight { get; internal set; }
+        public static TopBar topbar { get; private set; }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             myview = inflater.Inflate(Resource.Layout.screen_home, container, false);
-            
+            topbar = myview.FindViewById<TopBar>(Resource.Id.home_topbar);
+            SetTopBar();
             //Fix scaling
             return myview;
         }
@@ -33,6 +36,11 @@ namespace _15MinuteGoals.UI.Fragments
 
             //Setting GaolHeader(s) & Notficaiton bar scaling
             view.ViewTreeObserver.AddOnGlobalLayoutListener(new GlobalLayoutListen());
+        }
+
+        public void SetTopBar()
+        {
+            topbar.SetPropertyValues("Home", Resource.Drawable.icon_search, "Search", "https://www.netfort.com/assets/user.png");
         }
 
         private void SetAnimations(View view)

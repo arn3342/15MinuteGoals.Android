@@ -12,12 +12,20 @@ namespace _15MinuteGoals.Data
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             SimpleIoc.Default.Register<Vm_GoalPanel>();
+            SimpleIoc.Default.Register<Vm_TopBar>();
         }
-        public Vm_GoalPanel ViewModel_GoalPanel
+        public static Vm_GoalPanel ViewModel_GoalPanel
         {
             get
             {
                 return ServiceLocator.Current.GetInstance<Vm_GoalPanel>(new Guid().ToString());
+            }
+        }
+        public static Vm_TopBar ViewModel_TopBar
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<Vm_TopBar>(new Guid().ToString());
             }
         }
         public static void Cleanup()

@@ -8,14 +8,14 @@
     android:layout_height="match_parent"
     android:background="#dfe7ed">
     <_15MinuteGoals.UI.CustomViews.TopBar
-        android:id="@+id/headerbar"
+        android:id="@+id/home_topbar"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"/>
     <android.support.constraint.ConstraintLayout
         android:id="@+id/goalBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/headerbar"
+        app:layout_constraintTop_toBottomOf="@id/home_topbar"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginTop="20dp"

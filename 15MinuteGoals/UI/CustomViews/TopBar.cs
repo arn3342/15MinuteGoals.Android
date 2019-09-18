@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
+using _15MinuteGoals.Data;
 using _15MinuteGoals.Data.ViewModels;
-using Android.App;
 using Android.Content;
-using Android.OS;
-using Android.Runtime;
 using Android.Support.Constraints;
 using Android.Util;
 using Android.Views;
@@ -20,12 +15,18 @@ namespace _15MinuteGoals.UI.CustomViews
     {
         private View MainView;
         private List<Binding> bindings = new List<Binding>();
-        public Vm_TopBar mainViewModel = new Vm_TopBar();
+        public Vm_TopBar mainViewModel
+        {
+            get
+            {
+                return ViewModelLocator.ViewModel_TopBar;
+            }
+        }
 
-        private TextView HeaderTitle { get; set; }
-        private TextView ButtonText { get; set; }
-        private ImageView IconBtn { get; set; }
-        private ImageView UserImg { get; set; }
+        public TextView HeaderTitle { get; private set; }
+        public TextView ButtonText { get; private set; }
+        public ImageView IconBtn { get; private set; }
+        public ImageView UserImg { get; private set; }
 
         #region Constructor
         public TopBar(Context context) : base(context)
@@ -45,6 +46,7 @@ namespace _15MinuteGoals.UI.CustomViews
         #endregion
         private void Initialize(Context ctx)
         {
+           
             var inflatorService = (LayoutInflater)ctx.GetSystemService(Context.LayoutInflaterService);
             MainView = inflatorService.Inflate(Resource.Layout.customview_topbar, this, false);
             this.AddView(MainView);

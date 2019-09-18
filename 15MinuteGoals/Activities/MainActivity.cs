@@ -32,6 +32,7 @@ namespace _15MinuteGoals.Activities
             ViewPagerAdapter adapter = new ViewPagerAdapter(SupportFragmentManager);
             adapter.AddFragment(HomeFragment);
             adapter.AddFragment(ExploreFragment);
+            
 
             mViewPager.Adapter = adapter;
             ////Populating the TabLayout with icons

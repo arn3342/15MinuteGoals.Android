@@ -4237,8 +4237,8 @@ namespace _15MinuteGoals
 			// aapt resource value: 0x7f0f0046
 			public const int add = 2131689542;
 			
-			// aapt resource value: 0x7f0f012b
-			public const int addgoal = 2131689771;
+			// aapt resource value: 0x7f0f012c
+			public const int addgoal = 2131689772;
 			
 			// aapt resource value: 0x7f0f0024
 			public const int adjust_height = 2131689508;
@@ -4564,6 +4564,9 @@ namespace _15MinuteGoals
 			// aapt resource value: 0x7f0f0041
 			public const int homeAsUp = 2131689537;
 			
+			// aapt resource value: 0x7f0f012b
+			public const int home_topbar = 2131689771;
+			
 			// aapt resource value: 0x7f0f008f
 			public const int icon = 2131689615;
 			
@@ -4657,8 +4660,8 @@ namespace _15MinuteGoals
 			// aapt resource value: 0x7f0f00bc
 			public const int mainviewpager = 2131689660;
 			
-			// aapt resource value: 0x7f0f012d
-			public const int masked = 2131689773;
+			// aapt resource value: 0x7f0f012e
+			public const int masked = 2131689774;
 			
 			// aapt resource value: 0x7f0f011c
 			public const int media_actions = 2131689756;
@@ -5035,8 +5038,8 @@ namespace _15MinuteGoals
 			// aapt resource value: 0x7f0f001b
 			public const int view_offset_helper = 2131689499;
 			
-			// aapt resource value: 0x7f0f012c
-			public const int visible = 2131689772;
+			// aapt resource value: 0x7f0f012d
+			public const int visible = 2131689773;
 			
 			// aapt resource value: 0x7f0f00cb
 			public const int webview = 2131689675;
