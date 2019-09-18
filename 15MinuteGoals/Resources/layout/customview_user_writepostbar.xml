@@ -10,7 +10,10 @@
     android:focusableInTouchMode="true"
     android:minWidth="25dp"
     android:minHeight="25dp"
-    android:layout_margin="5dp">
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp">
     <ImageView
         android:id="@+id/smallUserImg"
         android:layout_width="20dp"

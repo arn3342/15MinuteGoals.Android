@@ -57,7 +57,7 @@ namespace _15MinuteGoals.UI.CustomViews
 
         public void SetGoalHeader(int goalNo)
         {
-            mainViewModel.GoalHeader = "Goal " + goalNo.ToString(); ;
+            mainViewModel.GoalHeader = "Goal " + goalNo.ToString();
         }
     }
 }

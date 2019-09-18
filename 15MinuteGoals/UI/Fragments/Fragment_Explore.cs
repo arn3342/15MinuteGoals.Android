@@ -6,6 +6,9 @@ using _15MinuteGoals.Adapter;
 using System.Collections.Generic;
 using _15MinuteGoals.Data.Models;
 using System.Threading.Tasks;
+using _15MinuteGoals.UI.CustomViews;
+using Android.Content;
+using Android.Views.Animations;
 
 namespace _15MinuteGoals.UI.Fragments
 {
@@ -16,10 +19,14 @@ namespace _15MinuteGoals.UI.Fragments
         private List<object> contents = new List<object>();
         private PostRegularAdapter postRegularAdapter;
         private bool IsWritePostCreated;
+
+        private TopBar topbar { get; set; }
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             mainView = inflater.Inflate(Resource.Layout.screen_explore, container, false);
             recyclerView = mainView.FindViewById<RecyclerView>(Resource.Id.explore_feed_maincontainer);
+            topbar = mainView.FindViewById<TopBar>(Resource.Id.explore_topbar);
+            SetTopBar();
 
             recyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
             postRegularAdapter = new PostRegularAdapter(contents);
@@ -33,10 +40,19 @@ namespace _15MinuteGoals.UI.Fragments
             base.OnViewCreated(view, savedInstanceState);
         }
 
+        public void SetTopBar()
+        {
+            topbar.SetPropertyValues("Explore", Resource.Drawable.icon_search, "Search", "https://www.netfort.com/assets/user.png");
+        }
+
         public async void PopulateWithPosts()
         {
             if (contents.Count == 0)
             {
+                Context context = recyclerView.Context;
+                LayoutAnimationController controller = AnimationUtils.LoadLayoutAnimation(context, Resource.Animation.layout_animation_fall_down);
+                recyclerView.LayoutAnimation = controller;
+
                 if (!IsWritePostCreated)
                 {
                     contents.Add(350);
