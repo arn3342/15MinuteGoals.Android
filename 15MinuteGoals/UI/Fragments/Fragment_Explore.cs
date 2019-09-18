@@ -52,13 +52,12 @@ namespace _15MinuteGoals.UI.Fragments
                 Context context = recyclerView.Context;
                 LayoutAnimationController controller = AnimationUtils.LoadLayoutAnimation(context, Resource.Animation.layout_animation_fall_down);
                 recyclerView.LayoutAnimation = controller;
-
+                await Task.Delay(300);
                 if (!IsWritePostCreated)
                 {
                     contents.Add(350);
                     IsWritePostCreated = true;
-                }
-                await Task.Delay(300);
+                }           
                 contents.Add(new PostRegular() { InspireCount = "3k", PostBody = "A new post 1", UserFullName = "Aousaf", UserImageUrl = "https://www.netfort.com/assets/user.png" });
                 contents.Add(new PostRegular() { InspireCount = "1k", PostBody = "A new post 2", UserFullName = "Aousaf Rashid", UserImageUrl = "https://www.netfort.com/assets/user.png" });
                 contents.Add(new PostRegular() { InspireCount = "5k", PostBody = "A new post 3", UserFullName = "Aousaf Rahman", UserImageUrl = "https://www.netfort.com/assets/user.png" });
