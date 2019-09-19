@@ -17,10 +17,24 @@ namespace _15MinuteGoals.UI.CustomViews
         private List<Binding> bindings = new List<Binding>();
         public Vm_TopBar mainViewModel;
 
-        public TextView HeaderTitle { get; private set; }
-        public TextView ButtonText { get; private set; }
-        public ImageView IconBtn { get; private set; }
-        public ImageView UserImg { get; private set; }
+        #region Views declarations
+        private TextView _headerTitle { get; set; }
+        private TextView _buttonText { get; set; }
+        private ImageView _iconBtn { get; set; }
+        private ImageView _userImg { get; set; }
+        #endregion
+
+        public string Title { get; set; }
+        public string ButtonText { get; set; }
+        
+
+        //public TextView HeaderTitle
+        //{
+        //    get
+        //    {
+        //        return _headerTitle ?? (_headerTitle = FindViewById<TextView>)
+        //    }
+        //}
 
         #region Constructor
         public TopBar(Context context) : base(context)
@@ -43,26 +57,35 @@ namespace _15MinuteGoals.UI.CustomViews
             mainViewModel = new Vm_TopBar();
             var inflatorService = (LayoutInflater)ctx.GetSystemService(Context.LayoutInflaterService);
             MainView = inflatorService.Inflate(Resource.Layout.customview_topbar, this, false);
+
+            #region Setting view instances
+            _headerTitle = MainView.FindViewById<TextView>(Resource.Id.headerTitle);
+            _buttonText = MainView.FindViewById<TextView>(Resource.Id.buttontext);
+            _iconBtn = MainView.FindViewById<ImageView>(Resource.Id.iconbtn);
+            _userImg = MainView.FindViewById<ImageView>(Resource.Id.topBar_user_image);
+            #endregion
+
             this.AddView(MainView);
             BindProperties();
+            
         }
 
         private void BindProperties()
         {
             bindings.Add(this.SetBinding(() => mainViewModel.Title,
-        () => HeaderTitle.Text));
+        () => _headerTitle.Text));
             bindings.Add(this.SetBinding(() => mainViewModel.IconSource,
-        () => IconBtn.Drawable));
+        () => _iconBtn.Drawable));
             bindings.Add(this.SetBinding(() => mainViewModel.ButtonText,
-        () => ButtonText.Text));
+        () => _buttonText.Text));
         }
 
-        public void SetPropertyValues(string Title = "", int IconSource = 0, string ButtonText = "", string UserImgSrc = "")
+        public void SetPropertyValues()
         {
             mainViewModel.Title = Title;
-            mainViewModel.IconSource = IconSource;
-            mainViewModel.ButtonText = ButtonText;
-            ImageService.Instance.LoadUrl(UserImgSrc).Into(UserImg);
+            //mainViewModel.IconSource = IconSource;
+            //mainViewModel.ButtonText = ButtonText;
+            //ImageService.Instance.LoadUrl(UserImgSrc).Into(UserImg);
         }
     }
 }

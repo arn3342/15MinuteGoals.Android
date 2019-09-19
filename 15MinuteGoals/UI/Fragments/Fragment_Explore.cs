@@ -42,13 +42,14 @@ namespace _15MinuteGoals.UI.Fragments
 
         public void SetTopBar()
         {
-            topbar.SetPropertyValues("Explore", Resource.Drawable.icon_search, "Search", "https://www.netfort.com/assets/user.png");
+            topbar.Title = "Explore";
         }
 
         public async void PopulateWithPosts()
         {
             if (contents.Count == 0)
             {
+                postRegularAdapter.FragmentManager = FragmentManager;
                 Context context = recyclerView.Context;
                 LayoutAnimationController controller = AnimationUtils.LoadLayoutAnimation(context, Resource.Animation.layout_animation_fall_down);
                 recyclerView.LayoutAnimation = controller;

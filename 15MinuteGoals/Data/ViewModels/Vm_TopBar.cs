@@ -4,7 +4,7 @@ namespace _15MinuteGoals.Data.ViewModels
 {
     public class Vm_TopBar : ViewModelBase
     {
-        private string _title = "Tot;e";
+        private string _title = "Title";
         private string _buttontext = "None";
         private int _iconsrc;
         public string Title

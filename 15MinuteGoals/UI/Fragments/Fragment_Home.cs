@@ -40,7 +40,8 @@ namespace _15MinuteGoals.UI.Fragments
 
         public void SetTopBar()
         {
-            topbar.SetPropertyValues("Home", Resource.Drawable.icon_search, "Search", "https://www.netfort.com/assets/user.png");
+            topbar.Title = "Home";
+            topbar.SetPropertyValues();
         }
 
         private void SetAnimations(View view)

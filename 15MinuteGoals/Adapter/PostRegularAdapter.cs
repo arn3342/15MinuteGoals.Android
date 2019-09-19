@@ -7,7 +7,9 @@ using Android.Views;
 using Android.Views.Animations;
 using Android.Widget;
 using FFImageLoading;
+using Android.Support.V4.App;
 using System.Collections.Generic;
+using _15MinuteGoals.UI.Dialogs;
 
 namespace _15MinuteGoals.Adapter
 {
@@ -15,6 +17,7 @@ namespace _15MinuteGoals.Adapter
     {
         public List<object> contentCollection;
         const int WritePost = 0; const int RegularPost = 1;
+        public FragmentManager FragmentManager { get; set; }
 
         public override int ItemCount
         {
@@ -66,7 +69,9 @@ namespace _15MinuteGoals.Adapter
                     vh = new CreatePostViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_user_writepostbar, parent, false));
                     break;
                 case RegularPost:
-                    vh = new PostRegularViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_postregular, parent, false));
+                    PostRegularViewHolder viewHolder = new PostRegularViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_postregular, parent, false));
+                    viewHolder.fragmentManager = FragmentManager;
+                    vh = viewHolder;
                     break;
             }
             return vh;
@@ -80,7 +85,9 @@ namespace _15MinuteGoals.Adapter
             public TextView inspireCount { get; set; }
             public ImageView InspireButton { get; set; }
             public LinearLayout InspireContainer { get; set; }
+            public Button FeedbackButton { get; set; }
 
+            public FragmentManager fragmentManager { get; set; }
             public bool IsInspired = false;
             public PostRegularViewHolder(View itemView) : base(itemView)
             {
@@ -90,7 +97,17 @@ namespace _15MinuteGoals.Adapter
                 inspireCount = itemView.FindViewById<TextView>(Resource.Id.inspireCount);
                 InspireButton = itemView.FindViewById<ImageView>(Resource.Id.inspireButton);
                 InspireContainer = itemView.FindViewById<LinearLayout>(Resource.Id.inspireButtonContainer);
+                FeedbackButton = itemView.FindViewById<Button>(Resource.Id.feedbackbtn);
+
                 InspireContainer.Click += InspireButton_Click;
+                FeedbackButton.Click += FeedbackButton_Click;
+            }
+
+            private void FeedbackButton_Click(object sender, System.EventArgs e)
+            {
+                FragmentManager fm = fragmentManager;
+                FeedbackDialog feedbackDialog = new FeedbackDialog();
+                feedbackDialog.Show(fm, "Feedback fragment");
             }
 
             private void InspireButton_Click(object sender, System.EventArgs e)

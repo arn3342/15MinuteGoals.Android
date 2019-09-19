@@ -104,6 +104,7 @@
     <Compile Include="Data\ViewModelLocator.cs" />
     <Compile Include="Data\ViewModels\Vm_GoalPanel.cs" />
     <Compile Include="UI\CustomViews\TopBar.cs" />
+    <Compile Include="UI\Dialogs\FeedbackDialog.cs" />
     <Compile Include="UI\Fragments\Fragment_Explore.cs" />
     <Compile Include="UI\Fragments\Fragment_Home.cs" />
     <Compile Include="Activities\MainActivity.cs" />
@@ -441,6 +442,15 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon_feedback_send.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\dialog_feedback.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\close_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_close.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
