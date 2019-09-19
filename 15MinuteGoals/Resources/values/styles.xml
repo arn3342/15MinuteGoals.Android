@@ -12,7 +12,16 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowBackground">@color/appThemeBlue</item>
     </style>
-
+    <style name="dialog_no_border" parent="Theme.AppCompat.Light.Dialog">
+      <item name="android:windowFullscreen">false</item>
+      
+      <item name="android:windowBackground">@android:color/transparent</item>
+      <item name="android:windowIsFloating">false</item>
+      
+      <item name="android:windowTitleStyle">@null</item>
+      <item name="android:colorBackgroundCacheHint">@null</item>
+      <item name="android:backgroundDimEnabled">true</item>
+    </style>
     <string name="facebook_app_id">365038010784654</string>
     <string name="fb_login_protocol_scheme">fb365038010784654</string>
 </resources>

@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:background="@drawable/bg_writepost"
+    android:background="@drawable/bg_writefeedback"
     android:focusableInTouchMode="true"
     android:minWidth="25dp"
     android:minHeight="225dp">
@@ -18,6 +18,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="15dp"
+        android:textColor="#7d7d7d"
         android:textSize="14dp"
         android:textStyle="bold"/>
     <ImageView
@@ -32,16 +33,26 @@
     <EditText
         android:id="@+id/feedbackBox"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:text="Share what you feel..."
+        android:layout_height="25dp"
+        android:layout_marginLeft="12dp"
+        android:hint="Share what you feel..."
+        android:focusedByDefault="true"
         android:textColor="#8a8a8a"
         android:textSize="15dp"
+        android:background="@null"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/smallUserImg"
         app:layout_constraintLeft_toRightOf="@id/smallUserImg"
         android:layout_marginRight="35dp"
         app:layout_constraintBottom_toBottomOf="@id/smallUserImg" />
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#21c0ff"
+        app:layout_constraintLeft_toLeftOf="@id/feedbackBox"
+        app:layout_constraintRight_toRightOf="@id/feedbackBox"
+        app:layout_constraintTop_toBottomOf="@id/feedbackBox"
+        android:layout_marginTop="3dp"/>
     <ImageView
         android:id="@+id/closeFeedbackBtn"
         android:layout_width="50dp"

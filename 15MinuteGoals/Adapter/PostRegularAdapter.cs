@@ -105,9 +105,8 @@ namespace _15MinuteGoals.Adapter
 
             private void FeedbackButton_Click(object sender, System.EventArgs e)
             {
-                FragmentManager fm = fragmentManager;
                 FeedbackDialog feedbackDialog = new FeedbackDialog();
-                feedbackDialog.Show(fm, "Feedback fragment");
+                feedbackDialog.Show(fragmentManager, "Feedback fragment");
             }
 
             private void InspireButton_Click(object sender, System.EventArgs e)

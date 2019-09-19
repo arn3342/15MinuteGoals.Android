@@ -12,7 +12,7 @@ using static Android.Support.Design.Widget.TabLayout;
 
 namespace _15MinuteGoals.Activities
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/Theme.AppBlueTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "@string/app_name", WindowSoftInputMode = Android.Views.SoftInput.AdjustResize, Theme = "@style/Theme.AppBlueTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : AppCompatActivity
     {
         private ViewPager mViewPager;
@@ -32,7 +32,6 @@ namespace _15MinuteGoals.Activities
             ViewPagerAdapter adapter = new ViewPagerAdapter(SupportFragmentManager);
             adapter.AddFragment(HomeFragment);
             adapter.AddFragment(ExploreFragment);
-            
 
             mViewPager.Adapter = adapter;
             ////Populating the TabLayout with icons
