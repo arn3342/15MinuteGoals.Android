@@ -7,6 +7,8 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V7.Widget;
 using Android.Views.InputMethods;
+using Android.Graphics.Drawables;
+using Android.Graphics;
 
 namespace _15MinuteGoals.UI.Dialogs
 {
@@ -29,8 +31,6 @@ namespace _15MinuteGoals.UI.Dialogs
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetStyle(StyleNoTitle, Resource.Style.dialog_no_border);
-            //Dialog.Window.SetSoftInputMode(SoftInput.AdjustResize);
         }
         public override void OnResume()
         {
@@ -42,7 +42,14 @@ namespace _15MinuteGoals.UI.Dialogs
             parameters.Height = scale / 2;
             parameters.Width = ViewGroup.LayoutParams.MatchParent;
             Dialog.Window.Attributes = (WindowManagerLayoutParams)parameters;
+            Dialog.Window.SetBackgroundDrawable(new ColorDrawable(Color.Transparent));
             Dialog.Window.SetGravity(GravityFlags.Bottom | GravityFlags.CenterHorizontal);
+        }
+
+        public override void OnActivityCreated(Bundle savedInstanceState)
+        {
+            base.OnActivityCreated(savedInstanceState);
+            Dialog.Window.Attributes.WindowAnimations = Resource.Style.DialogAnimation;
         }
     }
 }

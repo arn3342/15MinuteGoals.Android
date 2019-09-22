@@ -1,4 +1,6 @@
-﻿using _15MinuteGoals.UI.CustomViews;
+﻿using _15MinuteGoals.Activities;
+using _15MinuteGoals.UI.CustomViews;
+using Android.Content;
 using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Support.V4.App;
@@ -16,14 +18,24 @@ namespace _15MinuteGoals.UI.Fragments
         public static LinearLayout mProfileBox { get; private set; }
         public static int mProfileBoxHeight { get; internal set; }
         public static TopBar topbar { get; private set; }
+        public Button pursueButton { get; set; }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             myview = inflater.Inflate(Resource.Layout.screen_home, container, false);
             topbar = myview.FindViewById<TopBar>(Resource.Id.home_topbar);
+            pursueButton = myview.FindViewById<Button>(Resource.Id.pursuebutton);
+            pursueButton.Click += PursueButton_Click;
+
             SetTopBar();
             //Fix scaling
             return myview;
+        }
+
+        private void PursueButton_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(Activity, new PursueActivity().Class);
+            StartActivity(intent);
         }
 
         public override void OnViewCreated(View view, Bundle savedInstanceState)

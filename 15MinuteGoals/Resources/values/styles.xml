@@ -24,4 +24,9 @@
     </style>
     <string name="facebook_app_id">365038010784654</string>
     <string name="fb_login_protocol_scheme">fb365038010784654</string>
+
+  <style name="DialogAnimation">
+    <item name="android:windowEnterAnimation">@anim/dialog_slideUp</item>
+    <item name="android:windowExitAnimation">@anim/dialog_slideDown</item>
+  </style>
 </resources>

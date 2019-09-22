@@ -87,13 +87,18 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activities\PursueActivity.cs" />
     <Compile Include="Activities\SignInActivity.cs" />
     <Compile Include="Activities\SignUpOrLogin.cs" />
     <Compile Include="Activities\SplashActivity.cs" />
     <Compile Include="Adapter\PostRegularAdapter.cs" />
+    <Compile Include="Adapter\PursueContentAdapter.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Authentication\FacebookAuthentication.cs" />
     <Compile Include="Authentication\GoogleAuthentication.cs" />
+    <Compile Include="Data\Models\Pursue_ContentArticle.cs" />
+    <Compile Include="Data\Models\Pursue_ContentVideo.cs" />
+    <Compile Include="Data\Models\Pursue_CourseBox.cs" />
     <Compile Include="Data\Models\PostRegular.cs" />
     <Compile Include="Data\ViewModels\Vm_TopBar.cs" />
     <Compile Include="Data\ViewPagerAdapter.cs" />
@@ -103,6 +108,7 @@
     <Compile Include="Data\Models\Google.cs" />
     <Compile Include="Data\ViewModelLocator.cs" />
     <Compile Include="Data\ViewModels\Vm_GoalPanel.cs" />
+    <Compile Include="UI\CustomViews\ProgressBox.cs" />
     <Compile Include="UI\CustomViews\TopBar.cs" />
     <Compile Include="UI\Dialogs\FeedbackDialog.cs" />
     <Compile Include="UI\Fragments\Fragment_Explore.cs" />
@@ -457,6 +463,48 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bg_edittextBorder.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_send.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\send_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\customview_progressBox.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bg_allBorders.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\right_indicator_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\customview_purse_coursebox.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bg_allBorders_blue.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\customview_pursue_contentvideo.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\selector_regulardim.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\customview_pursue_contentarticle.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Anim\dialog_slideUp.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Anim\dialog_slideDown.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

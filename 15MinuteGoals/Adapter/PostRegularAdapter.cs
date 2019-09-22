@@ -69,8 +69,10 @@ namespace _15MinuteGoals.Adapter
                     vh = new CreatePostViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_user_writepostbar, parent, false));
                     break;
                 case RegularPost:
-                    PostRegularViewHolder viewHolder = new PostRegularViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_postregular, parent, false));
-                    viewHolder.fragmentManager = FragmentManager;
+                    PostRegularViewHolder viewHolder = new PostRegularViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_postregular, parent, false))
+                    {
+                        FragmentManager = FragmentManager
+                    };
                     vh = viewHolder;
                     break;
             }
@@ -87,7 +89,7 @@ namespace _15MinuteGoals.Adapter
             public LinearLayout InspireContainer { get; set; }
             public Button FeedbackButton { get; set; }
 
-            public FragmentManager fragmentManager { get; set; }
+            public FragmentManager FragmentManager { get; set; }
             public bool IsInspired = false;
             public PostRegularViewHolder(View itemView) : base(itemView)
             {
@@ -106,7 +108,7 @@ namespace _15MinuteGoals.Adapter
             private void FeedbackButton_Click(object sender, System.EventArgs e)
             {
                 FeedbackDialog feedbackDialog = new FeedbackDialog();
-                feedbackDialog.Show(fragmentManager, "Feedback fragment");
+                feedbackDialog.Show(FragmentManager, "Feedback fragment");
             }
 
             private void InspireButton_Click(object sender, System.EventArgs e)

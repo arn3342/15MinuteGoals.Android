@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<android.support.constraint.ConstraintLayout
+                android:id="@+id/itemContainer"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:padding="8dp"
+                android:background="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:src="@drawable/videothumb_icon"
+                    android:id="@+id/contentVideThumbNail"
+                    android:layout_width="90dp"
+                    android:layout_height="60dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+                <TextView
+                    android:id="@+id/contentVideoTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toRightOf="@id/contentVideThumbNail"
+                    app:layout_constraintTop_toTopOf="@id/contentVideThumbNail"
+                    android:text="Title goes here"
+                    android:textSize="16dp"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginTop="5dp"
+                    android:paddingRight="10dp"
+                    android:maxLines="1"
+                    android:layout_marginLeft="10dp"/>
+                <TextView
+        android:id="@+id/contentVideoDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2:30/4:00"
+                    android:textSize="14dp"
+                    app:layout_constraintTop_toBottomOf="@id/contentVideoTitle"
+                    app:layout_constraintBottom_toBottomOf="@id/contentVideThumbNail"
+                    app:layout_constraintLeft_toLeftOf="@id/contentVideoTitle"/>
+</android.support.constraint.ConstraintLayout>

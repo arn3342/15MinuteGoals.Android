@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/pursueCourseContainer"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:background="@drawable/bg_allBorders"
+                android:layout_margin="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="15dp"
+                >
+                <TextView
+                    android:id="@+id/following_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Currently following"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="13dp"/>
+                <ImageView
+                    android:id="@+id/course_singlebar_courseImage"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_course_rounded_image"
+                    app:layout_constraintTop_toBottomOf="@id/following_text"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintLeft_toLeftOf="@id/following_text"/>
+                <TextView
+                    android:id="@+id/course_singlebar_courseTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="C# Masterclass for Beginners"
+                    android:textStyle="normal"
+                    android:textColor="#666666"
+                    android:textSize="14dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="25dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/course_singlebar_courseImage"
+                    app:layout_constraintLeft_toRightOf="@id/course_singlebar_courseImage"
+                    app:layout_constraintTop_toTopOf="@id/course_singlebar_courseImage"
+                    app:layout_constraintBottom_toTopOf="@id/course_singlebar_coursePublisher"/>
+
+                <TextView
+                    android:id="@+id/course_singlebar_coursePublisher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="{Course Publisher}"
+                    android:textColor="@color/appThemeBlue"
+                    android:textSize="13dp"
+                    app:layout_constraintBottom_toBottomOf="@id/course_singlebar_courseImage"
+                    app:layout_constraintTop_toBottomOf="@id/course_singlebar_courseTitle"
+                   app:layout_constraintLeft_toLeftOf="@id/course_singlebar_courseTitle" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:stateListAnimator="@null"
+                    android:textAllCaps="false"
+                    android:text="Recommend to a friend"
+                    android:textSize="13dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:textColor="#fff"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/selector_bg_user_headerbar_textview_blue"
+                    app:layout_constraintTop_toBottomOf="@id/course_singlebar_coursePublisher"
+                    app:layout_constraintRight_toRightOf="parent"/>
+            </android.support.constraint.ConstraintLayout>
