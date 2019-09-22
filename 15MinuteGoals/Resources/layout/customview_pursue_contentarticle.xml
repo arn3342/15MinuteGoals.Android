@@ -8,7 +8,8 @@
                 android:paddingLeft="18dp"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
-    android:background="#fff">
+                android:background="@drawable/selector_regulardim"
+                android:clickable="true">
                 <TextView
                     android:id="@+id/contentTypeTitle"
                     android:layout_width="wrap_content"
