@@ -43,6 +43,7 @@ namespace _15MinuteGoals.UI.Fragments
         public void SetTopBar()
         {
             topbar.Title = "Explore";
+            topbar.SetPropertyValues();
         }
 
         public async void PopulateWithPosts()

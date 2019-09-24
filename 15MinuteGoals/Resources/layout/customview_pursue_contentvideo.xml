@@ -5,9 +5,10 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:padding="8dp"
-                android:background="#fff"
+                android:background="@drawable/selector_regulardim"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+    android:clickable="true">
                 <ImageView
                     android:src="@drawable/videothumb_icon"
                     android:id="@+id/contentVideThumbNail"

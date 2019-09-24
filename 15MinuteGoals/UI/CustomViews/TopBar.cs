@@ -25,7 +25,6 @@ namespace _15MinuteGoals.UI.CustomViews
         #endregion
 
         public string Title { get; set; }
-        public string ButtonText { get; set; }
         
 
         //public TextView HeaderTitle
@@ -60,9 +59,7 @@ namespace _15MinuteGoals.UI.CustomViews
 
             #region Setting view instances
             _headerTitle = MainView.FindViewById<TextView>(Resource.Id.headerTitle);
-            _buttonText = MainView.FindViewById<TextView>(Resource.Id.buttontext);
             _iconBtn = MainView.FindViewById<ImageView>(Resource.Id.iconbtn);
-            _userImg = MainView.FindViewById<ImageView>(Resource.Id.topBar_user_image);
             #endregion
 
             this.AddView(MainView);
@@ -76,8 +73,6 @@ namespace _15MinuteGoals.UI.CustomViews
         () => _headerTitle.Text));
             bindings.Add(this.SetBinding(() => mainViewModel.IconSource,
         () => _iconBtn.Drawable));
-            bindings.Add(this.SetBinding(() => mainViewModel.ButtonText,
-        () => _buttonText.Text));
         }
 
         public void SetPropertyValues()
