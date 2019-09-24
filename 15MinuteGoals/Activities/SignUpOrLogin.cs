@@ -1,5 +1,4 @@
-﻿using System;
-using _15MinuteGoals.Authentication;
+﻿using _15MinuteGoals.Authentication;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -10,10 +9,11 @@ using Android.OS;
 using Android.Runtime;
 using Android.Support.V7.App;
 using Android.Widget;
+using System;
 
 namespace _15MinuteGoals.Activities
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/Theme.AppCompat.NoActionBar", Icon = "@drawable/main_logo", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "@string/app_name", Theme = "@style/Theme.AppCompat.NoActionBar", Icon = "@drawable/main_logo", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class SignUpOrLogin : AppCompatActivity, GoogleApiClient.IConnectionCallbacks, GoogleApiClient.IOnConnectionFailedListener
     {
         private GoogleApiClient mgoogleApiClient;
@@ -38,13 +38,13 @@ namespace _15MinuteGoals.Activities
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.activity_signup);
-            // Create your application here
+            //base.OnCreate(savedInstanceState);
+            //SetContentView(Resource.Layout.activity_signup);
+            //// Create your application here
 
-            //Binding the events of the login buttons
-            FindViewById<Button>(Resource.Id.FacebookLoginBtn).Click += FacebookLogin;
-            FindViewById<Button>(Resource.Id.GoogleLoginBtn).Click += GoogleLogIn;
+            ////Binding the events of the login buttons
+            //FindViewById<Button>(Resource.Id.FacebookLoginBtn).Click += FacebookLogin;
+            //FindViewById<Button>(Resource.Id.GoogleLoginBtn).Click += GoogleLogIn;
 
             //propic = FindViewById<ImageView>(Resource.Id.propic);
         }
