@@ -6,9 +6,9 @@
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:padding="8dp"
                 android:background="@drawable/selector_regulardim"
+                android:clickable="true"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-    android:clickable="true">
+                android:layout_height="wrap_content">
                 <ImageView
                     android:src="@drawable/videothumb_icon"
                     android:id="@+id/contentVideThumbNail"
