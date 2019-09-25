@@ -4768,11 +4768,11 @@ namespace _15MinuteGoals
 			// aapt resource value: 0x7f0f00c8
 			public const int loginbutton = 2131689672;
 			
-			// aapt resource value: 0x7f0f00bc
-			public const int maintablayout = 2131689660;
-			
 			// aapt resource value: 0x7f0f00bd
-			public const int mainviewpager = 2131689661;
+			public const int maintablayout = 2131689661;
+			
+			// aapt resource value: 0x7f0f00bc
+			public const int mainviewpager = 2131689660;
 			
 			// aapt resource value: 0x7f0f014c
 			public const int masked = 2131689804;

@@ -62,21 +62,21 @@ namespace _15MinuteGoals.Activities
 
             for (int i = 0; i < mTabLayout.TabCount; i++)
             {
-                //mTabLayout.GetTabAt(i).SetIcon(Icons[i]);
+                mTabLayout.GetTabAt(i).SetIcon(Icons[i]);
 
-                ConstraintLayout tab = (ConstraintLayout)LayoutInflater.Inflate(Resource.Layout.customview_tabLayoutDesign, null);
-                TextView TabTitle = tab.FindViewById<TextView>(Resource.Id.tabTitle);
-                ImageView TabIcon = tab.FindViewById<ImageView>(Resource.Id.tabIco);
+                //ConstraintLayout tab = (ConstraintLayout)LayoutInflater.Inflate(Resource.Layout.customview_tabLayoutDesign, null);
+                //TextView TabTitle = tab.FindViewById<TextView>(Resource.Id.tabTitle);
+                //ImageView TabIcon = tab.FindViewById<ImageView>(Resource.Id.tabIco);
 
-                TabTitle.Text = Titles[i];
-                TabIcon.SetImageResource(Icons[i]);
+                //TabTitle.Text = Titles[i];
+                //TabIcon.SetImageResource(Icons[i]);
 
-                if(i==0)
-                {
-                    TabTitle.SetTextColor(Color.ParseColor("#00aeff"));
-                }
+                //if(i==0)
+                //{
+                //    TabTitle.SetTextColor(Color.ParseColor("#00aeff"));
+                //}
 
-                mTabLayout.GetTabAt(i).SetCustomView(tab);
+                //mTabLayout.GetTabAt(i).SetCustomView(tab);
             }
 
             mTabLayout.AddOnTabSelectedListener(new TabChangeListner(ExploreFragment));
@@ -102,8 +102,8 @@ namespace _15MinuteGoals.Activities
 
             public void OnTabSelected(Tab tab)
             {
-                TextView tabTitle = tab.CustomView.FindViewById<TextView>(Resource.Id.tabTitle);
-                tabTitle.SetTextColor(Color.ParseColor("#00aeff"));
+                //TextView tabTitle = tab.CustomView.FindViewById<TextView>(Resource.Id.tabTitle);
+                //tabTitle.SetTextColor(Color.ParseColor("#00aeff"));
                 if (tab.Position == 1)
                 {
                     Fragment_Explore fragment_Explore = (Fragment_Explore)RequiredFragment;
@@ -113,8 +113,8 @@ namespace _15MinuteGoals.Activities
 
             public void OnTabUnselected(Tab tab)
             {
-                TextView tabTitle = tab.CustomView.FindViewById<TextView>(Resource.Id.tabTitle);
-                tabTitle.SetTextColor(Color.ParseColor("#757575"));
+                //TextView tabTitle = tab.CustomView.FindViewById<TextView>(Resource.Id.tabTitle);
+                //tabTitle.SetTextColor(Color.ParseColor("#757575"));
             }
         }
     }

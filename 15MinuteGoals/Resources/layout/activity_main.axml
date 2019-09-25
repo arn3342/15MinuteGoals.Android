@@ -7,16 +7,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#dfe7ed"
-    android:orientation="vertical">
+    android:orientation="vertical"> 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mainviewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight=".91"/> 
     <android.support.design.widget.TabLayout
         android:id="@+id/maintablayout"
         android:background="#fff"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".09"/>  
-    <android.support.v4.view.ViewPager
-        android:id="@+id/mainviewpager"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".91"/>  
 </LinearLayout>
