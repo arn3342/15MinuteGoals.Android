@@ -6,6 +6,7 @@ namespace _15MinuteGoals.Data.ViewModels
     {
         private string _title = "Title";
         private int _iconsrc;
+        private string _headerDesc = "None";
         public string Title
         {
             get { return _title; }
@@ -19,6 +20,12 @@ namespace _15MinuteGoals.Data.ViewModels
         {
             get { return _iconsrc; }
             set { Set(ref _iconsrc, value); }
+        }
+
+        public string HeaderDesc
+        {
+            get { return _headerDesc; }
+            set { Set(ref _headerDesc, value); }
         }
     }
 }

@@ -101,6 +101,7 @@
     <Compile Include="Data\Models\Pursue_ContentVideo.cs" />
     <Compile Include="Data\Models\Pursue_CourseBox.cs" />
     <Compile Include="Data\Models\PostRegular.cs" />
+    <Compile Include="Data\ValueConverter.cs" />
     <Compile Include="Data\ViewModels\Vm_TopBar.cs" />
     <Compile Include="Data\ViewPagerAdapter.cs" />
     <Compile Include="UI\AnimationClasses\ScaleBounceInterpolator.cs" />
@@ -524,6 +525,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\social_fb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\customview_tabLayoutDesign.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

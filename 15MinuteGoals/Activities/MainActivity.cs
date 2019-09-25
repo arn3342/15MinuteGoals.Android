@@ -3,11 +3,15 @@ using _15MinuteGoals.Data;
 using _15MinuteGoals.UI.Fragments;
 using Android.App;
 using Android.Content.PM;
+using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.Constraints;
 using Android.Support.Design.Widget;
+using Android.Support.V4.Content;
 using Android.Support.V4.View;
 using Android.Support.V7.App;
+using Android.Widget;
 using static Android.Support.Design.Widget.TabLayout;
 
 namespace _15MinuteGoals.Activities
@@ -20,6 +24,7 @@ namespace _15MinuteGoals.Activities
         private Fragment_Home HomeFragment = new Fragment_Home();
         private Fragment_Explore ExploreFragment = new Fragment_Explore();
         private Fragment_Connect ConnectFragment = new Fragment_Connect();
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -53,9 +58,25 @@ namespace _15MinuteGoals.Activities
             int[] Icons = new int[] { Resource.Drawable.goal_blue_icon,
                                       Resource.Drawable.explore_blue_icon,
                                       Resource.Drawable.connect_page_icon };
-            for (int i = 0; i < Icons.Length; i++)
+            string[] Titles = new string[] { "Goals", "Explore", "Connect" };
+
+            for (int i = 0; i < mTabLayout.TabCount; i++)
             {
-                mTabLayout.GetTabAt(i).SetIcon(Icons[i]);
+                //mTabLayout.GetTabAt(i).SetIcon(Icons[i]);
+
+                ConstraintLayout tab = (ConstraintLayout)LayoutInflater.Inflate(Resource.Layout.customview_tabLayoutDesign, null);
+                TextView TabTitle = tab.FindViewById<TextView>(Resource.Id.tabTitle);
+                ImageView TabIcon = tab.FindViewById<ImageView>(Resource.Id.tabIco);
+
+                TabTitle.Text = Titles[i];
+                TabIcon.SetImageResource(Icons[i]);
+
+                if(i==0)
+                {
+                    TabTitle.SetTextColor(Color.ParseColor("#00aeff"));
+                }
+
+                mTabLayout.GetTabAt(i).SetCustomView(tab);
             }
 
             mTabLayout.AddOnTabSelectedListener(new TabChangeListner(ExploreFragment));
@@ -64,6 +85,7 @@ namespace _15MinuteGoals.Activities
         public class TabChangeListner : Java.Lang.Object, IOnTabSelectedListener
         {
             public Android.Support.V4.App.Fragment RequiredFragment;
+
             public TabChangeListner(Android.Support.V4.App.Fragment fragment)
             {
                 RequiredFragment = fragment;
@@ -80,6 +102,8 @@ namespace _15MinuteGoals.Activities
 
             public void OnTabSelected(Tab tab)
             {
+                TextView tabTitle = tab.CustomView.FindViewById<TextView>(Resource.Id.tabTitle);
+                tabTitle.SetTextColor(Color.ParseColor("#00aeff"));
                 if (tab.Position == 1)
                 {
                     Fragment_Explore fragment_Explore = (Fragment_Explore)RequiredFragment;
@@ -89,7 +113,8 @@ namespace _15MinuteGoals.Activities
 
             public void OnTabUnselected(Tab tab)
             {
-                //throw new NotImplementedException();
+                TextView tabTitle = tab.CustomView.FindViewById<TextView>(Resource.Id.tabTitle);
+                tabTitle.SetTextColor(Color.ParseColor("#757575"));
             }
         }
     }
