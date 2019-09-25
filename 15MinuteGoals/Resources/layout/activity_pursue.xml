@@ -37,6 +37,7 @@
         app:layout_constraintRight_toRightOf="parent"/>
     <_15MinuteGoals.UI.CustomViews.ProgressBox
         android:id="@+id/pursueprogress"
+        android:alpha="0"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         app:layout_constraintTop_toBottomOf="@id/goal_title_spacer"/>

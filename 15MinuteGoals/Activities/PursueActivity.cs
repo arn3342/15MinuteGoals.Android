@@ -14,6 +14,7 @@ using Android.Views;
 using Android.Support.Constraints;
 using System;
 using Android.Widget;
+using _15MinuteGoals.UI.CustomViews;
 
 namespace _15MinuteGoals.Activities
 {
@@ -74,7 +75,7 @@ namespace _15MinuteGoals.Activities
         private void PursueAdapter_ViewHolderCreated(object sender, EventArgs e)
         {
             RecyclerView.ViewHolder vh = recyclerView.FindViewHolderForAdapterPosition(0);
-            ConstraintLayout layout = vh.ItemView.FindViewById<ConstraintLayout>(Resource.Id.pursueCourseContainer);
+            ProgressBox layout = this.FindViewById<ProgressBox>(Resource.Id.pursueprogress);
             scrollView.ViewTreeObserver.AddOnScrollChangedListener(new ScrollPositionObserver(layout.Height, scrollView, layout));
         }
 
@@ -94,9 +95,17 @@ namespace _15MinuteGoals.Activities
 
             public void OnScrollChanged()
             {
-                int scrollY = Math.Min(Math.Max(scrollView.ScrollY, 0), layoutHeight);
-                // changing position of NotifBar
-                child.TranslationY = scrollY / 2;
+                //int scrollY = Math.Min(Math.Max(scrollView.ScrollY, 0), layoutHeight);
+                //// changing position of NotifBar
+                //var test = scrollView.ScrollY;
+                //child.Alpha = 0.5F;
+                if(scrollView.ScrollY <=100)
+                {
+                    decimal alpha = Convert.ToDecimal(scrollView.ScrollY) / 100m;
+                    child.Alpha = (float)alpha;
+                }
+                else if(scrollView.ScrollY > 100)
+                { child.Alpha = 1F; }
             }
         }
     }
