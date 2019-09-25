@@ -5,10 +5,8 @@ using Android.Support.Constraints;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using _15MinuteGoals.Data;
 using GalaSoft.MvvmLight.Helpers;
 using Android.Animation;
-using System;
 
 namespace _15MinuteGoals.UI.CustomViews
 {
@@ -58,11 +56,11 @@ namespace _15MinuteGoals.UI.CustomViews
             mainViewModel = new Vm_TopBar();
             var inflatorService = (LayoutInflater)ctx.GetSystemService(Context.LayoutInflaterService);
             MainView = inflatorService.Inflate(Resource.Layout.customview_topbar, this, false);
-            header = MainView.FindViewById<TextView>(Resource.Id.headerTitle);
-            headerDescription = MainView.FindViewById<TextView>(Resource.Id.headerDesc);
+            //header = MainView.FindViewById<TextView>(Resource.Id.headerTitle);
+            //headerDescription = MainView.FindViewById<TextView>(Resource.Id.headerDesc);
             #region Setting view instances
-            _headerTitle = MainView.FindViewById<TextView>(Resource.Id.headerTitle);
-            _iconBtn = MainView.FindViewById<ImageView>(Resource.Id.iconbtn);
+            //_headerTitle = MainView.FindViewById<TextView>(Resource.Id.headerTitle);
+            //_iconBtn = MainView.FindViewById<ImageView>(Resource.Id.iconbtn);
             #endregion
 
             AddView(MainView);
@@ -72,18 +70,18 @@ namespace _15MinuteGoals.UI.CustomViews
 
         private void BindProperties()
         {
-            bindings.Add(this.SetBinding(() => mainViewModel.Title,
-        () => _headerTitle.Text));
-            bindings.Add(this.SetBinding(() => mainViewModel.IconSource,
-        () => _iconBtn.Drawable));
-            bindings.Add(this.SetBinding(() => mainViewModel.HeaderDesc,
-        () => _iconBtn.Drawable));
+        //    bindings.Add(this.SetBinding(() => mainViewModel.Title,
+        //() => _headerTitle.Text));
+        //    bindings.Add(this.SetBinding(() => mainViewModel.IconSource,
+        //() => _iconBtn.Drawable));
+        //    bindings.Add(this.SetBinding(() => mainViewModel.HeaderDesc,
+        //() => _iconBtn.Drawable));
         }
 
         public void SetPropertyValues()
         {
-            mainViewModel.Title = Title;
-            mainViewModel.HeaderDesc = HeaderDescription;
+            //mainViewModel.Title = Title;
+            //mainViewModel.HeaderDesc = HeaderDescription;
             //mainViewModel.IconSource = IconSource;
             //mainViewModel.ButtonText = ButtonText;
             //ImageService.Instance.LoadUrl(UserImgSrc).Into(UserImg);
@@ -92,10 +90,10 @@ namespace _15MinuteGoals.UI.CustomViews
         public void AnimateHeader()
         {
             //float newSize = ValueConverter.DpToPx(15);
-            ValueAnimator valueAnimator = ObjectAnimator.OfFloat(header, "textSize", 5);
-            valueAnimator.SetDuration(450);
-            valueAnimator.AddListener(new AnimListner());
-            valueAnimator.Start();
+            //ValueAnimator valueAnimator = ObjectAnimator.OfFloat(header, "textSize", 5);
+            //valueAnimator.SetDuration(450);
+            //valueAnimator.AddListener(new AnimListner());
+            //valueAnimator.Start();
         }
 
         private class AnimListner : Java.Lang.Object, Animator.IAnimatorListener

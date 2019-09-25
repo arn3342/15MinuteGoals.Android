@@ -110,6 +110,7 @@
     <Compile Include="Data\Models\Google.cs" />
     <Compile Include="Data\ViewModelLocator.cs" />
     <Compile Include="Data\ViewModels\Vm_GoalPanel.cs" />
+    <Compile Include="UI\CustomViews\GradientTextView.cs" />
     <Compile Include="UI\CustomViews\ProgressBox.cs" />
     <Compile Include="UI\CustomViews\TopBar.cs" />
     <Compile Include="UI\Dialogs\FeedbackDialog.cs" />
@@ -528,6 +529,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\customview_tabLayoutDesign.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\search_icon_dim.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\write_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

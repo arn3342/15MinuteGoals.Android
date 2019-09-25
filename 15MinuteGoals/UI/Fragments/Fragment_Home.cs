@@ -23,11 +23,11 @@ namespace _15MinuteGoals.UI.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             myview = inflater.Inflate(Resource.Layout.screen_home, container, false);
-            topbar = myview.FindViewById<TopBar>(Resource.Id.home_topbar);
-            pursueButton = myview.FindViewById<Button>(Resource.Id.pursuebutton);
-            pursueButton.Click += PursueButton_Click;
+            //topbar = myview.FindViewById<TopBar>(Resource.Id.home_topbar);
+            //pursueButton = myview.FindViewById<Button>(Resource.Id.pursuebutton);
+            //pursueButton.Click += PursueButton_Click;
 
-            SetTopBar();
+            //SetTopBar();
             //Fix scaling
             return myview;
         }
