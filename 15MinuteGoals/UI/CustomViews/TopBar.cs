@@ -17,7 +17,7 @@ namespace _15MinuteGoals.UI.CustomViews
         private List<Binding> bindings = new List<Binding>();
         public Vm_TopBar mainViewModel;
         public TextView header;
-        private ImageView WritePostBtn;
+        public static ImageView WritePostBtn { get; set; }
         public static TextView headerDescription {get; set; }
 
         #region Views declarations
@@ -27,7 +27,7 @@ namespace _15MinuteGoals.UI.CustomViews
 
         public string Title { get; set; }
         public string HeaderDescription { get; set; }
-        private float WritePostBtnWidth;
+        private int WritePostBtnWidth;
 
         //public TextView HeaderTitle
         //{
@@ -90,9 +90,9 @@ namespace _15MinuteGoals.UI.CustomViews
             //ImageService.Instance.LoadUrl(UserImgSrc).Into(UserImg);
         }
 
-        public void AnimateView(View view, string PropertyName, float PropertyValue)
+        public void AnimateView(View view, string PropertyName, int PropertyValue)
         {
-            ValueAnimator valueAnimator = ObjectAnimator.OfFloat(WritePostBtn, "layout_width", 1);
+            ValueAnimator valueAnimator = ObjectAnimator.OfInt(view, "width", PropertyValue);
             valueAnimator.SetDuration(450);
             valueAnimator.Start();
         }
@@ -119,12 +119,15 @@ namespace _15MinuteGoals.UI.CustomViews
             }
         }
 
-        internal void ExpandSearch()
+        public void ExpandSearch()
         {
             WritePostBtnWidth = WritePostBtn.Width;
-            AnimateView(WritePostBtn, "layout_width", 1);
+            //AnimateView(WritePostBtn, "layout_width", 1);
+            ValueAnimator valueAnimator = ObjectAnimator.OfInt(WritePostBtn, "layout_width", 2);
+            valueAnimator.SetDuration(450);
+            valueAnimator.Start();
         }
-        internal void ResizeSearch()
+        public void ResizeSearch()
         {
             if (WritePostBtn.Width != WritePostBtnWidth)
             {
