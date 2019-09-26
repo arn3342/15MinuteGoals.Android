@@ -8,15 +8,19 @@
     android:layout_height="match_parent"
     android:background="#dfe7ed"
     android:orientation="vertical"> 
+    <_15MinuteGoals.UI.CustomViews.TopBar
+        android:id="@+id/home_topbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"/>
     <android.support.v4.view.ViewPager
         android:id="@+id/mainviewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".91"/> 
+        android:layout_weight=".92"/> 
     <android.support.design.widget.TabLayout
         android:id="@+id/maintablayout"
         android:background="#fff"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".09"/>  
+        android:layout_weight=".08"/>  
 </LinearLayout>

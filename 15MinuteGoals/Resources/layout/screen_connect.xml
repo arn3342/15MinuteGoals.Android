@@ -6,16 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#e4e4e4">
-    <_15MinuteGoals.UI.CustomViews.TopBar
-        android:id="@+id/connect_topbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"/>
     <android.support.constraint.ConstraintLayout
         android:id="@+id/emailInviteContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/connect_topbar"
+        app:layout_constraintTop_toTopOf="parent"
         android:background="#fff"
         android:paddingBottom="15dp"
         android:layout_marginTop="10dp">
