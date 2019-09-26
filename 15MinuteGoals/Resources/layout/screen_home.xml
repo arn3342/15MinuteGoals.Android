@@ -26,18 +26,48 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_margin="15dp"
                 android:textSize="30dp"/>
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="If you have a dream, you have the right to make it come true! Be an achiever and achieve your goals!"
+             <View
+                android:id="@+id/captionSeperator"
+                android:layout_width="50dp"
+                android:layout_height="5dp"
+                android:background="@drawable/background_gradient_roundedcorners"
                 app:layout_constraintTop_toBottomOf="@id/caption"
-                app:layout_constraintLeft_toLeftOf="@id/caption"
                 android:layout_marginTop="5dp"
-                android:singleLine="false"
+                app:layout_constraintLeft_toLeftOf="@id/caption"/>
+            <TextView
+                android:id="@+id/captionTwo"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginRight="30dp"
+                android:singleLine="false"
+                android:text="If you have a dream, you have the right to make it come true!"
                 android:textSize="15dp"
-                app:layout_constraintRight_toRightOf="parent"/>
-
+                app:layout_constraintLeft_toLeftOf="@id/caption"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/captionSeperator" />
+            <View
+                android:id="@+id/academicBtn"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:background="@drawable/bg_academicGoal"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/captionTwo"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="18dp"/>
+            <View
+                android:id="@+id/entrepreneurBtn"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:background="@drawable/bg_entrepreneurGoal"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/academicBtn"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"/>
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

@@ -13,8 +13,8 @@ namespace _15MinuteGoals.UI.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             mainView = inflater.Inflate(Resource.Layout.screen_connect, container, false);
-            topbar = mainView.FindViewById<TopBar>(Resource.Id.connect_topbar);
-            SetTopBar();
+            //topbar = mainView.FindViewById<TopBar>(Resource.Id.connect_topbar);
+            //SetTopBar();
 
             return mainView;
         }

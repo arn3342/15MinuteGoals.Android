@@ -46,7 +46,7 @@ namespace _15MinuteGoals.UI.CustomViews
                              Width,
                              Height,
                              Color.ParseColor("#0078ff"),
-                             Color.ParseColor("#9000ff"),
+                             Color.ParseColor("#2bcaff"),
                              Shader.TileMode.Clamp));
             }
         }

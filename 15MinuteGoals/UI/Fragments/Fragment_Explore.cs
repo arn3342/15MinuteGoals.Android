@@ -25,8 +25,8 @@ namespace _15MinuteGoals.UI.Fragments
         {
             mainView = inflater.Inflate(Resource.Layout.screen_explore, container, false);
             recyclerView = mainView.FindViewById<RecyclerView>(Resource.Id.explore_feed_maincontainer);
-            topbar = mainView.FindViewById<TopBar>(Resource.Id.explore_topbar);
-            SetTopBar();
+            //topbar = mainView.FindViewById<TopBar>(Resource.Id.explore_topbar);
+            //SetTopBar();
 
             recyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
             postRegularAdapter = new PostRegularAdapter(contents);

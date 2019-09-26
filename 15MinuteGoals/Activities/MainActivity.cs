@@ -1,17 +1,14 @@
-﻿using System;
-using _15MinuteGoals.Data;
+﻿using _15MinuteGoals.Data;
+using _15MinuteGoals.UI.CustomViews;
 using _15MinuteGoals.UI.Fragments;
 using Android.App;
 using Android.Content.PM;
 using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
-using Android.Support.Constraints;
 using Android.Support.Design.Widget;
-using Android.Support.V4.Content;
 using Android.Support.V4.View;
 using Android.Support.V7.App;
-using Android.Widget;
 using static Android.Support.Design.Widget.TabLayout;
 
 namespace _15MinuteGoals.Activities
@@ -24,6 +21,7 @@ namespace _15MinuteGoals.Activities
         private Fragment_Home HomeFragment = new Fragment_Home();
         private Fragment_Explore ExploreFragment = new Fragment_Explore();
         private Fragment_Connect ConnectFragment = new Fragment_Connect();
+        public static TopBar MainTopBar { get; set; }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -35,6 +33,8 @@ namespace _15MinuteGoals.Activities
             //Referencing the views, populating the adapter with fragments, calling a method to populate the bottom menu
             mTabLayout = FindViewById<TabLayout>(Resource.Id.maintablayout);
             mViewPager = FindViewById<ViewPager>(Resource.Id.mainviewpager);
+            MainTopBar = FindViewById<TopBar>(Resource.Id.main_topbar);
+
             ViewPagerAdapter adapter = new ViewPagerAdapter(SupportFragmentManager);
             adapter.AddFragment(HomeFragment);
             adapter.AddFragment(ExploreFragment);
@@ -44,7 +44,7 @@ namespace _15MinuteGoals.Activities
             ////Populating the TabLayout with icons
             PopulateMainTabIcons();
 
-            
+
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
@@ -58,11 +58,11 @@ namespace _15MinuteGoals.Activities
             int[] Icons = new int[] { Resource.Drawable.goal_blue_icon,
                                       Resource.Drawable.explore_blue_icon,
                                       Resource.Drawable.connect_page_icon };
-            string[] Titles = new string[] { "Goals", "Explore", "Connect" };
+            string[] Titles = new string[] { "Your goals", "Explore", "Connect" };
 
             for (int i = 0; i < mTabLayout.TabCount; i++)
             {
-                mTabLayout.GetTabAt(i).SetIcon(Icons[i]);
+                mTabLayout.GetTabAt(i).SetText(Titles[i]);
 
                 //ConstraintLayout tab = (ConstraintLayout)LayoutInflater.Inflate(Resource.Layout.customview_tabLayoutDesign, null);
                 //TextView TabTitle = tab.FindViewById<TextView>(Resource.Id.tabTitle);
@@ -78,6 +78,8 @@ namespace _15MinuteGoals.Activities
 
                 //mTabLayout.GetTabAt(i).SetCustomView(tab);
             }
+            mTabLayout.SetTabTextColors(Color.Black, Color.ParseColor("#00aeff"));
+            mTabLayout.SetSelectedTabIndicatorColor(Color.ParseColor("#00aeff"));
 
             mTabLayout.AddOnTabSelectedListener(new TabChangeListner(ExploreFragment));
         }
@@ -104,10 +106,15 @@ namespace _15MinuteGoals.Activities
             {
                 //TextView tabTitle = tab.CustomView.FindViewById<TextView>(Resource.Id.tabTitle);
                 //tabTitle.SetTextColor(Color.ParseColor("#00aeff"));
-                if (tab.Position == 1)
+                if (tab.Position == 0)
+                {
+                    MainTopBar.ResizeSearch();
+                }
+                else if (tab.Position == 1)
                 {
                     Fragment_Explore fragment_Explore = (Fragment_Explore)RequiredFragment;
                     fragment_Explore.PopulateWithPosts();
+                    MainTopBar.ExpandSearch();
                 }
             }
 

@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using GalaSoft.MvvmLight.Helpers;
 using Android.Animation;
+using System;
 
 namespace _15MinuteGoals.UI.CustomViews
 {
@@ -16,6 +17,7 @@ namespace _15MinuteGoals.UI.CustomViews
         private List<Binding> bindings = new List<Binding>();
         public Vm_TopBar mainViewModel;
         public TextView header;
+        public static ImageView WritePostBtn { get; set; }
         public static TextView headerDescription {get; set; }
 
         #region Views declarations
@@ -25,7 +27,7 @@ namespace _15MinuteGoals.UI.CustomViews
 
         public string Title { get; set; }
         public string HeaderDescription { get; set; }
-        
+        private int WritePostBtnWidth;
 
         //public TextView HeaderTitle
         //{
@@ -56,6 +58,7 @@ namespace _15MinuteGoals.UI.CustomViews
             mainViewModel = new Vm_TopBar();
             var inflatorService = (LayoutInflater)ctx.GetSystemService(Context.LayoutInflaterService);
             MainView = inflatorService.Inflate(Resource.Layout.customview_topbar, this, false);
+            WritePostBtn = MainView.FindViewById<ImageView>(Resource.Id.writepostBtn);
             //header = MainView.FindViewById<TextView>(Resource.Id.headerTitle);
             //headerDescription = MainView.FindViewById<TextView>(Resource.Id.headerDesc);
             #region Setting view instances
@@ -87,13 +90,11 @@ namespace _15MinuteGoals.UI.CustomViews
             //ImageService.Instance.LoadUrl(UserImgSrc).Into(UserImg);
         }
 
-        public void AnimateHeader()
+        public void AnimateView(View view, string PropertyName, int PropertyValue)
         {
-            //float newSize = ValueConverter.DpToPx(15);
-            //ValueAnimator valueAnimator = ObjectAnimator.OfFloat(header, "textSize", 5);
-            //valueAnimator.SetDuration(450);
-            //valueAnimator.AddListener(new AnimListner());
-            //valueAnimator.Start();
+            ValueAnimator valueAnimator = ObjectAnimator.OfInt(view, "width", PropertyValue);
+            valueAnimator.SetDuration(450);
+            valueAnimator.Start();
         }
 
         private class AnimListner : Java.Lang.Object, Animator.IAnimatorListener
@@ -115,6 +116,22 @@ namespace _15MinuteGoals.UI.CustomViews
             public void OnAnimationStart(Animator animation)
             {
                 
+            }
+        }
+
+        public void ExpandSearch()
+        {
+            WritePostBtnWidth = WritePostBtn.Width;
+            //AnimateView(WritePostBtn, "layout_width", 1);
+            ValueAnimator valueAnimator = ObjectAnimator.OfInt(WritePostBtn, "layout_width", 2);
+            valueAnimator.SetDuration(450);
+            valueAnimator.Start();
+        }
+        public void ResizeSearch()
+        {
+            if (WritePostBtn.Width != WritePostBtnWidth)
+            {
+                AnimateView(WritePostBtn, "layout_width", WritePostBtnWidth);
             }
         }
     }
