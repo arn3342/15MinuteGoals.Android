@@ -86,11 +86,9 @@ namespace _15MinuteGoals.Adapter
             public TextView postBody { get; set; }
             public TextView inspireCount { get; set; }
             public ImageView InspireButton { get; set; }
-            public LinearLayout InspireContainer { get; set; }
             public Button FeedbackButton { get; set; }
 
             public FragmentManager FragmentManager { get; set; }
-            public bool IsInspired = false;
             public PostRegularViewHolder(View itemView) : base(itemView)
             {
                 userImg = itemView.FindViewById<ImageView>(Resource.Id.feed_user_image);
@@ -98,10 +96,10 @@ namespace _15MinuteGoals.Adapter
                 postBody = itemView.FindViewById<TextView>(Resource.Id.postself);
                 inspireCount = itemView.FindViewById<TextView>(Resource.Id.inspireCount);
                 InspireButton = itemView.FindViewById<ImageView>(Resource.Id.inspireButton);
-                InspireContainer = itemView.FindViewById<LinearLayout>(Resource.Id.inspireButtonContainer);
                 FeedbackButton = itemView.FindViewById<Button>(Resource.Id.feedbackbtn);
-
-                InspireContainer.Click += InspireButton_Click;
+                InspireButtonClick clickAndFocus = new InspireButtonClick();
+                InspireButton.SetOnClickListener(clickAndFocus);
+                InspireButton.OnFocusChangeListener = clickAndFocus;
                 FeedbackButton.Click += FeedbackButton_Click;
             }
 
@@ -111,26 +109,39 @@ namespace _15MinuteGoals.Adapter
                 feedbackDialog.Show(FragmentManager, "Feedback fragment");
             }
 
-            private void InspireButton_Click(object sender, System.EventArgs e)
+            private class InspireButtonClick : Java.Lang.Object, View.IOnClickListener, View.IOnFocusChangeListener
             {
-                if (!IsInspired)
+                bool IsInspired;
+                public void OnClick(View v)
                 {
-                    InspireButton.SetImageResource(Resource.Drawable.bg_inspirebtn_inspired);
-                    InspireButton.SetBackgroundResource(Resource.Drawable.bg_user_headerbar_textview_blue);
-                    IsInspired = true;
-                }
-                else
-                {
-                    InspireButton.SetImageResource(Resource.Drawable.bg_inspirebtn);
-                    InspireButton.SetBackgroundResource(Resource.Drawable.bg_user_headerbar_textview);
-                    IsInspired = false;
+                    ImageView view = (ImageView)v;
+                    if (!IsInspired)
+                    {
+                        view.SetImageResource(Resource.Drawable.bg_inspirebtn_inspired);
+                        view.SetBackgroundResource(Resource.Drawable.bg_inspireButton_selected);
+                        IsInspired = true;
+                    }
+                    else
+                    {
+                        view.SetImageResource(Resource.Drawable.bg_inspirebtn);
+                        view.SetBackgroundResource(Resource.Drawable.bg_inspireButton);
+                        IsInspired = false;
+                    }
+
+                    Context context = view.Context;
+                    Animation anim = AnimationUtils.LoadAnimation(context, Resource.Animation.bounceScaleAnimation);
+                    ScaleBounceInterpolator scaleBounceInterpolator = new ScaleBounceInterpolator(0.2, 20);
+                    anim.Interpolator = scaleBounceInterpolator;
+                    view.StartAnimation(anim);
                 }
 
-                Context context = InspireButton.Context;
-                Animation anim = AnimationUtils.LoadAnimation(context, Resource.Animation.bounceScaleAnimation);
-                ScaleBounceInterpolator scaleBounceInterpolator = new ScaleBounceInterpolator(0.2, 20);
-                anim.Interpolator = scaleBounceInterpolator;
-                InspireButton.StartAnimation(anim);
+                public void OnFocusChange(View v, bool hasFocus)
+                {
+                    if(v.HasFocus)
+                    {
+                        OnClick(v);
+                    }
+                }
             }
         }
 
