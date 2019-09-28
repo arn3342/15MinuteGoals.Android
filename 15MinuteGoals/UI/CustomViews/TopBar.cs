@@ -27,7 +27,7 @@ namespace _15MinuteGoals.UI.CustomViews
 
         public string Title { get; set; }
         public string HeaderDescription { get; set; }
-        private int WritePostBtnWidth;
+        private int WritePostBtnWidth = 0;
 
         //public TextView HeaderTitle
         //{
@@ -90,22 +90,63 @@ namespace _15MinuteGoals.UI.CustomViews
             //ImageService.Instance.LoadUrl(UserImgSrc).Into(UserImg);
         }
 
-        public void AnimateView(View view, string PropertyName, int PropertyValue)
+        public void AnimateSearch(int PropertyValue, bool HideView)
         {
-            ValueAnimator valueAnimator = ObjectAnimator.OfInt(view, "width", PropertyValue);
-            valueAnimator.SetDuration(450);
-            valueAnimator.Start();
+            ValueAnimator Animator = ValueAnimator.OfInt(WritePostBtn.MeasuredWidth, PropertyValue);
+            Animator.AddUpdateListener(new AnimUpdateListner());
+            Animator.AddListener(new AnimListner(HideView));
+            Animator.SetDuration(250);
+            Animator.Start();
+        }
+
+        private class AnimUpdateListner : Java.Lang.Object, ValueAnimator.IAnimatorUpdateListener
+        {
+            public void OnAnimationUpdate(ValueAnimator animation)
+            {
+                int value = (int)animation.AnimatedValue;
+                ViewGroup.LayoutParams layoutParams = WritePostBtn.LayoutParameters;
+                layoutParams.Width = value;
+                WritePostBtn.LayoutParameters = layoutParams;
+            }
+
+
+        }
+
+        public void ExpandSearch()
+        {
+            if (WritePostBtnWidth == 0)
+            {
+                WritePostBtnWidth = WritePostBtn.Width;
+                AnimateSearch(1, true);
+            }            
+        }
+        public void ShrinkSearch()
+        {
+            if (WritePostBtnWidth != 0)
+            {
+                AnimateSearch(WritePostBtnWidth, false);
+                WritePostBtnWidth = 0;
+            }
         }
 
         private class AnimListner : Java.Lang.Object, Animator.IAnimatorListener
         {
+            bool hideOnEnd;
+            public AnimListner(bool HideViewOnEnd)
+            {
+                hideOnEnd = HideViewOnEnd;
+            }
             public void OnAnimationCancel(Animator animation)
             {
+               
             }
 
             public void OnAnimationEnd(Animator animation)
             {
-                headerDescription.Visibility = ViewStates.Visible;
+                if (hideOnEnd)
+                {
+                    WritePostBtn.Visibility = ViewStates.Gone;
+                }
             }
 
             public void OnAnimationRepeat(Animator animation)
@@ -115,23 +156,10 @@ namespace _15MinuteGoals.UI.CustomViews
 
             public void OnAnimationStart(Animator animation)
             {
-                
-            }
-        }
-
-        public void ExpandSearch()
-        {
-            WritePostBtnWidth = WritePostBtn.Width;
-            //AnimateView(WritePostBtn, "layout_width", 1);
-            ValueAnimator valueAnimator = ObjectAnimator.OfInt(WritePostBtn, "layout_width", 2);
-            valueAnimator.SetDuration(450);
-            valueAnimator.Start();
-        }
-        public void ResizeSearch()
-        {
-            if (WritePostBtn.Width != WritePostBtnWidth)
-            {
-                AnimateView(WritePostBtn, "layout_width", WritePostBtnWidth);
+                if (!hideOnEnd)
+                {
+                    WritePostBtn.Visibility = ViewStates.Visible;
+                }
             }
         }
     }

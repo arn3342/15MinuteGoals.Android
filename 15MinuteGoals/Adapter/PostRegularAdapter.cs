@@ -47,7 +47,7 @@ namespace _15MinuteGoals.Adapter
             {
                 case WritePost:
                     CreatePostViewHolder vh2 = holder as CreatePostViewHolder;
-                    vh2.totalInspire.Text = vh2.totalInspire.Text.Replace("xx", contentCollection[position].ToString());
+                    //vh2.totalInspire.Text = vh2.totalInspire.Text.Replace("xx", contentCollection[position].ToString());
                     break;
                 case RegularPost:
                     PostRegularViewHolder vh3 = holder as PostRegularViewHolder;
@@ -139,7 +139,7 @@ namespace _15MinuteGoals.Adapter
             public TextView totalInspire { get; set; }
             public CreatePostViewHolder(View itemView) : base(itemView)
             {
-                totalInspire = itemView.FindViewById<TextView>(Resource.Id.canInspire);
+                //totalInspire = itemView.FindViewById<TextView>(Resource.Id.canInspire);
             }
         }
     }

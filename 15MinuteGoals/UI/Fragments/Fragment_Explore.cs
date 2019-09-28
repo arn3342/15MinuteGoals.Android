@@ -48,13 +48,13 @@ namespace _15MinuteGoals.UI.Fragments
 
         public async void PopulateWithPosts()
         {
+            await Task.Delay(700);
             if (contents.Count == 0)
             {
                 postRegularAdapter.FragmentManager = FragmentManager;
                 Context context = recyclerView.Context;
                 LayoutAnimationController controller = AnimationUtils.LoadLayoutAnimation(context, Resource.Animation.layout_animation_fall_down);
-                recyclerView.LayoutAnimation = controller;
-                await Task.Delay(300);
+                recyclerView.LayoutAnimation = controller;               
                 if (!IsWritePostCreated)
                 {
                     contents.Add(350);

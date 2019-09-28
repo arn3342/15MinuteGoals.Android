@@ -84,6 +84,8 @@ namespace _15MinuteGoals.Activities
             mTabLayout.AddOnTabSelectedListener(new TabChangeListner(ExploreFragment));
         }
 
+        
+
         public class TabChangeListner : Java.Lang.Object, IOnTabSelectedListener
         {
             public Android.Support.V4.App.Fragment RequiredFragment;
@@ -108,7 +110,7 @@ namespace _15MinuteGoals.Activities
                 //tabTitle.SetTextColor(Color.ParseColor("#00aeff"));
                 if (tab.Position == 0)
                 {
-                    MainTopBar.ResizeSearch();
+                    MainTopBar.ShrinkSearch();
                 }
                 else if (tab.Position == 1)
                 {
