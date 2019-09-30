@@ -13,7 +13,7 @@ using static Android.Support.Design.Widget.TabLayout;
 
 namespace _15MinuteGoals.Activities
 {
-    [Activity(Label = "@string/app_name", WindowSoftInputMode = Android.Views.SoftInput.AdjustResize, Theme = "@style/Theme.AppBlueTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "@string/app_name", Theme = "@style/Theme.AppBlueTheme", WindowSoftInputMode = Android.Views.SoftInput.AdjustPan, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : AppCompatActivity
     {
         private ViewPager mViewPager;
@@ -44,7 +44,7 @@ namespace _15MinuteGoals.Activities
             ////Populating the TabLayout with icons
             PopulateMainTabIcons();
 
-
+            Window.SetBackgroundDrawableResource(Resource.Drawable.full_white);
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {

@@ -10,7 +10,7 @@
     <style name="Theme.AppBlueTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowBackground">@color/appThemeBlue</item>
+        <item name="android:windowBackground">@drawable/bg_appmain</item>
     </style>
     <style name="dialog_no_border" parent="Theme.AppCompat.Light.Dialog">
       <item name="android:windowFullscreen">false</item>

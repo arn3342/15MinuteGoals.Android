@@ -51,10 +51,7 @@ namespace _15MinuteGoals.UI.Fragments
             await Task.Delay(700);
             if (contents.Count == 0)
             {
-                postRegularAdapter.FragmentManager = FragmentManager;
-                Context context = recyclerView.Context;
-                LayoutAnimationController controller = AnimationUtils.LoadLayoutAnimation(context, Resource.Animation.layout_animation_fall_down);
-                recyclerView.LayoutAnimation = controller;               
+                postRegularAdapter.FragmentManager = FragmentManager;           
                 if (!IsWritePostCreated)
                 {
                     contents.Add(350);
