@@ -63,20 +63,6 @@ namespace _15MinuteGoals.Activities
             for (int i = 0; i < mTabLayout.TabCount; i++)
             {
                 mTabLayout.GetTabAt(i).SetText(Titles[i]);
-
-                //ConstraintLayout tab = (ConstraintLayout)LayoutInflater.Inflate(Resource.Layout.customview_tabLayoutDesign, null);
-                //TextView TabTitle = tab.FindViewById<TextView>(Resource.Id.tabTitle);
-                //ImageView TabIcon = tab.FindViewById<ImageView>(Resource.Id.tabIco);
-
-                //TabTitle.Text = Titles[i];
-                //TabIcon.SetImageResource(Icons[i]);
-
-                //if(i==0)
-                //{
-                //    TabTitle.SetTextColor(Color.ParseColor("#00aeff"));
-                //}
-
-                //mTabLayout.GetTabAt(i).SetCustomView(tab);
             }
             mTabLayout.SetTabTextColors(Color.Black, Color.ParseColor("#00aeff"));
             mTabLayout.SetSelectedTabIndicatorColor(Color.ParseColor("#00aeff"));

@@ -46,6 +46,8 @@ namespace _15MinuteGoals.UI.Fragments
         private void AcademicBtn_Click(object sender, EventArgs e)
         {
             AnimateButtonClick(AcademicBtn);
+            Intent intent = new Intent(Activity, typeof(GradeActivity));
+            this.StartActivity(intent);
         }
 
         void AnimateButtonClick(View view)
@@ -55,12 +57,6 @@ namespace _15MinuteGoals.UI.Fragments
             ScaleBounceInterpolator scaleBounceInterpolator = new ScaleBounceInterpolator(0.2, 5);
             anim.Interpolator = scaleBounceInterpolator;
             view.StartAnimation(anim);
-        }
-
-        private void PursueButton_Click(object sender, EventArgs e)
-        {
-            Intent intent = new Intent(Activity, new PursueActivity().Class);
-            StartActivity(intent);
         }
 
         public override void OnViewCreated(View view, Bundle savedInstanceState)

@@ -88,10 +88,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\MainActivity.cs" />
+    <Compile Include="Activities\GradeActivity.cs" />
     <Compile Include="Activities\PursueActivity.cs" />
     <Compile Include="Activities\SignInActivity.cs" />
     <Compile Include="Activities\SignUpOrLogin.cs" />
     <Compile Include="Activities\SplashActivity.cs" />
+    <Compile Include="Adapter\GradesAdapter.cs" />
     <Compile Include="Adapter\PostRegularAdapter.cs" />
     <Compile Include="Adapter\PursueContentAdapter.cs" />
     <Compile Include="App.cs" />
@@ -156,6 +158,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher_round.png" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="FlexboxLayoutXamarinBindingAndroid">
+      <Version>1.0.2</Version>
+    </PackageReference>
     <PackageReference Include="MvvmLight">
       <Version>5.4.1.1</Version>
     </PackageReference>
@@ -560,6 +565,14 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\full_white.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bg_roundedGray.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_chooseGrade.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using _15MinuteGoals.UI.CustomViews;
 using Android.Content;
 using Android.Views.Animations;
+using Com.Google.Android.Flexbox;
 
 namespace _15MinuteGoals.UI.Fragments
 {
@@ -27,6 +28,9 @@ namespace _15MinuteGoals.UI.Fragments
             recyclerView = mainView.FindViewById<RecyclerView>(Resource.Id.explore_feed_maincontainer);
             //topbar = mainView.FindViewById<TopBar>(Resource.Id.explore_topbar);
             //SetTopBar();
+            //FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(Activity);
+            //layoutManager.FlexDirection = FlexDirection.Column;
+            //layoutManager.JustifyContent = JustifyContent.FlexEnd;
 
             recyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
             postRegularAdapter = new PostRegularAdapter(contents);
