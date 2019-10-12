@@ -1,6 +1,5 @@
 ﻿using _15MinuteGoals.Data.Models;
 using _15MinuteGoals.UI.AnimationClasses;
-using Android.Animation;
 using Android.Content;
 using Android.Support.V7.Widget;
 using Android.Views;

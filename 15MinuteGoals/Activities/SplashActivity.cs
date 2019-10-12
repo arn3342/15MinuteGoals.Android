@@ -1,8 +1,11 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using Android.Graphics;
 using Android.OS;
 using Android.Support.V7.App;
+using Android.Widget;
+using FFImageLoading;
 using System.Threading.Tasks;
 
 namespace _15MinuteGoals.Activities
@@ -16,6 +19,9 @@ namespace _15MinuteGoals.Activities
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_splash);
+
+            ImageView progress = FindViewById<ImageView>(Resource.Id.progressBox);
+            ImageService.Instance.LoadCompiledResource("progressAnimation.gif").Into(progress);
             NextActivity();
         }
 
