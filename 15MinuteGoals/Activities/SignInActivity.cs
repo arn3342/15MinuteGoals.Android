@@ -1,12 +1,14 @@
-﻿using System;
-
+﻿using Android.Animation;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-using System.Threading.Tasks;
 using Android.Support.V7.App;
+using Android.Views;
 using Android.Widget;
+using FFImageLoading;
+using System;
+using System.Threading.Tasks;
 
 namespace _15MinuteGoals.Activities
 {
@@ -14,7 +16,9 @@ namespace _15MinuteGoals.Activities
     public class SignInActivity : AppCompatActivity
     {
         EditText emailInput, passwordInput;
-        Button loginButton;
+        static Button loginButton;
+        static ImageView progressBox;
+        static TextView newText, signUpBtn;
         private readonly int interval = 3000;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -25,6 +29,9 @@ namespace _15MinuteGoals.Activities
             emailInput = this.FindViewById<EditText>(Resource.Id.emailinput);
             passwordInput = this.FindViewById<EditText>(Resource.Id.passwordinput);
             loginButton = this.FindViewById<Button>(Resource.Id.loginbutton);
+            progressBox = FindViewById<ImageView>(Resource.Id.progressBox);
+            newText = FindViewById<TextView>(Resource.Id.newText);
+            signUpBtn = FindViewById<TextView>(Resource.Id.signUpBtn);
 
             loginButton.Click += LoginButton_Click;
         }
@@ -33,7 +40,11 @@ namespace _15MinuteGoals.Activities
         {
             if (emailInput.Text == "nabilrashid44@gmail.com" && passwordInput.Text == "arn3342")
             {
-                loginButton.Text = "Logging In...";
+                loginButton.Visibility = ViewStates.Gone;
+                signUpBtn.Visibility = ViewStates.Gone;
+                newText.Visibility = ViewStates.Gone;
+                progressBox.Visibility = ViewStates.Visible;
+                ImageService.Instance.LoadCompiledResource("progressAnimation.gif").Into(progressBox);
                 NextActivity();
             }
         }

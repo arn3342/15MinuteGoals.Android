@@ -3756,26 +3756,26 @@ namespace _15MinuteGoals
 			// aapt resource value: 0x7f020057
 			public const int avd_hide_password = 2130837591;
 			
-			// aapt resource value: 0x7f02010b
-			public const int avd_hide_password_1 = 2130837771;
-			
 			// aapt resource value: 0x7f02010c
-			public const int avd_hide_password_2 = 2130837772;
+			public const int avd_hide_password_1 = 2130837772;
 			
 			// aapt resource value: 0x7f02010d
-			public const int avd_hide_password_3 = 2130837773;
+			public const int avd_hide_password_2 = 2130837773;
+			
+			// aapt resource value: 0x7f02010e
+			public const int avd_hide_password_3 = 2130837774;
 			
 			// aapt resource value: 0x7f020058
 			public const int avd_show_password = 2130837592;
 			
-			// aapt resource value: 0x7f02010e
-			public const int avd_show_password_1 = 2130837774;
-			
 			// aapt resource value: 0x7f02010f
-			public const int avd_show_password_2 = 2130837775;
+			public const int avd_show_password_1 = 2130837775;
 			
 			// aapt resource value: 0x7f020110
-			public const int avd_show_password_3 = 2130837776;
+			public const int avd_show_password_2 = 2130837776;
+			
+			// aapt resource value: 0x7f020111
+			public const int avd_show_password_3 = 2130837777;
 			
 			// aapt resource value: 0x7f020059
 			public const int background_gradient = 2130837593;
@@ -4230,11 +4230,11 @@ namespace _15MinuteGoals
 			// aapt resource value: 0x7f0200ef
 			public const int notification_icon_background = 2130837743;
 			
-			// aapt resource value: 0x7f020109
-			public const int notification_template_icon_bg = 2130837769;
-			
 			// aapt resource value: 0x7f02010a
-			public const int notification_template_icon_low_bg = 2130837770;
+			public const int notification_template_icon_bg = 2130837770;
+			
+			// aapt resource value: 0x7f02010b
+			public const int notification_template_icon_low_bg = 2130837771;
 			
 			// aapt resource value: 0x7f0200f0
 			public const int notification_tile_bg = 2130837744;
@@ -4258,58 +4258,61 @@ namespace _15MinuteGoals
 			public const int right_indicator_blue = 2130837750;
 			
 			// aapt resource value: 0x7f0200f7
-			public const int search_icon = 2130837751;
+			public const int rightIcon = 2130837751;
 			
 			// aapt resource value: 0x7f0200f8
-			public const int search_icon_dim = 2130837752;
+			public const int search_icon = 2130837752;
 			
 			// aapt resource value: 0x7f0200f9
-			public const int selector_bg_pursuebtn = 2130837753;
+			public const int search_icon_dim = 2130837753;
 			
 			// aapt resource value: 0x7f0200fa
-			public const int selector_bg_user_headerbar_textview = 2130837754;
+			public const int selector_bg_pursuebtn = 2130837754;
 			
 			// aapt resource value: 0x7f0200fb
-			public const int selector_bg_user_headerbar_textview_blue = 2130837755;
+			public const int selector_bg_user_headerbar_textview = 2130837755;
 			
 			// aapt resource value: 0x7f0200fc
-			public const int selector_regulardim = 2130837756;
+			public const int selector_bg_user_headerbar_textview_blue = 2130837756;
 			
 			// aapt resource value: 0x7f0200fd
-			public const int send_icon = 2130837757;
+			public const int selector_regulardim = 2130837757;
 			
 			// aapt resource value: 0x7f0200fe
-			public const int share_icon = 2130837758;
+			public const int send_icon = 2130837758;
 			
 			// aapt resource value: 0x7f0200ff
-			public const int signInBtn = 2130837759;
+			public const int share_icon = 2130837759;
 			
 			// aapt resource value: 0x7f020100
-			public const int social_fb = 2130837760;
+			public const int signInBtn = 2130837760;
 			
 			// aapt resource value: 0x7f020101
-			public const int social_linkedin = 2130837761;
+			public const int social_fb = 2130837761;
 			
 			// aapt resource value: 0x7f020102
-			public const int social_twitter = 2130837762;
+			public const int social_linkedin = 2130837762;
 			
 			// aapt resource value: 0x7f020103
-			public const int suggest_icon = 2130837763;
+			public const int social_twitter = 2130837763;
 			
 			// aapt resource value: 0x7f020104
-			public const int tooltip_frame_dark = 2130837764;
+			public const int suggest_icon = 2130837764;
 			
 			// aapt resource value: 0x7f020105
-			public const int tooltip_frame_light = 2130837765;
+			public const int tooltip_frame_dark = 2130837765;
 			
 			// aapt resource value: 0x7f020106
-			public const int user = 2130837766;
+			public const int tooltip_frame_light = 2130837766;
 			
 			// aapt resource value: 0x7f020107
-			public const int videothumb_icon = 2130837767;
+			public const int user = 2130837767;
 			
 			// aapt resource value: 0x7f020108
-			public const int write_icon = 2130837768;
+			public const int videothumb_icon = 2130837768;
+			
+			// aapt resource value: 0x7f020109
+			public const int write_icon = 2130837769;
 			
 			static Drawable()
 			{
@@ -4435,8 +4438,8 @@ namespace _15MinuteGoals
 			// aapt resource value: 0x7f0f0057
 			public const int always = 2131689559;
 			
-			// aapt resource value: 0x7f0f00df
-			public const int appAnimationBox = 2131689695;
+			// aapt resource value: 0x7f0f00e0
+			public const int appAnimationBox = 2131689696;
 			
 			// aapt resource value: 0x7f0f011d
 			public const int articleDesc = 2131689757;
@@ -4960,8 +4963,8 @@ namespace _15MinuteGoals
 			// aapt resource value: 0x7f0f002f
 			public const int never_display = 2131689519;
 			
-			// aapt resource value: 0x7f0f00dd
-			public const int newText = 2131689693;
+			// aapt resource value: 0x7f0f00de
+			public const int newText = 2131689694;
 			
 			// aapt resource value: 0x7f0f0026
 			public const int none = 2131689510;
@@ -5020,8 +5023,8 @@ namespace _15MinuteGoals
 			// aapt resource value: 0x7f0f0111
 			public const int postself = 2131689745;
 			
-			// aapt resource value: 0x7f0f00e0
-			public const int progressBox = 2131689696;
+			// aapt resource value: 0x7f0f00dd
+			public const int progressBox = 2131689693;
 			
 			// aapt resource value: 0x7f0f00e9
 			public const int progress_bar = 2131689705;
@@ -5167,8 +5170,8 @@ namespace _15MinuteGoals
 			// aapt resource value: 0x7f0f0044
 			public const int showTitle = 2131689540;
 			
-			// aapt resource value: 0x7f0f00de
-			public const int signUpBtn = 2131689694;
+			// aapt resource value: 0x7f0f00df
+			public const int signUpBtn = 2131689695;
 			
 			// aapt resource value: 0x7f0f0032
 			public const int small = 2131689522;

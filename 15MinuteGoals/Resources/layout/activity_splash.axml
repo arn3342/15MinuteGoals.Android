@@ -18,9 +18,11 @@
     <ImageView
         android:id="@+id/progressBox"
         android:layout_height="8dp"
-        android:layout_width="match_parent"
-        android:layout_margin="80dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        android:layout_width="200dp"
+        app:layout_constraintTop_toTopOf="@id/loginbutton"
+        app:layout_constraintBottom_toBottomOf="@id/loginbutton"
+        app:layout_constraintLeft_toRightOf="@id/loginbutton"
+        android:visibility="gone"/>
     <TextView
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
