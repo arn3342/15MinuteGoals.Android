@@ -7,7 +7,6 @@ using Android.Support.V7.Widget;
 using System.Threading.Tasks;
 using System;
 using Android.Widget;
-using 
 namespace _15MinuteGoals.Activities
 {
     [Activity(Label = "Pursue your goal", Theme = "@style/Theme.AppBlueTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
@@ -28,12 +27,9 @@ namespace _15MinuteGoals.Activities
             BackButton = FindViewById<ImageView>(Resource.Id.gobackBtn);
             BackButton.Click += BackButton_Click;
 
-            FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(null);
-            layoutManager.FlexDirection = FlexDirection.Column;
-            layoutManager.JustifyContent = JustifyContent.FlexEnd;
 
             recyclerView = FindViewById<RecyclerView>(Resource.Id.pursueContainer);
-            recyclerView.SetLayoutManager(layoutManager);
+            recyclerView.SetLayoutManager(new LinearLayoutManager(this));
             recyclerView.SetAdapter(gradeAdapter);
 
             PopulateGrades();

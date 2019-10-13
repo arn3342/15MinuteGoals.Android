@@ -14,14 +14,17 @@ namespace _15MinuteGoals.Activities
 
     public class SplashActivity : AppCompatActivity
     {
-        private readonly int interval = 3000;
+        private readonly int interval = 4000;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_splash);
 
             ImageView progress = FindViewById<ImageView>(Resource.Id.progressBox);
+            ImageView logoAnim = FindViewById<ImageView>(Resource.Id.appAnimationBox);
+
             ImageService.Instance.LoadCompiledResource("progressAnimation.gif").Into(progress);
+            ImageService.Instance.LoadCompiledResource("appLogoAnimation.gif").Into(logoAnim);
             NextActivity();
         }
 

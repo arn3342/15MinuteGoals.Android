@@ -29,10 +29,10 @@ namespace _15MinuteGoals.UI.Fragments
             //topbar = myview.FindViewById<TopBar>(Resource.Id.home_topbar);
             //pursueButton = myview.FindViewById<Button>(Resource.Id.pursuebutton);
             //pursueButton.Click += PursueButton_Click;
-            AcademicBtn = myview.FindViewById<View>(Resource.Id.academicBtn);
-            EntrepreneurBtn = myview.FindViewById<View>(Resource.Id.entrepreneurBtn);
-            AcademicBtn.Click += AcademicBtn_Click;
-            EntrepreneurBtn.Click += EntrepreneurBtn_Click;
+            //AcademicBtn = myview.FindViewById<View>(Resource.Id.academicBtn);
+            //EntrepreneurBtn = myview.FindViewById<View>(Resource.Id.entrepreneurBtn);
+            //AcademicBtn.Click += AcademicBtn_Click;
+            //EntrepreneurBtn.Click += EntrepreneurBtn_Click;
             //SetTopBar();
             //Fix scaling
             return myview;
