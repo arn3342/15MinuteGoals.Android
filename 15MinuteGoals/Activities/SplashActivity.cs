@@ -3,10 +3,14 @@ using Android.Content;
 using Android.Content.PM;
 using Android.Graphics;
 using Android.OS;
+using Android.Support.V4.View;
 using Android.Support.V7.App;
+using Android.Transitions;
+using Android.Views;
 using Android.Webkit;
 using Android.Widget;
 using FFImageLoading;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace _15MinuteGoals.Activities
@@ -16,14 +20,21 @@ namespace _15MinuteGoals.Activities
     public class SplashActivity : AppCompatActivity
     {
         static WebView logoAnim;
+        HttpClient client = new HttpClient();
         private readonly int interval = 4000;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_splash);
 
+            Fade fade = new Fade();
+            View decor = Window.DecorView;
+            fade.ExcludeTarget(decor.FindViewById(Resource.Id.action_bar_container), true);
+            fade.ExcludeTarget(decor.FindViewById(Android.Resource.Id.StatusBarBackground), true);
+            fade.ExcludeTarget(decor.FindViewById(Android.Resource.Id.NavigationBarBackground), true);
+
             ImageView progress = FindViewById<ImageView>(Resource.Id.progressBox);
-             logoAnim = FindViewById<WebView>(Resource.Id.appAnimationBox);
+            logoAnim = FindViewById<WebView>(Resource.Id.appAnimationBox);
 
             logoAnim.SetBackgroundColor(Color.Transparent);
             if (Build.VERSION.SdkInt >= BuildVersionCodes.Base11) logoAnim.SetLayerType(Android.Views.LayerType.Software, null);
@@ -47,10 +58,11 @@ namespace _15MinuteGoals.Activities
 
         private async void NextActivity()
         {
-            await Task.Delay(interval);
+            await Task.Delay(interval).ConfigureAwait(true);
             Intent intent = new Intent(this, typeof(SignInActivity));
-            this.StartActivity(intent);
-            this.Finish();
+            ActivityOptions options = ActivityOptions.MakeSceneTransitionAnimation(this, logoAnim, ViewCompat.GetTransitionName(logoAnim));
+            StartActivity(intent, options.ToBundle());
+            //Finish();
         }
 
         private class GifWebViewClient : WebViewClient

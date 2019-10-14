@@ -35,7 +35,7 @@ namespace _15MinuteGoals.Authentication
                     );
                 var fbresponse = await request.GetResponseAsync();
                 string json = fbresponse.GetResponseText();
-                Facebook.User FacebookUser = JsonConvert.DeserializeObject<Facebook.User>(json);
+                FacebookModel.User FacebookUser = JsonConvert.DeserializeObject<FacebookModel.User>(json);
             }
             else
             {

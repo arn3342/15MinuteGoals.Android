@@ -14,7 +14,6 @@ namespace _15MinuteGoals.UI.CustomViews
     public class TopBar : ConstraintLayout
     {
         private View MainView;
-        private List<Binding> bindings = new List<Binding>();
         public Vm_TopBar mainViewModel;
         public TextView header;
         public static ImageView WritePostBtn { get; set; }

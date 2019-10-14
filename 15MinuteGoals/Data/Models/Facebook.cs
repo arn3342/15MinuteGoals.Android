@@ -1,26 +1,26 @@
 ﻿namespace _15MinuteGoals.Data.Models
 {
-    public class Facebook
+    public class FacebookModel
     {
-        public class Data
+        internal class Data
         {
             public int height { get; set; }
-            public bool is_silhouette { get; set; }
+            public bool Is_silhouette { get; set; }
             public string url { get; set; }
             public int width { get; set; }
         }
-        public class Picture
+        internal class Picture
         {
             public Data data { get; set; }
         }
-        public class User
+        internal class User
         {
             public string name { get; set; }
-            public string first_name { get; set; }
-            public string last_name { get; set; }
+            public string First_name { get; set; }
+            public string Last_name { get; set; }
             public string email { get; set; }
             public Picture picture { get; set; }
-            public string id { get; set; }
+            public string Id { get; set; }
         }
     }
 }
