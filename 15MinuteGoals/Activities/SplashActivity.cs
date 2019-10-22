@@ -62,7 +62,7 @@ namespace _15MinuteGoals.Activities
             Intent intent = new Intent(this, typeof(SignInActivity));
             ActivityOptions options = ActivityOptions.MakeSceneTransitionAnimation(this, logoAnim, ViewCompat.GetTransitionName(logoAnim));
             StartActivity(intent, options.ToBundle());
-            //Finish();
+            Finish();
         }
 
         private class GifWebViewClient : WebViewClient
