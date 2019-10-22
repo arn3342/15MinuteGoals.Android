@@ -22,15 +22,15 @@ namespace _15MinuteGoals.Activities
             base.OnCreate(savedInstanceState);
 
             // Create your application here
-            SetContentView(Resource.Layout.activity_pursue);
-            gradeAdapter = new GradesAdapter(Grades);
-            BackButton = FindViewById<ImageView>(Resource.Id.gobackBtn);
-            BackButton.Click += BackButton_Click;
+            //SetContentView(Resource.Layout.activity_pursue);
+            //gradeAdapter = new GradesAdapter(Grades);
+            //BackButton = FindViewById<ImageView>(Resource.Id.gobackBtn);
+            //BackButton.Click += BackButton_Click;
 
 
-            recyclerView = FindViewById<RecyclerView>(Resource.Id.pursueContainer);
-            recyclerView.SetLayoutManager(new LinearLayoutManager(this));
-            recyclerView.SetAdapter(gradeAdapter);
+            //recyclerView = FindViewById<RecyclerView>(Resource.Id.pursueContainer);
+            //recyclerView.SetLayoutManager(new LinearLayoutManager(this));
+            //recyclerView.SetAdapter(gradeAdapter);
 
             PopulateGrades();
         }

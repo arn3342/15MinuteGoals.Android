@@ -71,7 +71,7 @@ namespace _15MinuteGoals.Activities
             {
                 base.OnPageFinished(view, url);
                 view.SetBackgroundColor(Color.Transparent);
-                if (Build.VERSION.SdkInt >= BuildVersionCodes.Base11) logoAnim.SetLayerType(Android.Views.LayerType.Software, null);
+                if (Build.VERSION.SdkInt >= BuildVersionCodes.Base11) logoAnim.SetLayerType(LayerType.Software, null);
 
             }
         }

@@ -18,8 +18,8 @@
         android:transitionName="logoTransition"/>
     <ImageView
         android:id="@+id/progressBox"
-        android:layout_height="8dp"
-        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_width="45dp"
         android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

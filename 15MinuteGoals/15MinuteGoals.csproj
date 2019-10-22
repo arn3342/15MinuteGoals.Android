@@ -89,19 +89,14 @@
   <ItemGroup>
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\GradeActivity.cs" />
-    <Compile Include="Activities\PursueActivity.cs" />
     <Compile Include="Activities\SignInActivity.cs" />
     <Compile Include="Activities\SignUpOrLogin.cs" />
     <Compile Include="Activities\SplashActivity.cs" />
     <Compile Include="Adapter\GradesAdapter.cs" />
     <Compile Include="Adapter\PostRegularAdapter.cs" />
-    <Compile Include="Adapter\PursueContentAdapter.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Authentication\FacebookAuthentication.cs" />
     <Compile Include="Authentication\GoogleAuthentication.cs" />
-    <Compile Include="Data\Models\Pursue_ContentArticle.cs" />
-    <Compile Include="Data\Models\Pursue_ContentVideo.cs" />
-    <Compile Include="Data\Models\Pursue_CourseBox.cs" />
     <Compile Include="Data\Models\PostRegular.cs" />
     <Compile Include="Data\ValueConverter.cs" />
     <Compile Include="Data\ViewModels\Vm_TopBar.cs" />
@@ -113,7 +108,6 @@
     <Compile Include="Data\ViewModelLocator.cs" />
     <Compile Include="Data\ViewModels\Vm_GoalPanel.cs" />
     <Compile Include="UI\CustomViews\GradientTextView.cs" />
-    <Compile Include="UI\CustomViews\ProgressBox.cs" />
     <Compile Include="UI\CustomViews\TopBar.cs" />
     <Compile Include="UI\Dialogs\FeedbackDialog.cs" />
     <Compile Include="UI\Fragments\Fragment_Connect.cs" />
@@ -124,7 +118,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\raw\wave_animation.json" />
     <ProguardConfiguration Include="proguard.cfg" />
     <None Include=".editorconfig" />
     <None Include="google-services.json" />
@@ -342,9 +335,6 @@
     <AndroidResource Include="Resources\drawable\background_white.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_pursue.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\screen_explore.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -352,12 +342,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\customview_course_singlebar.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\customview_coursecontent.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\customview_goalbar.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\customview_postgoal.xml" />
@@ -494,9 +478,6 @@
     <AndroidResource Include="Resources\drawable\send_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\customview_progressBox.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\bg_allBorders.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -509,13 +490,7 @@
     <AndroidResource Include="Resources\drawable\bg_allBorders_blue.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\customview_pursue_contentvideo.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\selector_regulardim.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\customview_pursue_contentarticle.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Anim\dialog_slideUp.xml" />
@@ -540,9 +515,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\social_fb.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\customview_tabLayoutDesign.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\search_icon_dim.png" />
@@ -623,6 +595,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\rightIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bg_signUpBtn.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\raw\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
