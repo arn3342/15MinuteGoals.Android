@@ -50,17 +50,18 @@ namespace _15MinuteGoals.Activities
                 TextView data = new TextView(this)
                 {
                     Text = DataBox.Text,
-                    TextSize = TypedValue.ApplyDimension(ComplexUnitType.Dip, 16, Resources.System.DisplayMetrics),
+                    TextSize = TypedValue.ApplyDimension(ComplexUnitType.Dip, 10, Resources.System.DisplayMetrics),
                     TextAlignment = TextAlignment.Center,
                     Gravity = GravityFlags.Center,
                     Alpha = 0f
                 };
-                data.LayoutParameters = new ViewGroup.LayoutParams(300, 24);
+                data.SetHeight(ValueConverter.DpToPx(0));
+                //data.LayoutParameters = new ViewGroup.LayoutParams(300, 24);
 
                 Container.AddView(data, DataIndex);
 
                 Animations animations = new Animations();
-                animations.AnimateObject(data, new string[] { "Layout_Height", "Alpha" }, new float[] { 125, 1 });
+                animations.AnimateObject(data, new string[] { "Height", "Alpha" }, new float[] { 250, 1 }, 200);
 
                 DataIndex += 1;
                 Container.Invalidate();

@@ -99,7 +99,7 @@
     <Compile Include="Authentication\GoogleAuthentication.cs" />
     <Compile Include="Data\Models\PostRegular.cs" />
     <Compile Include="Utilities\Animations.cs" />
-    <Compile Include="Utilities\DisplayMeasures.cs" />
+    <Compile Include="Utilities\ValueConverter.cs" />
     <Compile Include="Data\ViewModels\Vm_TopBar.cs" />
     <Compile Include="Data\ViewPagerAdapter.cs" />
     <Compile Include="UI\AnimationClasses\ScaleBounceInterpolator.cs" />
