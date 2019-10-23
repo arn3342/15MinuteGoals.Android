@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent" android:layout_width="match_parent"
-    android:background="#fff">
+    android:background="#fff"
+    android:fillViewport="true">
     <LinearLayout
+        android:id="@+id/signUpContainer"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -63,8 +65,8 @@
             android:layout_gravity="center" />
         <WebView
             android:id="@+id/userImageBox"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_marginTop="50dp"
             android:layout_gravity="center"/>
         <android.support.constraint.ConstraintLayout
@@ -91,7 +93,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent" />
             <ImageView
-                android:id="@+id/loginbutton"
+                android:id="@+id/proceedBtn"
                 app:layout_constraintTop_toTopOf="@id/dataBox"
                 app:layout_constraintBottom_toBottomOf="@id/dataBox"
                 app:layout_constraintRight_toRightOf="@id/dataBox"
@@ -109,6 +111,5 @@
                 android:fontFamily="sans-serif"
                 style="?android:attr/borderlessButtonStyle"/>
         </android.support.constraint.ConstraintLayout>
-
     </LinearLayout>
 </ScrollView>

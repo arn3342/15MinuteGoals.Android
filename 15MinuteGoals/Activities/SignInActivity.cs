@@ -8,7 +8,7 @@ using Android.Views;
 using Android.Widget;
 using FFImageLoading;
 using System;
-using System.Collections.Generic;
+using _15MinuteGoals.Utilities;
 using System.Threading.Tasks;
 
 namespace _15MinuteGoals.Activities
@@ -26,7 +26,7 @@ namespace _15MinuteGoals.Activities
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_signIn);
             // Create your application here
-
+            this.Window.EnterTransition = null;
             emailInput = this.FindViewById<EditText>(Resource.Id.emailinput);
             passwordInput = this.FindViewById<EditText>(Resource.Id.passwordinput);
             loginButton = this.FindViewById<Button>(Resource.Id.loginbutton);
@@ -47,30 +47,16 @@ namespace _15MinuteGoals.Activities
                 progressBox.Visibility = ViewStates.Visible;
                 ImageService.Instance.LoadCompiledResource("progressAnimation.gif").Into(progressBox);
 
-                AnimateObject(buttonContainer, new string[] { "TranslationY", "Alpha" }, new float[] { 100, 0 });
-                AnimateObject(progressBox, new string[] { "TranslationY", "Alpha" }, new float[] { 0, 1 });
+                Animations animations = new Animations();
+
+                animations.AnimateObject(buttonContainer, new string[] { "TranslationY", "Alpha" }, new float[] { 100, 0 });
+                animations.AnimateObject(progressBox, new string[] { "TranslationY", "Alpha" }, new float[] { 0, 1 });
                 NextActivity();
             }
         }
 
-        private void AnimateObject(View sender, string[] PropertyNames, float[] Values, long Duration = 200)
-        {
-            List<Animator> animations = new List<Animator>();
-            for(int i = 0; i < PropertyNames.Length; i++)
-            {
-                ObjectAnimator objectAnimator = ObjectAnimator.OfFloat(sender, PropertyNames[i], Values[i]);
-                animations.Add(objectAnimator);
-            }
-
-            AnimatorSet animatorSet = new AnimatorSet();
-            animatorSet.PlayTogether(animations.ToArray());
-            animatorSet.SetDuration(Duration);
-
-            animatorSet.Start();
-        }
-
         private async void NextActivity()
-        {
+        {       
             await Task.Delay(interval);
             Intent intent = new Intent(this, typeof(MainActivity));
             this.StartActivity(intent);
