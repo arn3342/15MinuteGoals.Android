@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using _15MinuteGoals.Utilities;
+using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.Graphics;
@@ -20,7 +21,6 @@ namespace _15MinuteGoals.Activities
     public class SplashActivity : AppCompatActivity
     {
         static WebView logoAnim;
-        HttpClient client = new HttpClient();
         private readonly int interval = 4000;
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -36,21 +36,23 @@ namespace _15MinuteGoals.Activities
             ImageView progress = FindViewById<ImageView>(Resource.Id.progressBox);
             logoAnim = FindViewById<WebView>(Resource.Id.appAnimationBox);
 
-            logoAnim.SetBackgroundColor(Color.Transparent);
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.Base11) logoAnim.SetLayerType(Android.Views.LayerType.Software, null);
-            logoAnim.SetWebViewClient(new GifWebViewClient());
+            GIFWebView gifWebView = new GIFWebView();
+            logoAnim = gifWebView.ConfigureWebView(this, logoAnim, "appLogoAnimation.gif");
 
-            string GifSource = "appLogoAnimation.gif";
-            string imageWidth = "100%";
-            string imageHeight = "100%";
-            using (var stream = Assets.Open(GifSource))
-            using (var options = new BitmapFactory.Options { InJustDecodeBounds = true })
-            {
-                BitmapFactory.DecodeStream(stream, null, options);
-            }
-            var html = $"<body><img src=\"{GifSource}\" alt=\"A Gif file\" width=\"{imageWidth}\" height=\"{imageHeight}\" style=\"width: 100%; height: auto;\"/></body>";
-            logoAnim.Settings.AllowFileAccessFromFileURLs = true;
-            logoAnim.LoadDataWithBaseURL("file:///android_asset/", html, "text/html", "UTF-8", "");
+            //logoAnim.SetBackgroundColor(Color.Transparent);
+            //logoAnim.SetWebViewClient(new GifWebViewClient());
+
+            //string GifSource = "appLogoAnimation.gif";
+            //string imageWidth = "100%";
+            //string imageHeight = "100%";
+            //using (var stream = Assets.Open(GifSource))
+            //using (var options = new BitmapFactory.Options { InJustDecodeBounds = true })
+            //{
+            //    BitmapFactory.DecodeStream(stream, null, options);
+            //}
+            //var html = $"<body><img src=\"{GifSource}\" alt=\"A Gif file\" width=\"{imageWidth}\" height=\"{imageHeight}\" style=\"width: 100%; height: auto;\"/></body>";
+            //logoAnim.Settings.AllowFileAccessFromFileURLs = true;
+            //logoAnim.LoadDataWithBaseURL("file:///android_asset/", html, "text/html", "UTF-8", "");
 
             ImageService.Instance.LoadCompiledResource("progressAnimation.gif").Into(progress);
             NextActivity();
@@ -65,15 +67,6 @@ namespace _15MinuteGoals.Activities
             Finish();
         }
 
-        private class GifWebViewClient : WebViewClient
-        {
-            public override void OnPageFinished(WebView view, string url)
-            {
-                base.OnPageFinished(view, url);
-                view.SetBackgroundColor(Color.Transparent);
-                if (Build.VERSION.SdkInt >= BuildVersionCodes.Base11) logoAnim.SetLayerType(LayerType.Software, null);
-
-            }
-        }
+        
     }
 }

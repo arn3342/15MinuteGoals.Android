@@ -35,7 +35,10 @@ namespace _15MinuteGoals.Activities
             buttonContainer = FindViewById<LinearLayout>(Resource.Id.buttonContainer);
 
             loginButton.Click += LoginButton_Click;
+            signUpBtn.Click += SignUpBtn_Click;
         }
+
+       
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
@@ -72,6 +75,12 @@ namespace _15MinuteGoals.Activities
             Intent intent = new Intent(this, typeof(MainActivity));
             this.StartActivity(intent);
             this.Finish();
+        }
+        private void SignUpBtn_Click(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(SignUpActivity));
+            StartActivity(intent);
+            Finish();
         }
     }
 }

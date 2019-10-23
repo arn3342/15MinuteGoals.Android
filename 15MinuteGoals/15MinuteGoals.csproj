@@ -89,8 +89,8 @@
   <ItemGroup>
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\GradeActivity.cs" />
+    <Compile Include="Activities\SignUpActivity.cs" />
     <Compile Include="Activities\SignInActivity.cs" />
-    <Compile Include="Activities\SignUpOrLogin.cs" />
     <Compile Include="Activities\SplashActivity.cs" />
     <Compile Include="Adapter\GradesAdapter.cs" />
     <Compile Include="Adapter\PostRegularAdapter.cs" />
@@ -116,6 +116,8 @@
     <Compile Include="GenerateHash.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\GIFWebView.cs" />
+    <Compile Include="Utilities\GifWebViewClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProguardConfiguration Include="proguard.cfg" />
@@ -601,6 +603,26 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\raw\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_whiteTick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\userDefaultFace.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_signUp.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\selector_bg_stroked_btn.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bg_stroked_btn_selected.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bg_stroked_btn.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
