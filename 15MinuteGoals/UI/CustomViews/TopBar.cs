@@ -107,8 +107,6 @@ namespace _15MinuteGoals.UI.CustomViews
                 layoutParams.Width = value;
                 WritePostBtn.LayoutParameters = layoutParams;
             }
-
-
         }
 
         public void ExpandSearch()

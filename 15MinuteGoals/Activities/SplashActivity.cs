@@ -24,33 +24,14 @@ namespace _15MinuteGoals.Activities
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_splash);
+            this.Window.ExitTransition = null;
 
-            Fade fade = new Fade();
-            View decor = Window.DecorView;
-            fade.ExcludeTarget(decor.FindViewById(Resource.Id.action_bar_container), true);
-            fade.ExcludeTarget(decor.FindViewById(Android.Resource.Id.StatusBarBackground), true);
-            fade.ExcludeTarget(decor.FindViewById(Android.Resource.Id.NavigationBarBackground), true);
 
             ImageView progress = FindViewById<ImageView>(Resource.Id.progressBox);
             logoAnim = FindViewById<WebView>(Resource.Id.appAnimationBox);
 
             GIFWebView gifWebView = new GIFWebView();
             logoAnim = gifWebView.ConfigureWebView(this, logoAnim, "appLogoAnimation.gif");
-
-            //logoAnim.SetBackgroundColor(Color.Transparent);
-            //logoAnim.SetWebViewClient(new GifWebViewClient());
-
-            //string GifSource = "appLogoAnimation.gif";
-            //string imageWidth = "100%";
-            //string imageHeight = "100%";
-            //using (var stream = Assets.Open(GifSource))
-            //using (var options = new BitmapFactory.Options { InJustDecodeBounds = true })
-            //{
-            //    BitmapFactory.DecodeStream(stream, null, options);
-            //}
-            //var html = $"<body><img src=\"{GifSource}\" alt=\"A Gif file\" width=\"{imageWidth}\" height=\"{imageHeight}\" style=\"width: 100%; height: auto;\"/></body>";
-            //logoAnim.Settings.AllowFileAccessFromFileURLs = true;
-            //logoAnim.LoadDataWithBaseURL("file:///android_asset/", html, "text/html", "UTF-8", "");
 
             ImageService.Instance.LoadCompiledResource("progressAnimation.gif").Into(progress);
             NextActivity();

@@ -1,6 +1,6 @@
 ﻿using Android.Content.Res;
 
-namespace _15MinuteGoals.Data
+namespace _15MinuteGoals.Utilities
 {
     public class ValueConverter
     {
