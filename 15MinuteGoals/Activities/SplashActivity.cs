@@ -5,8 +5,6 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Support.V4.View;
 using Android.Support.V7.App;
-using Android.Transitions;
-using Android.Views;
 using Android.Webkit;
 using Android.Widget;
 using FFImageLoading;

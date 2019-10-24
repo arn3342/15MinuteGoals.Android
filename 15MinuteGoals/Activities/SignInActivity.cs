@@ -44,6 +44,8 @@ namespace _15MinuteGoals.Activities
         {
             if (emailInput.Text == "nabilrashid44@gmail.com" && passwordInput.Text == "arn3342")
             {
+                emailInput.Enabled = false;
+                passwordInput.Enabled = false;
                 progressBox.Visibility = ViewStates.Visible;
                 ImageService.Instance.LoadCompiledResource("progressAnimation.gif").Into(progressBox);
 
@@ -66,7 +68,7 @@ namespace _15MinuteGoals.Activities
         {
             Intent intent = new Intent(this, typeof(SignUpActivity));
             StartActivity(intent);
-            Finish();
+
         }
     }
 }

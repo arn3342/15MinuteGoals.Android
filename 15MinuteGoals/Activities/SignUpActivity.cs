@@ -9,6 +9,9 @@ using Android.Webkit;
 using Android.Widget;
 using System;
 using Android.Content.Res;
+using Android.Graphics;
+using System.Collections.Generic;
+using Android.Animation;
 
 namespace _15MinuteGoals.Activities
 {
@@ -17,8 +20,10 @@ namespace _15MinuteGoals.Activities
     {
         ImageView GoBack, ProceedBtn;
         static WebView UserImageBox;
-        TextView DataBox;
+        static TextView DataBox;
         LinearLayout Container;
+
+        List<string> dataHints = new List<string> { "ইমেইল বা ফোন নম্বর", "অবসর সময়ের শখ", "জীবনের লক্ষ্য", "" };
 
         int DataIndex = 0;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -53,24 +58,57 @@ namespace _15MinuteGoals.Activities
                     TextSize = TypedValue.ApplyDimension(ComplexUnitType.Dip, 10, Resources.System.DisplayMetrics),
                     TextAlignment = TextAlignment.Center,
                     Gravity = GravityFlags.Center,
-                    Alpha = 0f
+                    Alpha = 0f,
+                    TranslationY = -50
                 };
-                data.SetHeight(ValueConverter.DpToPx(0));
-                //data.LayoutParameters = new ViewGroup.LayoutParams(300, 24);
+                data.SetHeight(ValueConverter.DpToPx(32));
+                data.SetTextColor(Color.ParseColor("#868686"));
 
                 Container.AddView(data, DataIndex);
 
                 Animations animations = new Animations();
-                animations.AnimateObject(data, new string[] { "Height", "Alpha" }, new float[] { 250, 1 }, 200);
+                animations.AnimateObject(data, new string[] { "TranslationY", "Alpha" }, new float[] { 0, 1 }, 200);
 
                 DataIndex += 1;
-                Container.Invalidate();
+                DataBox.Text = string.Empty;
+
+                DataBox.Hint = dataHints[0];
+                dataHints.RemoveAt(0);
+
+                if(string.IsNullOrEmpty(dataHints[0]))
+                {
+                    DataBox.Enabled = false;
+                    DataBox.Alpha = 0;
+                    AnimateDataBox();
+                }
             }
         }
 
+        private void AnimateDataBox()
+        {
+            ValueAnimator Animator = ValueAnimator.OfInt(DataBox.MeasuredWidth, ValueConverter.DpToPx(44));
+            Animator.AddUpdateListener(new AnimUpdateListner(DataBox));
+            Animator.SetDuration(250);
+            Animator.Start();
+        }
+        private class AnimUpdateListner : Java.Lang.Object, ValueAnimator.IAnimatorUpdateListener
+        {
+            View mView;
+            public AnimUpdateListner(View view)
+            {
+                mView = view;
+            }
+            public void OnAnimationUpdate(ValueAnimator animation)
+            {
+                int value = (int)animation.AnimatedValue;
+                ViewGroup.LayoutParams layoutParams = mView.LayoutParameters;
+                layoutParams.Width = value;
+                mView.LayoutParameters = layoutParams;
+            }
+        }
         private void GoBack_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            this.OnBackPressed();
         }
     }
 }
