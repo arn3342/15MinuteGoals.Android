@@ -33,7 +33,7 @@ namespace _15MinuteGoals.UI.Fragments
             //layoutManager.JustifyContent = JustifyContent.FlexEnd;
 
             recyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
-            postRegularAdapter = new PostRegularAdapter(contents);
+            postRegularAdapter = new PostRegularAdapter(contents, FragmentManager);
             recyclerView.SetAdapter(postRegularAdapter);
 
             return mainView;
@@ -54,8 +54,7 @@ namespace _15MinuteGoals.UI.Fragments
         {
             await Task.Delay(700);
             if (contents.Count == 0)
-            {
-                postRegularAdapter.FragmentManager = FragmentManager;           
+            {        
                 if (!IsWritePostCreated)
                 {
                     contents.Add(350);

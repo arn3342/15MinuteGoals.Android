@@ -10,7 +10,7 @@ using Android.Widget;
 using FFImageLoading;
 using System.Threading.Tasks;
 
-namespace _15MinuteGoals.Activities
+namespace _15MinuteGoals.UI.Activities
 {
     [Activity(Label = "@string/app_name", Theme = "@style/Theme.AppBlueTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
 

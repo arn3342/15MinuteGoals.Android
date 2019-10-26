@@ -12,11 +12,11 @@ using _15MinuteGoals.UI.Dialogs;
 
 namespace _15MinuteGoals.Adapter
 {
-    public class PostRegularAdapter : RecyclerView.Adapter
+    public class PostRegularAdapter : RecyclerView.Adapter, IViewAdapter
     {
         public List<object> contentCollection;
         const int WritePost = 0; const int RegularPost = 1;
-        public FragmentManager FragmentManager { get; set; }
+        static FragmentManager mFragmentManager;
 
         public override int ItemCount
         {
@@ -35,9 +35,10 @@ namespace _15MinuteGoals.Adapter
             }
         }
 
-        public PostRegularAdapter(List<object> itemList)
+        public PostRegularAdapter(List<object> itemList, FragmentManager fragmentManager)
         {
             contentCollection = itemList;
+            mFragmentManager = fragmentManager;
         }
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
@@ -68,17 +69,14 @@ namespace _15MinuteGoals.Adapter
                     vh = new CreatePostViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_user_writepostbar, parent, false));
                     break;
                 case RegularPost:
-                    PostRegularViewHolder viewHolder = new PostRegularViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_postregular, parent, false))
-                    {
-                        FragmentManager = FragmentManager
-                    };
+                    PostRegularViewHolder viewHolder = new PostRegularViewHolder(LayoutInflater.From(parent.Context).Inflate(Resource.Layout.customview_postregular, parent, false));
                     vh = viewHolder;
                     break;
             }
             return vh;
         }
 
-        public class PostRegularViewHolder : RecyclerView.ViewHolder
+        internal class PostRegularViewHolder : RecyclerView.ViewHolder
         {
             public ImageView userImg { get; set; }
             public TextView userFullName { get; set; }
@@ -87,7 +85,6 @@ namespace _15MinuteGoals.Adapter
             public ImageView InspireButton { get; set; }
             public Button FeedbackButton { get; set; }
 
-            public FragmentManager FragmentManager { get; set; }
             public PostRegularViewHolder(View itemView) : base(itemView)
             {
                 userImg = itemView.FindViewById<ImageView>(Resource.Id.feed_user_image);
@@ -105,7 +102,7 @@ namespace _15MinuteGoals.Adapter
             private void FeedbackButton_Click(object sender, System.EventArgs e)
             {
                 FeedbackDialog feedbackDialog = new FeedbackDialog();
-                feedbackDialog.Show(FragmentManager, "Feedback fragment");
+                feedbackDialog.Show(mFragmentManager, "Feedback fragment");
             }
 
             private class InspireButtonClick : Java.Lang.Object, View.IOnClickListener, View.IOnFocusChangeListener
@@ -144,7 +141,7 @@ namespace _15MinuteGoals.Adapter
             }
         }
 
-        public class CreatePostViewHolder : RecyclerView.ViewHolder
+        internal class CreatePostViewHolder : RecyclerView.ViewHolder
         {
             public TextView totalInspire { get; set; }
             public CreatePostViewHolder(View itemView) : base(itemView)

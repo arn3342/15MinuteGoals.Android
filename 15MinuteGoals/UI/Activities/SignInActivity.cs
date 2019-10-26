@@ -11,7 +11,7 @@ using System;
 using _15MinuteGoals.Utilities;
 using System.Threading.Tasks;
 
-namespace _15MinuteGoals.Activities
+namespace _15MinuteGoals.UI.Activities
 {
     [Activity(Label = "Sign in to achieve", Theme = "@style/Theme.AppBlueTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class SignInActivity : AppCompatActivity
@@ -68,7 +68,6 @@ namespace _15MinuteGoals.Activities
         {
             Intent intent = new Intent(this, typeof(SignUpActivity));
             StartActivity(intent);
-
         }
     }
 }

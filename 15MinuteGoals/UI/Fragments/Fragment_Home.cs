@@ -1,4 +1,4 @@
-﻿using _15MinuteGoals.Activities;
+﻿using _15MinuteGoals.UI.Activities;
 using _15MinuteGoals.UI.AnimationClasses;
 using _15MinuteGoals.UI.CustomViews;
 using Android.Content;
@@ -16,38 +16,19 @@ namespace _15MinuteGoals.UI.Fragments
     public class Fragment_Home : Fragment
     {
         private View myview;
+        private LinearLayout homeContainer;
         public static ScrollView mScrollView { get; private set; }
-        public static LinearLayout mProfileBox { get; private set; }
-        public static int mProfileBoxHeight { get; internal set; }
-        public static TopBar topbar { get; private set; }
-        public Button pursueButton { get; set; }
-        private View AcademicBtn, EntrepreneurBtn;
+        
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             myview = inflater.Inflate(Resource.Layout.screen_home, container, false);
-            //topbar = myview.FindViewById<TopBar>(Resource.Id.home_topbar);
-            //pursueButton = myview.FindViewById<Button>(Resource.Id.pursuebutton);
-            //pursueButton.Click += PursueButton_Click;
-            //AcademicBtn = myview.FindViewById<View>(Resource.Id.academicBtn);
-            //EntrepreneurBtn = myview.FindViewById<View>(Resource.Id.entrepreneurBtn);
-            //AcademicBtn.Click += AcademicBtn_Click;
-            //EntrepreneurBtn.Click += EntrepreneurBtn_Click;
-            //SetTopBar();
-            //Fix scaling
+            homeContainer = myview.FindViewById<LinearLayout>(Resource.Id.homeContainer);
+
+            homeContainer.AddView(new StartJourney(Context));
+            homeContainer.AddView(new InviteFriendsBox(Context));
+
             return myview;
-        }
-
-        private void EntrepreneurBtn_Click(object sender, EventArgs e)
-        {
-            AnimateButtonClick(EntrepreneurBtn);
-        }
-
-        private void AcademicBtn_Click(object sender, EventArgs e)
-        {
-            AnimateButtonClick(AcademicBtn);
-            Intent intent = new Intent(Activity, typeof(GradeActivity));
-            this.StartActivity(intent);
         }
 
         void AnimateButtonClick(View view)
@@ -71,19 +52,6 @@ namespace _15MinuteGoals.UI.Fragments
             view.ViewTreeObserver.AddOnGlobalLayoutListener(new GlobalLayoutListen());
         }
 
-        public void SetTopBar()
-        {
-            topbar.Title = "Goals";
-            topbar.SetPropertyValues();
-        }
-
-        private void SetAnimations(View view)
-        {
-            //Setting wave animation
-            //ImageView waveImage = view.FindViewById<ImageView>(Resource.Id.wave_hand);
-            //ImageService.Instance.LoadCompiledResource("wave_hand_animation.gif").Into(waveImage);
-        }
-
     }
 
     internal class GlobalLayoutListen : Java.Lang.Object, ViewTreeObserver.IOnGlobalLayoutListener
@@ -103,9 +71,9 @@ namespace _15MinuteGoals.UI.Fragments
 
         public ScrollPositionObserver()
         {
-            profileBoxHeight = Fragment_Home.mProfileBoxHeight;
-            scrollView = Fragment_Home.mScrollView;
-            profileBox = Fragment_Home.mProfileBox;
+            //profileBoxHeight = Fragment_Home.mProfileBoxHeight;
+            //scrollView = Fragment_Home.mScrollView;
+            //profileBox = Fragment_Home.mProfileBox;
         }
 
 

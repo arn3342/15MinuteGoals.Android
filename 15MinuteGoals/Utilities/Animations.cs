@@ -29,7 +29,7 @@ namespace _15MinuteGoals.Utilities
                 throw new ArgumentNullException(nameof(PropertyNames));
             }
         }
-        public void AnimateObject(View view, string PropertyName, float Value, long Duration = 150)
+        public void AnimateObject(View view, string PropertyName, float Value, long Duration = 150, long Delay = 0)
         {
             if (PropertyName != null || PropertyName.Length != 0)
             {
@@ -40,6 +40,7 @@ namespace _15MinuteGoals.Utilities
                 AnimatorSet animatorSet = new AnimatorSet();
                 animatorSet.PlayTogether(animations.ToArray());
                 animatorSet.SetDuration(Duration);
+                animatorSet.StartDelay = 0;
 
                 animatorSet.Start();
             }

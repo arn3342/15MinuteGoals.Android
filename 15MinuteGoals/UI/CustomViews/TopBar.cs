@@ -57,7 +57,7 @@ namespace _15MinuteGoals.UI.CustomViews
             mainViewModel = new Vm_TopBar();
             var inflatorService = (LayoutInflater)ctx.GetSystemService(Context.LayoutInflaterService);
             MainView = inflatorService.Inflate(Resource.Layout.customview_topbar, this, false);
-            WritePostBtn = MainView.FindViewById<ImageView>(Resource.Id.writepostBtn);
+            WritePostBtn = MainView.FindViewById<ImageView>(Resource.Id.smartTutorBtn);
             //header = MainView.FindViewById<TextView>(Resource.Id.headerTitle);
             //headerDescription = MainView.FindViewById<TextView>(Resource.Id.headerDesc);
             #region Setting view instances
@@ -67,7 +67,6 @@ namespace _15MinuteGoals.UI.CustomViews
 
             AddView(MainView);
             BindProperties();
-            //AnimateHeader();
         }
 
         private void BindProperties()
@@ -87,77 +86,6 @@ namespace _15MinuteGoals.UI.CustomViews
             //mainViewModel.IconSource = IconSource;
             //mainViewModel.ButtonText = ButtonText;
             //ImageService.Instance.LoadUrl(UserImgSrc).Into(UserImg);
-        }
-
-        public void AnimateSearch(int PropertyValue, bool HideView)
-        {
-            ValueAnimator Animator = ValueAnimator.OfInt(WritePostBtn.MeasuredWidth, PropertyValue);
-            Animator.AddUpdateListener(new AnimUpdateListner());
-            Animator.AddListener(new AnimListner(HideView));
-            Animator.SetDuration(250);
-            Animator.Start();
-        }
-
-        private class AnimUpdateListner : Java.Lang.Object, ValueAnimator.IAnimatorUpdateListener
-        {
-            public void OnAnimationUpdate(ValueAnimator animation)
-            {
-                int value = (int)animation.AnimatedValue;
-                ViewGroup.LayoutParams layoutParams = WritePostBtn.LayoutParameters;
-                layoutParams.Width = value;
-                WritePostBtn.LayoutParameters = layoutParams;
-            }
-        }
-
-        public void ExpandSearch()
-        {
-            if (WritePostBtnWidth == 0)
-            {
-                WritePostBtnWidth = WritePostBtn.Width;
-                AnimateSearch(1, true);
-            }            
-        }
-        public void ShrinkSearch()
-        {
-            if (WritePostBtnWidth != 0)
-            {
-                AnimateSearch(WritePostBtnWidth, false);
-                WritePostBtnWidth = 0;
-            }
-        }
-
-        private class AnimListner : Java.Lang.Object, Animator.IAnimatorListener
-        {
-            bool hideOnEnd;
-            public AnimListner(bool HideViewOnEnd)
-            {
-                hideOnEnd = HideViewOnEnd;
-            }
-            public void OnAnimationCancel(Animator animation)
-            {
-               
-            }
-
-            public void OnAnimationEnd(Animator animation)
-            {
-                if (hideOnEnd)
-                {
-                    WritePostBtn.Visibility = ViewStates.Gone;
-                }
-            }
-
-            public void OnAnimationRepeat(Animator animation)
-            {
-                
-            }
-
-            public void OnAnimationStart(Animator animation)
-            {
-                if (!hideOnEnd)
-                {
-                    WritePostBtn.Visibility = ViewStates.Visible;
-                }
-            }
         }
     }
 }

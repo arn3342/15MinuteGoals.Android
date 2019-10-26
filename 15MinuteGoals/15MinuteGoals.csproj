@@ -46,6 +46,7 @@
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <AndroidSupportedAbis />
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <AndroidEnableProguard>True</AndroidEnableProguard>
@@ -77,6 +78,7 @@
     <AndroidLinkTool>r8</AndroidLinkTool>
     <AndroidDexTool>d8</AndroidDexTool>
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -87,17 +89,23 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activities\MainActivity.cs" />
-    <Compile Include="Activities\GradeActivity.cs" />
-    <Compile Include="Activities\SignUpActivity.cs" />
-    <Compile Include="Activities\SignInActivity.cs" />
-    <Compile Include="Activities\SplashActivity.cs" />
+    <Compile Include="Adapter\IViewAdapter.cs" />
+    <Compile Include="UI\Activities\MainActivity.cs" />
+    <Compile Include="UI\Activities\GradeActivity.cs" />
+    <Compile Include="UI\Activities\SignUpActivity.cs" />
+    <Compile Include="UI\Activities\SignInActivity.cs" />
+    <Compile Include="UI\Activities\SplashActivity.cs" />
     <Compile Include="Adapter\GradesAdapter.cs" />
     <Compile Include="Adapter\PostRegularAdapter.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Authentication\FacebookAuthentication.cs" />
     <Compile Include="Authentication\GoogleAuthentication.cs" />
     <Compile Include="Data\Models\PostRegular.cs" />
+    <Compile Include="UI\CustomViews\ICustomViewAnimated.cs" />
+    <Compile Include="UI\CustomViews\DailyTopBar.cs" />
+    <Compile Include="UI\CustomViews\InviteFriendsBox.cs" />
+    <Compile Include="UI\CustomViews\StartJourney.cs" />
+    <Compile Include="UI\Dialogs\ClassSelectionDialog.cs" />
     <Compile Include="Utilities\Animations.cs" />
     <Compile Include="Utilities\ValueConverter.cs" />
     <Compile Include="Data\ViewModels\Vm_TopBar.cs" />
@@ -122,7 +130,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProguardConfiguration Include="proguard.cfg" />
-    <None Include=".editorconfig" />
     <None Include="google-services.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -624,6 +631,62 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\bg_stroked_btn.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\customview_startJourney.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\customview_inviteFriendBox.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\customview_dailyTop.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_smartTutor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\dialog_classSelection.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\arts_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\commerce_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_commerce.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_arts.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_science.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\science_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bg_roundedTextBox_selected.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\selector_bg_roundedTextBox.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bg_user_headerbar_textview_blue_nonRound.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bg_user_headerbar_textview_blue_nonRound_selected.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\selector_bg_user_headerbar_textview_blue_nonRound.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

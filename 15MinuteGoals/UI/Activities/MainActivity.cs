@@ -11,7 +11,7 @@ using Android.Support.V4.View;
 using Android.Support.V7.App;
 using static Android.Support.Design.Widget.TabLayout;
 
-namespace _15MinuteGoals.Activities
+namespace _15MinuteGoals.UI.Activities
 {
     [Activity(Label = "@string/app_name", Theme = "@style/Theme.AppBlueTheme", WindowSoftInputMode = Android.Views.SoftInput.AdjustPan, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : AppCompatActivity
@@ -58,7 +58,7 @@ namespace _15MinuteGoals.Activities
             int[] Icons = new int[] { Resource.Drawable.goal_blue_icon,
                                       Resource.Drawable.explore_blue_icon,
                                       Resource.Drawable.connect_page_icon };
-            string[] Titles = new string[] { "Your goals", "Explore", "Connect" };
+            string[] Titles = new string[] { "Your goals", "Explore", "Messages", "Notifications" };
 
             for (int i = 0; i < mTabLayout.TabCount; i++)
             {
@@ -82,34 +82,22 @@ namespace _15MinuteGoals.Activities
             }
             public new void Dispose()
             {
-                //throw new NotImplementedException();
+                
             }
 
             public void OnTabReselected(Tab tab)
             {
-                //throw new NotImplementedException();
+                
             }
 
             public void OnTabSelected(Tab tab)
             {
-                //TextView tabTitle = tab.CustomView.FindViewById<TextView>(Resource.Id.tabTitle);
-                //tabTitle.SetTextColor(Color.ParseColor("#00aeff"));
-                if (tab.Position == 0)
-                {
-                    MainTopBar.ShrinkSearch();
-                }
-                else if (tab.Position == 1)
-                {
-                    Fragment_Explore fragment_Explore = (Fragment_Explore)RequiredFragment;
-                    fragment_Explore.PopulateWithPosts();
-                    MainTopBar.ExpandSearch();
-                }
+                
             }
 
             public void OnTabUnselected(Tab tab)
             {
-                //TextView tabTitle = tab.CustomView.FindViewById<TextView>(Resource.Id.tabTitle);
-                //tabTitle.SetTextColor(Color.ParseColor("#757575"));
+                
             }
         }
     }

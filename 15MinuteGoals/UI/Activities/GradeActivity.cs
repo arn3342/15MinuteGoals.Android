@@ -7,13 +7,16 @@ using Android.Support.V7.Widget;
 using System.Threading.Tasks;
 using System;
 using Android.Widget;
-namespace _15MinuteGoals.Activities
+using Android.Support.V7.App;
+using System.Collections.Generic;
+
+namespace _15MinuteGoals.UI.Activities
 {
     [Activity(Label = "Pursue your goal", Theme = "@style/Theme.AppBlueTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
-    public class GradeActivity : Activity
+    public class GradeActivity : AppCompatActivity
     {
         public static RecyclerView recyclerView { get; private set; }
-        private string[] Grades { get; set; }
+        private List<object> Grades = new List<object>();
         private GradesAdapter gradeAdapter;
         private ImageView BackButton;
 
@@ -22,31 +25,30 @@ namespace _15MinuteGoals.Activities
             base.OnCreate(savedInstanceState);
 
             // Create your application here
-            //SetContentView(Resource.Layout.activity_pursue);
-            //gradeAdapter = new GradesAdapter(Grades);
-            //BackButton = FindViewById<ImageView>(Resource.Id.gobackBtn);
-            //BackButton.Click += BackButton_Click;
+            SetContentView(Resource.Layout.activity_chooseGrade);
+            BackButton = FindViewById<ImageView>(Resource.Id.gobackBtn);
+            BackButton.Click += BackButton_Click;
 
 
-            //recyclerView = FindViewById<RecyclerView>(Resource.Id.pursueContainer);
-            //recyclerView.SetLayoutManager(new LinearLayoutManager(this));
-            //recyclerView.SetAdapter(gradeAdapter);
+            recyclerView = FindViewById<RecyclerView>(Resource.Id.gradeContainer);
+            
+            gradeAdapter = new GradesAdapter(Grades, SupportFragmentManager);
+            recyclerView.SetLayoutManager(new LinearLayoutManager(this));
+            recyclerView.SetAdapter(gradeAdapter);
 
             PopulateGrades();
         }
 
         private void BackButton_Click(object sender, EventArgs e)
         {
-            base.OnBackPressed();
+            OnBackPressed();
         }
 
         private async void PopulateGrades()
         {        
             await Task.Delay(800);
-
-            Grades = new string[] { "Class 9-10" };
-            
-            gradeAdapter.NotifyItemInserted(Grades.Length - 1);
+            Grades.Add("Class 9-10");
+            gradeAdapter.NotifyItemInserted(Grades.Count - 1);
             
 
         }

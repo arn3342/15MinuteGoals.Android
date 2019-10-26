@@ -13,7 +13,7 @@ using Android.Graphics;
 using System.Collections.Generic;
 using Android.Animation;
 
-namespace _15MinuteGoals.Activities
+namespace _15MinuteGoals.UI.Activities
 {
     [Activity(Theme = "@style/Theme.AppBlueTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class SignUpActivity : AppCompatActivity
