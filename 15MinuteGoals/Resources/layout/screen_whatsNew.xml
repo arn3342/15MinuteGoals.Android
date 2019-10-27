@@ -6,9 +6,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#fff">
-        <android.support.v7.widget.RecyclerView
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nothing new so far!"
+        android:textAlignment="center"
+        android:padding="15dp"
+        android:textColor="#979797"
+        android:textSize="18dp"/>
+        <!--<android.support.v7.widget.RecyclerView
             android:id="@+id/whatsNew_maincontainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        </android.support.v7.widget.RecyclerView>
+        </android.support.v7.widget.RecyclerView>-->
 </android.support.v4.widget.NestedScrollView>

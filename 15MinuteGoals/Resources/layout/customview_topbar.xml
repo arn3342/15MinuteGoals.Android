@@ -34,7 +34,7 @@
         android:textSize="13dp"
         android:textColor="#8c8c8c"
         android:layout_marginRight="15dp"
-        android:background="@drawable/bg_user_headerbar_textview"/>
+        android:background="@drawable/bg_searchBox"/>
     <ImageView
         android:layout_width="16dp"
         android:layout_height="16dp"

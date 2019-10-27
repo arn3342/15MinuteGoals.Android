@@ -7,6 +7,7 @@ using System;
 using Android.Views;
 using Android.Widget;
 using Android.Support.V7.App;
+using Android.Content;
 
 namespace _15MinuteGoals.UI.Activities
 {
@@ -38,12 +39,22 @@ namespace _15MinuteGoals.UI.Activities
             animations.AnimateObject(title, new string[] { "TranslationY", "Alpha" }, new float[] { 50, 0 }, 300, 1500);
         }
 
-        private static TextView ConstructTitle(AppCompatActivity activity, string Title)
+        public static TextView ConstructTitle(Context context, string Title, LinearLayout container = null, int Background = Resource.Drawable.bg_fragmentTitle, string ColorCode = "#ffffff")
         {
             DisplayMetrics metrics = Resources.System.DisplayMetrics;
-            var layoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent, GravityFlags.Bottom | GravityFlags.Center);
-            layoutParams.BottomMargin = ((metrics.HeightPixels / 100) * 10) + ValueConverter.DpToPx(10);
-            TextView title = new TextView(activity)
+            var layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent); 
+            if(container == null)
+            {
+                var Parameters = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent, GravityFlags.Bottom | GravityFlags.Center);
+                Parameters.BottomMargin = ((metrics.HeightPixels / 100) * 10) + ValueConverter.DpToPx(10);
+                layoutParams = Parameters; 
+            }
+            else
+            {
+                var Parameters = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
+                layoutParams = Parameters;
+            }
+            TextView title = new TextView(context)
             {
                 Text = Title,
                 TextSize = TypedValue.ApplyDimension(ComplexUnitType.Dip, 8, metrics),
@@ -55,8 +66,8 @@ namespace _15MinuteGoals.UI.Activities
             int paddingLeftRight = ValueConverter.DpToPx(20);
             int paddingTopBottom = ValueConverter.DpToPx(10);
             title.SetPadding(paddingLeftRight, paddingTopBottom, paddingLeftRight, paddingTopBottom);
-            title.SetBackgroundResource(Resource.Drawable.bg_fragmentTitle);
-            title.SetTextColor(Color.White);
+            title.SetBackgroundResource(Background);
+            title.SetTextColor(Color.ParseColor(ColorCode));
             title.LayoutParameters = layoutParams;
 
             return title;

@@ -47,7 +47,7 @@
                     android:hint="Email or Phone number"
                     android:textSize="13dp"
                     android:textColor="#8c8c8c"
-                    android:background="@drawable/bg_user_headerbar_textview"/>
+                    android:background="@drawable/bg_searchBox"/>
                 <Button
                     android:id="@+id/inviteBtn"
                     android:layout_width="wrap_content"

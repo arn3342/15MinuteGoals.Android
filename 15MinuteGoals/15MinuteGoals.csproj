@@ -89,6 +89,8 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapter\MessagesAdapter.cs" />
+    <Compile Include="Adapter\NotificationAdapter.cs" />
     <Compile Include="Adapter\IViewAdapter.cs" />
     <Compile Include="UI\Activities\MainActivity.cs" />
     <Compile Include="UI\Activities\GradeActivity.cs" />
@@ -512,9 +514,6 @@
     <AndroidResource Include="Resources\Anim\dialog_slideDown.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\screen_connect.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\connect_page_icon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -739,6 +738,28 @@
   <ItemGroup>
     <AndroidResource Include="Resources\layout\screen_menu.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\customview_messageBox.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bg_messageScreen.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bg_notifBubble.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\selector_bg_messageScreen.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bg_messageScreen_selected.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bg_searchBox.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
