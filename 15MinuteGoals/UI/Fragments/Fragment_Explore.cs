@@ -16,7 +16,7 @@ namespace _15MinuteGoals.UI.Fragments
     public class Fragment_Explore : Fragment
     {
         private View mainView;
-        private RecyclerView recyclerView;
+        public RecyclerView contentContainer;
         private List<object> contents = new List<object>();
         private PostRegularAdapter postRegularAdapter;
         private bool IsWritePostCreated;
@@ -25,16 +25,16 @@ namespace _15MinuteGoals.UI.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             mainView = inflater.Inflate(Resource.Layout.screen_explore, container, false);
-            recyclerView = mainView.FindViewById<RecyclerView>(Resource.Id.explore_feed_maincontainer);
+            contentContainer = mainView.FindViewById<RecyclerView>(Resource.Id.explore_feed_maincontainer);
             //topbar = mainView.FindViewById<TopBar>(Resource.Id.explore_topbar);
             //SetTopBar();
             //FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(Activity);
             //layoutManager.FlexDirection = FlexDirection.Column;
             //layoutManager.JustifyContent = JustifyContent.FlexEnd;
 
-            recyclerView.SetLayoutManager(new LinearLayoutManager(Activity));
+            contentContainer.SetLayoutManager(new LinearLayoutManager(Activity));
             postRegularAdapter = new PostRegularAdapter(contents, FragmentManager);
-            recyclerView.SetAdapter(postRegularAdapter);
+            contentContainer.SetAdapter(postRegularAdapter);
 
             return mainView;
         }

@@ -16,18 +16,13 @@ namespace _15MinuteGoals.UI.Fragments
     public class Fragment_Home : Fragment
     {
         private View myview;
-        private LinearLayout homeContainer;
+        public LinearLayout homeContainer;
         public static ScrollView mScrollView { get; private set; }
-        
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             myview = inflater.Inflate(Resource.Layout.screen_home, container, false);
             homeContainer = myview.FindViewById<LinearLayout>(Resource.Id.homeContainer);
-
-            homeContainer.AddView(new StartJourney(Context));
-            homeContainer.AddView(new InviteFriendsBox(Context));
-
             return myview;
         }
 
@@ -44,11 +39,7 @@ namespace _15MinuteGoals.UI.Fragments
         {
             base.OnViewCreated(view, savedInstanceState);
 
-            //Getting control instances
-            //mScrollView = view.FindViewById<ScrollView>(Resource.Id.HomeScrollView);
-            //mProfileBox = view.FindViewById<LinearLayout>(Resource.Id.HomeProfileBox);
 
-            //Setting GaolHeader(s) & Notficaiton bar scaling
             view.ViewTreeObserver.AddOnGlobalLayoutListener(new GlobalLayoutListen());
         }
 

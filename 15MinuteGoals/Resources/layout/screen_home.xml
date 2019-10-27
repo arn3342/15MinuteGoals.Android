@@ -14,5 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <_15MinuteGoals.UI.CustomViews.DailyTopBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <_15MinuteGoals.UI.CustomViews.StartJourney
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <_15MinuteGoals.UI.CustomViews.InviteFriendsBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </ScrollView>

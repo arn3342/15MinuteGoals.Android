@@ -5,16 +5,14 @@ using _15MinuteGoals.UI.CustomViews;
 
 namespace _15MinuteGoals.UI.Fragments
 {
-    public class Fragment_Connect : Fragment
+    public class Fragment_Menu : Fragment
     {
         private View mainView;
 
         private TopBar topbar { get; set; }
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            mainView = inflater.Inflate(Resource.Layout.screen_connect, container, false);
-            //topbar = mainView.FindViewById<TopBar>(Resource.Id.connect_topbar);
-            //SetTopBar();
+            mainView = inflater.Inflate(Resource.Layout.screen_menu, container, false);
 
             return mainView;
         }
@@ -22,12 +20,6 @@ namespace _15MinuteGoals.UI.Fragments
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
-        }
-
-        public void SetTopBar()
-        {
-            topbar.Title = "Connect with your friends";
-            topbar.SetPropertyValues();
         }
     }
 }

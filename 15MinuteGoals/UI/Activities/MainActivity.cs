@@ -3,12 +3,13 @@ using _15MinuteGoals.UI.CustomViews;
 using _15MinuteGoals.UI.Fragments;
 using Android.App;
 using Android.Content.PM;
-using Android.Graphics;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Android.Support.V7.App;
+using Android.Widget;
+using System.Collections.Generic;
 using static Android.Support.Design.Widget.TabLayout;
 
 namespace _15MinuteGoals.UI.Activities
@@ -18,10 +19,17 @@ namespace _15MinuteGoals.UI.Activities
     {
         private ViewPager mViewPager;
         private TabLayout mTabLayout;
-        private Fragment_Home HomeFragment = new Fragment_Home();
-        private Fragment_Explore ExploreFragment = new Fragment_Explore();
-        private Fragment_Connect ConnectFragment = new Fragment_Connect();
+        static List<Android.Support.V4.App.Fragment> fragments;
+
+        Fragment_Home HomeFragment = new Fragment_Home();
+        Fragment_WhatsNew WhatsNewFragment = new Fragment_WhatsNew();
+        Fragment_Explore ExploreFragment = new Fragment_Explore();
+        Fragment_Messages MessagesFragment = new Fragment_Messages();
+        Fragment_Menu MenuFragment = new Fragment_Menu();
+
+        static FrameLayout mainContainer;
         public static TopBar MainTopBar { get; set; }
+        static int[] Icons, IconsSelected;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -29,16 +37,16 @@ namespace _15MinuteGoals.UI.Activities
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
-
             //Referencing the views, populating the adapter with fragments, calling a method to populate the bottom menu
             mTabLayout = FindViewById<TabLayout>(Resource.Id.maintablayout);
             mViewPager = FindViewById<ViewPager>(Resource.Id.mainviewpager);
             MainTopBar = FindViewById<TopBar>(Resource.Id.main_topbar);
+            mainContainer = FindViewById<FrameLayout>(Resource.Id.activity_main_container);
 
             ViewPagerAdapter adapter = new ViewPagerAdapter(SupportFragmentManager);
-            adapter.AddFragment(HomeFragment);
-            adapter.AddFragment(ExploreFragment);
-            adapter.AddFragment(ConnectFragment);
+            fragments = new List<Android.Support.V4.App.Fragment>() { HomeFragment, WhatsNewFragment, ExploreFragment, MessagesFragment, MenuFragment };
+
+            adapter.FragmentList = fragments;
 
             mViewPager.Adapter = adapter;
             ////Populating the TabLayout with icons
@@ -55,49 +63,95 @@ namespace _15MinuteGoals.UI.Activities
         private void PopulateMainTabIcons()
         {
             mTabLayout.SetupWithViewPager(mViewPager);
-            int[] Icons = new int[] { Resource.Drawable.goal_blue_icon,
-                                      Resource.Drawable.explore_blue_icon,
-                                      Resource.Drawable.connect_page_icon };
-            string[] Titles = new string[] { "Your goals", "Explore", "Messages", "Notifications" };
+            Icons = new int[] { Resource.Drawable.home_icon,
+                                      Resource.Drawable.whatsNew_icon,
+                                      Resource.Drawable.explore_icon,
+                                      Resource.Drawable.message_icon,
+                                      Resource.Drawable.menu_icon};
+
+            IconsSelected = new int[] { Resource.Drawable.home_icon_selected,
+                                      Resource.Drawable.whatsNew_icon_selected,
+                                      Resource.Drawable.explore_icon_selected,
+                                      Resource.Drawable.message_icon_selected,
+                                      Resource.Drawable.menu_icon_selected};
+            //string[] Titles = new string[] { "Your goals", "Explore", "Messages", "Notifications" };
 
             for (int i = 0; i < mTabLayout.TabCount; i++)
             {
-                mTabLayout.GetTabAt(i).SetText(Titles[i]);
+                mTabLayout.GetTabAt(i).SetIcon(Icons[i]);
             }
-            mTabLayout.SetTabTextColors(Color.Black, Color.ParseColor("#00aeff"));
-            mTabLayout.SetSelectedTabIndicatorColor(Color.ParseColor("#00aeff"));
+            mTabLayout.GetTabAt(0).SetIcon(IconsSelected[0]);
 
-            mTabLayout.AddOnTabSelectedListener(new TabChangeListner(ExploreFragment));
+            mTabLayout.AddOnTabSelectedListener(new TabChangeListner(this));
         }
 
-        
 
-        public class TabChangeListner : Java.Lang.Object, IOnTabSelectedListener
+
+        internal class TabChangeListner : Java.Lang.Object, IOnTabSelectedListener
         {
-            public Android.Support.V4.App.Fragment RequiredFragment;
+            List<int> TitlesShown = new List<int> { 0, 1, 2, 3 };
+            AppCompatActivity activity;
 
-            public TabChangeListner(Android.Support.V4.App.Fragment fragment)
+            public TabChangeListner(AppCompatActivity mActivity)
             {
-                RequiredFragment = fragment;
+                activity = mActivity;
             }
             public new void Dispose()
             {
-                
+
             }
 
             public void OnTabReselected(Tab tab)
             {
-                
+
             }
 
             public void OnTabSelected(Tab tab)
             {
-                
+                tab.SetIcon(IconsSelected[tab.Position]);
+                switch (tab.Position)
+                {
+
+                    case 0:
+                        if (TitlesShown.Contains(0))
+                        {
+                            activity.AnimateTitle(mainContainer, "Your goals");
+                            TitlesShown.Remove(0);
+                        }
+                        break;
+
+                    case 1:
+                        if (TitlesShown.Contains(1))
+                        {
+                            activity.AnimateTitle(mainContainer, "What's new");
+                            TitlesShown.Remove(1);
+                        }
+                        break;
+
+                    case 2:
+                        if (TitlesShown.Contains(2))
+                        {
+                            activity.AnimateTitle(mainContainer, "Explore feed");
+                            TitlesShown.Remove(2);
+                        }
+                        var explore = fragments[2] as Fragment_Explore;
+                        explore.PopulateWithPosts();
+                        break;
+
+                    case 3:
+                        if (TitlesShown.Contains(3))
+                        {
+                            activity.AnimateTitle(mainContainer, "Messages");
+                            TitlesShown.Remove(3);
+                        }
+                        break;
+                }
             }
 
             public void OnTabUnselected(Tab tab)
             {
-                
+                int position = tab.Position;
+                tab.SetIcon(Icons[position]);
             }
         }
     }

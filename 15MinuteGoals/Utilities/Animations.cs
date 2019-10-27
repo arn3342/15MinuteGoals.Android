@@ -7,7 +7,8 @@ namespace _15MinuteGoals.Utilities
 {
     public class Animations
     {
-        public void AnimateObject(View view, string[] PropertyNames, float[] Values, long Duration = 150)
+        public AnimatorSet animatorSet = new AnimatorSet();
+        public void AnimateObject(View view, string[] PropertyNames, float[] Values, long Duration = 150, long Delay = 0)
         {
             if (PropertyNames != null || PropertyNames.Length != 0)
             {
@@ -18,9 +19,9 @@ namespace _15MinuteGoals.Utilities
                     animations.Add(objectAnimator);
                 }
 
-                AnimatorSet animatorSet = new AnimatorSet();
                 animatorSet.PlayTogether(animations.ToArray());
                 animatorSet.SetDuration(Duration);
+                animatorSet.StartDelay = Delay;
 
                 animatorSet.Start();
             }
@@ -37,10 +38,9 @@ namespace _15MinuteGoals.Utilities
                 ObjectAnimator objectAnimator = ObjectAnimator.OfFloat(view, PropertyName, Value);
                 animations.Add(objectAnimator);
 
-                AnimatorSet animatorSet = new AnimatorSet();
                 animatorSet.PlayTogether(animations.ToArray());
                 animatorSet.SetDuration(Duration);
-                animatorSet.StartDelay = 0;
+                animatorSet.StartDelay = Delay;
 
                 animatorSet.Start();
             }
