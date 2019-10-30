@@ -11,6 +11,8 @@ using Android.Views;
 using Android.Views.InputMethods;
 using Android.Widget;
 using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace _15MinuteGoals.UI.Activities
@@ -23,8 +25,9 @@ namespace _15MinuteGoals.UI.Activities
         static ProgressBar progressBox;
         private readonly int interval = 3500;
         static LinearLayout loginContainer;
-        int FieldCount = 0;
-        int ButtonWidth = 0;
+        int FieldCount, FieldsAdded, ButtonWidth;
+        bool IsNewAccount;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -45,31 +48,109 @@ namespace _15MinuteGoals.UI.Activities
             loginButton.Text = "";
             loginButton.SetCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
             AnimateLoginButton();
-            await Task.Delay(250);
+            AuthenticateUser();
+        }
+        private async void AuthenticateUser()
+        {
+            //Replace this code block with authentication code
+            await Task.Delay(250); 
             if (emailInput.Text == "nabilrashid44@gmail.com")
             {
-                ProceedNext();
+                IsNewAccount = false;
+                AddFields();
             }
             else
             {
-                ProceedNext(true);
+                AddFields();
             }
         }
-        private async void ProceedNext(bool IsNewAccount = false)
+        private async void AddFields()
+        {
+            await Task.Delay(1000); //Replace await with API authentication code
+            if (IsNewAccount)
+            {
+                //Removing fields if required
+                if (FieldsAdded <= 1)
+                {
+                    loginContainer.RemoveViewAt(1);
+                    AddNewField("তোমার নাম", AutoFocus: true);
+                    AddNewField("পাসওয়ার্ড", true);
+                    AddNewField("কনফাম র্পাসওয়ার্ড", true);
+                    FieldsAdded = 3;
+                }
+                else
+                {
+                    //Proceed here
+                    if(ValidateInput(true))
+                    {
+                        ProceedNext();
+                    }
+                }
+            }
+            else
+            {
+                if (FieldsAdded > 1)
+                {
+                    for (int i = 1; i <= 3; i++)
+                    {
+                        loginContainer.RemoveViewAt(i);
+                    }
+                    AddNewField("পাসওয়ার্ড", true, true);
+                    FieldsAdded = 1;
+                }
+                else
+                {
+                    //Proceed here
+                    if (ValidateInput(false))
+                    {
+                        ProceedNext();
+                    }
+                }
+            }
+        }
+
+        private bool ValidateInput(bool IsNewUser)
+        {
+            //Code for new user's validation
+            if(IsNewUser)
+            {
+                EditText nameInput = (EditText)loginContainer.GetChildAt(1);
+                EditText passwordInput = (EditText)loginContainer.GetChildAt(2);
+                EditText confirmPasswordInput = (EditText)loginContainer.GetChildAt(3);
+
+                var numbersOrCharacters = new Regex(@"^[0-9*#+]+$");
+                if(!numbersOrCharacters.IsMatch(nameInput.Text) || 
+                    !string.IsNullOrEmpty(nameInput.Text) || 
+                    !string.IsNullOrWhiteSpace(nameInput.Text))
+                {
+                    if(!string.IsNullOrEmpty(passwordInput.Text) ||
+                       !string.IsNullOrWhiteSpace(passwordInput.Text) ||
+                       !string.IsNullOrEmpty(passwordInput.Text) ||
+                       !string.IsNullOrWhiteSpace(passwordInput.Text))
+                    {
+
+                    }
+                }
+            }
+
+            //Code for existing user's validation
+            else
+            {
+                EditText passwordInput = (EditText)loginContainer.GetChildAt(1);
+                if(passwordInput.Text == "arn3342")
+                {
+                    return true;
+                }
+            }
+            return false;
+
+        }
+        private async void ProceedNext()
         {
             await Task.Delay(1000);
 
             // Add required fields based on new or existing account
-            if (IsNewAccount)
-            {
-                AddNewField("তোমার নাম", AutoFocus: true);
-                AddNewField("পাসওয়ার্ড", true);
-                AddNewField("কনফাম র্পাসওয়ার্ড", true);
-            }
-            else
-            {
-                AddNewField("পাসওয়ার্ড", true, true);
-            }
+            
             if(loginContainer.ChildCount > 5)
             {
 
