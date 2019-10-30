@@ -2,10 +2,9 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
 
   <item
-      android:drawable="@drawable/feedBack_icon"
-      android:width="17dp"
-      android:height="16dp"
-      android:top="3dp"
+      android:drawable="@drawable/no_inspire_icon"
+      android:width="20dp"
+      android:height="20dp"
       />
 
 </layer-list >

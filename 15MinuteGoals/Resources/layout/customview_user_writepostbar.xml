@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:background="#fff"
         android:paddingBottom="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="3dp">
         <TextView
             android:id="@+id/shareText"
             android:layout_width="wrap_content"

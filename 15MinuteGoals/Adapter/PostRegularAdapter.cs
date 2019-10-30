@@ -96,7 +96,7 @@ namespace _15MinuteGoals.Adapter
                 InspireButtonClick clickAndFocus = new InspireButtonClick();
                 InspireButton.SetOnClickListener(clickAndFocus);
                 InspireButton.OnFocusChangeListener = clickAndFocus;
-                FeedbackButton.Click += FeedbackButton_Click;
+                //FeedbackButton.Click += FeedbackButton_Click;
             }
 
             private void FeedbackButton_Click(object sender, System.EventArgs e)

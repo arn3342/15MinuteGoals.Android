@@ -55,9 +55,9 @@ namespace _15MinuteGoals.UI.Fragments
                     contents.Add(350);
                     IsWritePostCreated = true;
                 }           
-                contents.Add(new PostRegular() { InspireCount = "3k", PostBody = "A new post 1", UserFullName = "Aousaf", UserImageUrl = "https://www.netfort.com/assets/user.png" });
-                contents.Add(new PostRegular() { InspireCount = "1k", PostBody = "A new post 2", UserFullName = "Aousaf Rashid", UserImageUrl = "https://www.netfort.com/assets/user.png" });
-                contents.Add(new PostRegular() { InspireCount = "5k", PostBody = "A new post 3", UserFullName = "Aousaf Rahman", UserImageUrl = "https://www.netfort.com/assets/user.png" });
+                contents.Add(new PostRegular() { InspireCount = "3k", PostBody = "The harder you work for something, the greater you'll feel when you achieve it.", UserFullName = "Aousaf Rashid", UserImageUrl = "https://www.netfort.com/assets/user.png" });
+                contents.Add(new PostRegular() { InspireCount = "1k", PostBody = "Pdush yourself, because no one else is going to do it for you.", UserFullName = "Brian Smith", UserImageUrl = "https://www.netfort.com/assets/user.png" });
+                contents.Add(new PostRegular() { InspireCount = "5k", PostBody = "Completed chapter 3 of organic chemistry. I am surprised by how @Mr.Mark explained all the issues so clearly!", UserFullName = "Richard Parsons", UserImageUrl = "https://www.netfort.com/assets/user.png" });
                 postRegularAdapter.NotifyItemInserted(contents.Count - 1);
             }
         }

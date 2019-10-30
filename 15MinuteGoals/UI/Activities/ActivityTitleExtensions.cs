@@ -39,7 +39,7 @@ namespace _15MinuteGoals.UI.Activities
             animations.AnimateObject(title, new string[] { "TranslationY", "Alpha" }, new float[] { 50, 0 }, 300, 1500);
         }
 
-        public static TextView ConstructTitle(Context context, string Title, LinearLayout container = null, int Background = Resource.Drawable.bg_fragmentTitle, string ColorCode = "#ffffff")
+        public static TextView ConstructTitle(Context context, string Title, LinearLayout container = null, int Background = Resource.Drawable.bg_fragmentTitle, string TextColorCode = "#ffffff")
         {
             DisplayMetrics metrics = Resources.System.DisplayMetrics;
             var layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent); 
@@ -67,7 +67,7 @@ namespace _15MinuteGoals.UI.Activities
             int paddingTopBottom = ValueConverter.DpToPx(10);
             title.SetPadding(paddingLeftRight, paddingTopBottom, paddingLeftRight, paddingTopBottom);
             title.SetBackgroundResource(Background);
-            title.SetTextColor(Color.ParseColor(ColorCode));
+            title.SetTextColor(Color.ParseColor(TextColorCode));
             title.LayoutParameters = layoutParams;
 
             return title;
