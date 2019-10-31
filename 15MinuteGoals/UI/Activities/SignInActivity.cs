@@ -11,8 +11,6 @@ using Android.Views;
 using Android.Views.InputMethods;
 using Android.Widget;
 using System;
-using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace _15MinuteGoals.UI.Activities
@@ -35,6 +33,7 @@ namespace _15MinuteGoals.UI.Activities
             // Create your application here
             this.Window.EnterTransition = null;
             emailInput = this.FindViewById<EditText>(Resource.Id.emailinput);
+            emailInput.FocusChange += RemoveFields;
             loginButton = this.FindViewById<Button>(Resource.Id.loginbutton);
             progressBox = FindViewById<ProgressBar>(Resource.Id.progressBox);
             loginContainer = FindViewById<LinearLayout>(Resource.Id.loginContainer);
@@ -42,46 +41,70 @@ namespace _15MinuteGoals.UI.Activities
             loginButton.Click += LoginButton_Click;
         }
 
+        private void RemoveFields(object sender, View.FocusChangeEventArgs e)
+        {
+            if (emailInput.HasFocus)
+            {
+                emailInput.RequestFocus();
+                InputMethodManager imm = (InputMethodManager)GetSystemService(Context.InputMethodService);
+                imm.ShowSoftInput(emailInput, ShowFlags.Implicit);
+                if (FieldsAdded == 1)
+                {
+                    loginContainer.RemoveViewAt(1);
+                    FieldsAdded = 0;
+                    FieldCount -= 1;
+                }
+                else if (FieldsAdded > 1)
+                {
+                    loginContainer.RemoveViews(1, 3);
+                    FieldsAdded = 0;
+                    FieldCount = 1;
+                }
+            }
+        }
+
         private async void LoginButton_Click(object sender, EventArgs e)
         {
             ButtonWidth = loginButton.Width;
             loginButton.Text = "";
             loginButton.SetCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
-            AnimateLoginButton();
             AuthenticateUser();
         }
         private async void AuthenticateUser()
         {
+            AnimateLoginButton();
             //Replace this code block with authentication code
-            await Task.Delay(250); 
+            await Task.Delay(250);
             if (emailInput.Text == "nabilrashid44@gmail.com")
             {
                 IsNewAccount = false;
-                AddFields();
+                AddFieldsAndValidate();
             }
             else
             {
-                AddFields();
+                IsNewAccount = true;
+                AddFieldsAndValidate();
             }
         }
-        private async void AddFields()
+        private async void AddFieldsAndValidate()
         {
             await Task.Delay(1000); //Replace await with API authentication code
             if (IsNewAccount)
             {
                 //Removing fields if required
-                if (FieldsAdded <= 1)
+                
+                if (FieldsAdded == 0)
                 {
-                    loginContainer.RemoveViewAt(1);
                     AddNewField("তোমার নাম", AutoFocus: true);
                     AddNewField("পাসওয়ার্ড", true);
                     AddNewField("কনফাম র্পাসওয়ার্ড", true);
                     FieldsAdded = 3;
+                    AnimateLoginButton(true);
                 }
                 else
                 {
                     //Proceed here
-                    if(ValidateInput(true))
+                    if (ValidateInput())
                     {
                         ProceedNext();
                     }
@@ -89,47 +112,36 @@ namespace _15MinuteGoals.UI.Activities
             }
             else
             {
-                if (FieldsAdded > 1)
+                
+                if (FieldsAdded == 0)
                 {
-                    for (int i = 1; i <= 3; i++)
-                    {
-                        loginContainer.RemoveViewAt(i);
-                    }
                     AddNewField("পাসওয়ার্ড", true, true);
                     FieldsAdded = 1;
+                    AnimateLoginButton(true);
                 }
-                else
+                else if (FieldsAdded > 0)
                 {
                     //Proceed here
-                    if (ValidateInput(false))
+                    if (ValidateInput())
                     {
                         ProceedNext();
                     }
                 }
             }
         }
-
-        private bool ValidateInput(bool IsNewUser)
+        private bool ValidateInput()
         {
             //Code for new user's validation
-            if(IsNewUser)
+            if (IsNewAccount)
             {
                 EditText nameInput = (EditText)loginContainer.GetChildAt(1);
                 EditText passwordInput = (EditText)loginContainer.GetChildAt(2);
                 EditText confirmPasswordInput = (EditText)loginContainer.GetChildAt(3);
+                string fullName = nameInput.Text; string password = passwordInput.Text; string rePassword = confirmPasswordInput.Text;
 
-                var numbersOrCharacters = new Regex(@"^[0-9*#+]+$");
-                if(!numbersOrCharacters.IsMatch(nameInput.Text) || 
-                    !string.IsNullOrEmpty(nameInput.Text) || 
-                    !string.IsNullOrWhiteSpace(nameInput.Text))
+                if (fullName.StringIsAlpha() && new string[] { password, rePassword }.StringsAreAlphaNumeric(true))
                 {
-                    if(!string.IsNullOrEmpty(passwordInput.Text) ||
-                       !string.IsNullOrWhiteSpace(passwordInput.Text) ||
-                       !string.IsNullOrEmpty(passwordInput.Text) ||
-                       !string.IsNullOrWhiteSpace(passwordInput.Text))
-                    {
-
-                    }
+                    return true;
                 }
             }
 
@@ -137,52 +149,26 @@ namespace _15MinuteGoals.UI.Activities
             else
             {
                 EditText passwordInput = (EditText)loginContainer.GetChildAt(1);
-                if(passwordInput.Text == "arn3342")
+                if (passwordInput.Text == "arn3342")
                 {
                     return true;
                 }
             }
             return false;
-
         }
         private async void ProceedNext()
         {
-            await Task.Delay(1000);
-
-            // Add required fields based on new or existing account
-            
-            if(loginContainer.ChildCount > 5)
+            AnimateLoginButton();
+            if (IsNewAccount)
             {
-
-            }
-            if (NameField != null)
-            {
-                if (!string.IsNullOrEmpty(NameField.Text) &&
-                    !string.IsNullOrEmpty(PasswordField.Text) &&
-                    !string.IsNullOrEmpty(ConfirmPasswordField.Text) &&
-                    (PasswordField.Text == ConfirmPasswordField.Text))
-                {
-                    AnimateLoginButton();
-                    NextActivity();
-                }
-            }
-            else if (!string.IsNullOrEmpty(PasswordField.Text) && PasswordField.Text == "arn3342")
-            {
-                AnimateLoginButton();
                 NextActivity();
             }
             else
             {
-                AnimateLoginButton(true);
-                loginButton.Visibility = ViewStates.Visible;
-                progressBox.Visibility = ViewStates.Gone;
-                //Waiting for animation to end
-                await Task.Delay(250);
-                loginButton.Text = "Next";
-                loginButton.SetCompoundDrawablesWithIntrinsicBounds(0, 0, Resource.Drawable.bg_button_icon_right, 0);
+                NextActivity();
             }
         }
-        private EditText AddNewField(string hint, bool IsPasswordBox = false, bool AutoFocus = false)
+        private void AddNewField(string hint, bool IsPasswordBox = false, bool AutoFocus = false)
         {
             var layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
             layoutParams.TopMargin = ValueConverter.DpToPx(10);
@@ -214,7 +200,6 @@ namespace _15MinuteGoals.UI.Activities
                 InputMethodManager imm = (InputMethodManager)GetSystemService(Context.InputMethodService);
                 imm.ShowSoftInput(field, ShowFlags.Implicit);
             }
-            return field;
         }
         private async void NextActivity()
         {
@@ -223,19 +208,14 @@ namespace _15MinuteGoals.UI.Activities
             this.StartActivity(intent);
             this.Finish();
         }
-        private void SignUpBtn_Click(object sender, EventArgs e)
-        {
-            Intent intent = new Intent(this, typeof(SignUpActivity));
-            StartActivity(intent);
-        }
         private void AnimateLoginButton(bool AnimateBackwards = false)
         {
             ValueAnimator Animator = ValueAnimator.OfInt(loginButton.MeasuredWidth, ButtonWidth);
             if (!AnimateBackwards)
             {
                 Animator = ValueAnimator.OfInt(loginButton.MeasuredWidth, ValueConverter.DpToPx(40));
-                Animator.AddListener(new AnimListner());
             }
+            Animator.AddListener(new AnimationListner(AnimateBackwards));
             Animator.AddUpdateListener(new AnimUpdateListner(loginButton));
             Animator.SetDuration(250);
             Animator.Start();
@@ -255,8 +235,13 @@ namespace _15MinuteGoals.UI.Activities
                 mView.LayoutParameters = layoutParams;
             }
         }
-        private class AnimListner : Java.Lang.Object, Animator.IAnimatorListener
+        private class AnimationListner : Java.Lang.Object, Animator.IAnimatorListener
         {
+            bool AnimateBackwards;
+            internal AnimationListner(bool animateBackwards = false)
+            {
+                AnimateBackwards = animateBackwards;
+            }
             public void OnAnimationCancel(Animator animation)
             {
 
@@ -264,8 +249,16 @@ namespace _15MinuteGoals.UI.Activities
 
             public void OnAnimationEnd(Animator animation)
             {
-                loginButton.Visibility = ViewStates.Gone;
-                progressBox.Visibility = ViewStates.Visible;
+                if (!AnimateBackwards)
+                {
+                    loginButton.Visibility = ViewStates.Gone;
+                    progressBox.Visibility = ViewStates.Visible;
+                }
+                else
+                {
+                    loginButton.Text = "Next";
+                    loginButton.SetCompoundDrawablesWithIntrinsicBounds(0, 0, Resource.Drawable.bg_button_icon_right, 0);
+                }
             }
 
             public void OnAnimationRepeat(Animator animation)
@@ -275,7 +268,11 @@ namespace _15MinuteGoals.UI.Activities
 
             public void OnAnimationStart(Animator animation)
             {
-
+                if (AnimateBackwards)
+                {
+                    loginButton.Visibility = ViewStates.Visible;
+                    progressBox.Visibility = ViewStates.Gone;
+                }
             }
         }
     }

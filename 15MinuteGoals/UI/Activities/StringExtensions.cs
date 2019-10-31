@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 
 namespace _15MinuteGoals.UI.Activities
 {
@@ -20,12 +12,37 @@ namespace _15MinuteGoals.UI.Activities
             {
                 return false;
             }
-            var numbersOrCharacters = new Regex(@"[0-9*#+]|[!@#$%^&*(),.?"":{ }|<>]");
+            var numbersOrCharacters = new Regex(@"[0-9*#+]|[!@#$%^&*(),.?"":{}|<>]");
             if (numbersOrCharacters.IsMatch(str))
             {
                 return false;
             }
             return true;
+        }
+
+        public static bool StringsAreAlphaNumeric(this string[] str, bool MatchStrings = false)
+        {
+            bool validated = false;
+            for(int i = 0; i < str.Length; i++)
+            {
+                if (string.IsNullOrEmpty(str[i]) || string.IsNullOrWhiteSpace(str[i]))
+                {
+                    break;
+                }
+                else
+                {
+                    validated = true;
+                }
+            }
+            if (MatchStrings)
+            {
+                string firstItem = str[0];
+                bool allEqual = str.Skip(1)
+                  .All(s => string.Equals(firstItem, s, StringComparison.InvariantCultureIgnoreCase));
+
+                validated = allEqual;
+            }
+            return validated;
         }
     }
 }
