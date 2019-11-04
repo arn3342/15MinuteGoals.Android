@@ -46,7 +46,6 @@
         app:layout_constraintBottom_toBottomOf="parent">
         <EditText
             android:id="@+id/emailinput"
-            android:drawablePadding="20dp"
             android:hint="তোমার ইমেইল বা ফোন"
             android:background="@drawable/bg_roundedTextBox"
             android:paddingTop="10dp"
