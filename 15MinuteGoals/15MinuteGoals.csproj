@@ -282,9 +282,6 @@
     <AndroidResource Include="Resources\drawable\inspire.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\icon_pen.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\fivemore.png" />
   </ItemGroup>
   <ItemGroup>

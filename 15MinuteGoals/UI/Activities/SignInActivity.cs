@@ -21,7 +21,7 @@ namespace _15MinuteGoals.UI.Activities
         static EditText emailInput;
         static Button loginButton;
         static ProgressBar progressBox;
-        private readonly int interval = 3500;
+        private readonly int interval = 2000;
         static LinearLayout loginContainer;
         int FieldCount, FieldsAdded, ButtonWidth;
         bool IsNewAccount;
@@ -197,7 +197,7 @@ namespace _15MinuteGoals.UI.Activities
             if (AutoFocus)
             {
                 field.RequestFocus();
-                InputMethodManager imm = (InputMethodManager)GetSystemService(Context.InputMethodService);
+                InputMethodManager imm = (InputMethodManager)GetSystemService(InputMethodService);
                 imm.ShowSoftInput(field, ShowFlags.Implicit);
             }
         }
@@ -205,6 +205,10 @@ namespace _15MinuteGoals.UI.Activities
         {
             await Task.Delay(interval);
             Intent intent = new Intent(this, typeof(MainActivity));
+            if(IsNewAccount)
+            {
+                intent = new Intent(this, typeof(SignUpActivity));
+            }
             this.StartActivity(intent);
             this.Finish();
         }
