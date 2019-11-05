@@ -9,7 +9,6 @@ namespace _15MinuteGoals.UI.Fragments
     {
         private View mainView;
 
-        private TopBar topbar { get; set; }
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             mainView = inflater.Inflate(Resource.Layout.screen_menu, container, false);

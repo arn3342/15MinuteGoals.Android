@@ -27,9 +27,7 @@ namespace _15MinuteGoals.UI.Activities
 
             ImageView progress = FindViewById<ImageView>(Resource.Id.progressBox);
             logoAnim = FindViewById<WebView>(Resource.Id.appAnimationBox);
-
-            GIFWebView gifWebView = new GIFWebView();
-            logoAnim = gifWebView.ConfigureWebView(this, logoAnim, "appLogoAnimation.gif");
+            logoAnim.LoadAnimation(this, "appLogoAnimation.gif");
 
             ImageService.Instance.LoadCompiledResource("progressAnimation.gif").Into(progress);
             NextActivity();

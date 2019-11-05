@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace _15MinuteGoals.UI.Activities
 {
-    [Activity(Label = "Sign in to achieve", Theme = "@style/Theme.AppBlueTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "Sign in to achieve", Theme = "@style/Theme.AppBlueTheme", WindowSoftInputMode = SoftInput.AdjustPan, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class SignInActivity : AppCompatActivity
     {
         static EditText emailInput;
@@ -95,7 +95,7 @@ namespace _15MinuteGoals.UI.Activities
                 
                 if (FieldsAdded == 0)
                 {
-                    AddNewField("তোমার নাম", AutoFocus: true);
+                    AddNewField("তোমার নাম", AutoFocus: true, GoNextOnDone: true);
                     AddNewField("পাসওয়ার্ড", true);
                     AddNewField("কনফাম র্পাসওয়ার্ড", true);
                     FieldsAdded = 3;
@@ -168,7 +168,7 @@ namespace _15MinuteGoals.UI.Activities
                 NextActivity();
             }
         }
-        private void AddNewField(string hint, bool IsPasswordBox = false, bool AutoFocus = false)
+        private void AddNewField(string hint, bool IsPasswordBox = false, bool AutoFocus = false, bool GoNextOnDone = false)
         {
             var layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
             layoutParams.TopMargin = ValueConverter.DpToPx(10);
@@ -177,6 +177,10 @@ namespace _15MinuteGoals.UI.Activities
                 Hint = hint,
                 TextSize = 16f
             };
+            if (GoNextOnDone)
+            {
+                field.ImeOptions = ImeAction.Next;
+            }
             if (IsPasswordBox)
             {
                 field.InputType = InputTypes.ClassText | InputTypes.TextVariationPassword;

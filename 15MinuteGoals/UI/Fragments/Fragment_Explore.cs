@@ -21,7 +21,6 @@ namespace _15MinuteGoals.UI.Fragments
         private PostRegularAdapter postRegularAdapter;
         private bool IsWritePostCreated;
 
-        private TopBar topbar { get; set; }
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             mainView = inflater.Inflate(Resource.Layout.screen_explore, container, false);
@@ -37,12 +36,6 @@ namespace _15MinuteGoals.UI.Fragments
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
-        }
-
-        public void SetTopBar()
-        {
-            topbar.Title = "Explore";
-            topbar.SetPropertyValues();
         }
 
         public async void PopulateWithPosts()

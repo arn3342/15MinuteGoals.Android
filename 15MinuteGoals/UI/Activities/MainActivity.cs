@@ -2,6 +2,7 @@
 using _15MinuteGoals.UI.CustomViews;
 using _15MinuteGoals.UI.Fragments;
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
@@ -20,6 +21,7 @@ namespace _15MinuteGoals.UI.Activities
         private ViewPager mViewPager;
         private TabLayout mTabLayout;
         static List<Android.Support.V4.App.Fragment> fragments;
+        TextView smartTutorBtn;
 
         Fragment_Home HomeFragment = new Fragment_Home();
         Fragment_WhatsNew WhatsNewFragment = new Fragment_WhatsNew();
@@ -28,7 +30,6 @@ namespace _15MinuteGoals.UI.Activities
         Fragment_Menu MenuFragment = new Fragment_Menu();
 
         static FrameLayout mainContainer;
-        public static TopBar MainTopBar { get; set; }
         static int[] Icons, IconsSelected;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -40,8 +41,10 @@ namespace _15MinuteGoals.UI.Activities
             //Referencing the views, populating the adapter with fragments, calling a method to populate the bottom menu
             mTabLayout = FindViewById<TabLayout>(Resource.Id.maintablayout);
             mViewPager = FindViewById<ViewPager>(Resource.Id.mainviewpager);
-            MainTopBar = FindViewById<TopBar>(Resource.Id.main_topbar);
+            smartTutorBtn = FindViewById<TextView>(Resource.Id.smartTutorBtn);
             mainContainer = FindViewById<FrameLayout>(Resource.Id.activity_main_container);
+
+            smartTutorBtn.Click += SmartTutorBtn_Click;
 
             ViewPagerAdapter adapter = new ViewPagerAdapter(SupportFragmentManager);
             fragments = new List<Android.Support.V4.App.Fragment>() { HomeFragment, WhatsNewFragment, ExploreFragment, MessagesFragment, MenuFragment };
@@ -54,6 +57,14 @@ namespace _15MinuteGoals.UI.Activities
 
             Window.SetBackgroundDrawableResource(Resource.Drawable.full_white);
         }
+
+        private void SmartTutorBtn_Click(object sender, System.EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(SmartTutorActivity));
+            StartActivity(intent);
+            OverridePendingTransition(0, 0);
+        }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -84,8 +95,6 @@ namespace _15MinuteGoals.UI.Activities
 
             mTabLayout.AddOnTabSelectedListener(new TabChangeListner(this));
         }
-
-
 
         internal class TabChangeListner : Java.Lang.Object, IOnTabSelectedListener
         {

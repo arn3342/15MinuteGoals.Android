@@ -5,9 +5,9 @@ using Android.Webkit;
 
 namespace _15MinuteGoals.Utilities
 {
-    public class GIFWebView
+    public static class ExtendedWebView
     {
-        public WebView ConfigureWebView(Context context, WebView webView, string GifName, int GifHeight = 100, int GifWidth = 100, bool IsRounded = false)
+        public static void LoadAnimation(this WebView webView, Context context, string GifName, int GifHeight = 100, int GifWidth = 100, bool IsRounded = false)
         {
             if (context != null && webView != null)
             {
@@ -33,9 +33,23 @@ namespace _15MinuteGoals.Utilities
                 }
                 webView.Settings.AllowFileAccessFromFileURLs = true;
                 webView.LoadDataWithBaseURL("file:///android_asset/", html, "text/html", "UTF-8", "");
-                return webView;
             }
-            return null;
+        }
+
+        public static void LoadImage(this WebView webView, string FilePath, bool IsRounded)
+        {
+            FilePath = "file://" + FilePath;
+            var html = "";
+            if (IsRounded)
+            {
+                html = $"<body><img src=\"{FilePath}\" alt=\"https://img.freepik.com/free-photo/wall-wallpaper-concrete-colored-painted-textured-concept_53876-31799.jpg?size=626&ext=jpg\" border-radius: 50%\"/></body>";
+            }
+            else
+            {
+                html = $"<body><img src=\"{FilePath}\"/></body>";
+            }
+            webView.Settings.AllowFileAccessFromFileURLs = true;
+            webView.LoadDataWithBaseURL("", html, "text/html", "UTF-8", "");
         }
     }
 }

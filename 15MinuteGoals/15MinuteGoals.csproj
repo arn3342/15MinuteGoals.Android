@@ -96,6 +96,7 @@
     <Compile Include="UI\Activities\GradeActivity.cs" />
     <Compile Include="UI\Activities\SignUpActivity.cs" />
     <Compile Include="UI\Activities\SignInActivity.cs" />
+    <Compile Include="UI\Activities\SmartTutorActivity.cs" />
     <Compile Include="UI\Activities\SplashActivity.cs" />
     <Compile Include="Adapter\GradesAdapter.cs" />
     <Compile Include="Adapter\PostRegularAdapter.cs" />
@@ -123,7 +124,6 @@
     <Compile Include="Data\ViewModelLocator.cs" />
     <Compile Include="Data\ViewModels\Vm_GoalPanel.cs" />
     <Compile Include="UI\CustomViews\GradientTextView.cs" />
-    <Compile Include="UI\CustomViews\TopBar.cs" />
     <Compile Include="UI\Dialogs\FeedbackDialog.cs" />
     <Compile Include="UI\Fragments\Fragment_WhatsNew.cs" />
     <Compile Include="UI\Fragments\Fragment_Explore.cs" />
@@ -131,7 +131,7 @@
     <Compile Include="GenerateHash.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\GIFWebView.cs" />
+    <Compile Include="Utilities\ExtendedWebView.cs" />
     <Compile Include="Utilities\GifWebViewClient.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -424,11 +424,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\goal_blue_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\customview_topbar.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon_search.xml" />
@@ -781,6 +776,25 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\bg_roundedTextboxShadow.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_search_icon_dim.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\activity_smartTutor.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\mic_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\camera_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Anim\scale_up.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
