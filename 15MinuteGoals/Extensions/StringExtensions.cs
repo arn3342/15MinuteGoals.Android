@@ -23,7 +23,7 @@ namespace _15MinuteGoals.UI.Activities
         public static bool StringsAreAlphaNumeric(this string[] str, bool MatchStrings = false)
         {
             bool validated = false;
-            for(int i = 0; i < str.Length; i++)
+            for (int i = 0; i < str.Length; i++)
             {
                 if (string.IsNullOrEmpty(str[i]) || string.IsNullOrWhiteSpace(str[i]))
                 {

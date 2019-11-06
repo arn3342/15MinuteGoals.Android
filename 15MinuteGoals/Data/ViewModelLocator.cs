@@ -1,7 +1,6 @@
 ﻿using _15MinuteGoals.Data.ViewModels;
 using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
-using System;
 
 namespace _15MinuteGoals.Data
 {

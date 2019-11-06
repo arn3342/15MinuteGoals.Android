@@ -1,9 +1,6 @@
-﻿using Android.Graphics;
-using Android.Support.V4.App;
+﻿using Android.Support.V4.App;
 using Android.Support.V7.Widget;
 using Android.Views;
-using Android.Widget;
-using _15MinuteGoals.UI.Activities;
 using System.Collections.Generic;
 
 namespace _15MinuteGoals.Adapter
@@ -26,7 +23,7 @@ namespace _15MinuteGoals.Adapter
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-            
+
         }
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {

@@ -1,14 +1,12 @@
-﻿using System;
-
-using Android.Support.V4.App;
-using Android.Content;
+﻿using Android.Content;
+using Android.Graphics;
+using Android.Graphics.Drawables;
 using Android.OS;
+using Android.Support.V4.App;
+using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Widget;
-using Android.Support.V7.Widget;
-using Android.Views.InputMethods;
-using Android.Graphics.Drawables;
-using Android.Graphics;
+using System;
 
 namespace _15MinuteGoals.UI.Dialogs
 {

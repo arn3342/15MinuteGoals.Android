@@ -104,13 +104,13 @@
     <Compile Include="Authentication\FacebookAuthentication.cs" />
     <Compile Include="Authentication\GoogleAuthentication.cs" />
     <Compile Include="Data\Models\PostRegular.cs" />
-    <Compile Include="UI\Activities\StringExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="UI\CustomViews\ICustomViewAnimated.cs" />
     <Compile Include="UI\CustomViews\DailyTopBar.cs" />
     <Compile Include="UI\CustomViews\InviteFriendsBox.cs" />
     <Compile Include="UI\CustomViews\StartJourney.cs" />
     <Compile Include="UI\Dialogs\ClassSelectionDialog.cs" />
-    <Compile Include="UI\Activities\ActivityTitleExtensions.cs" />
+    <Compile Include="Extensions\ActivityTitleExtensions.cs" />
     <Compile Include="UI\Fragments\Fragment_Messages.cs" />
     <Compile Include="UI\Fragments\Fragment_Menu.cs" />
     <Compile Include="Utilities\Animations.cs" />
@@ -132,7 +132,7 @@
     <Compile Include="GenerateHash.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\ExtendedWebView.cs" />
+    <Compile Include="Extensions\WebViewExtensions.cs" />
     <Compile Include="Utilities\GifWebViewClient.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -804,9 +804,7 @@
     <AndroidResource Include="Resources\drawable\swipeDown_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\testLayout.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\coin_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

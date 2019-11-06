@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
+﻿using Android.Content;
 using Android.Graphics;
-using Android.OS;
 using Android.Runtime;
 using Android.Util;
-using Android.Views;
 using Android.Widget;
+using System;
 
 namespace _15MinuteGoals.UI.CustomViews
 {
@@ -39,7 +32,7 @@ namespace _15MinuteGoals.UI.CustomViews
         protected override void OnLayout(bool changed, int left, int top, int right, int bottom)
         {
             base.OnLayout(changed, left, top, right, bottom);
-            if(changed)
+            if (changed)
             {
                 Paint.SetShader(new LinearGradient(0,
                              0,

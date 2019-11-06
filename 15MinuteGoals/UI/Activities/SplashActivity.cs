@@ -42,6 +42,6 @@ namespace _15MinuteGoals.UI.Activities
             Finish();
         }
 
-        
+
     }
 }

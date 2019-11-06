@@ -3,12 +3,12 @@ using _15MinuteGoals.Adapter;
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Android.Support.V7.Widget;
-using System.Threading.Tasks;
-using System;
-using Android.Widget;
 using Android.Support.V7.App;
+using Android.Support.V7.Widget;
+using Android.Widget;
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace _15MinuteGoals.UI.Activities
 {
@@ -31,7 +31,7 @@ namespace _15MinuteGoals.UI.Activities
 
 
             recyclerView = FindViewById<RecyclerView>(Resource.Id.gradeContainer);
-            
+
             gradeAdapter = new GradesAdapter(Grades, SupportFragmentManager);
             recyclerView.SetLayoutManager(new LinearLayoutManager(this));
             recyclerView.SetAdapter(gradeAdapter);
@@ -45,11 +45,11 @@ namespace _15MinuteGoals.UI.Activities
         }
 
         private async void PopulateGrades()
-        {        
+        {
             await Task.Delay(800);
             Grades.Add("Class 9-10");
             gradeAdapter.NotifyItemInserted(Grades.Count - 1);
-            
+
 
         }
     }

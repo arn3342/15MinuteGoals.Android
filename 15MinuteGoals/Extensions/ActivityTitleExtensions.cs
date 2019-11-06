@@ -1,13 +1,13 @@
 ﻿using _15MinuteGoals.Utilities;
 using Android.Animation;
+using Android.Content;
 using Android.Content.Res;
 using Android.Graphics;
+using Android.Support.V7.App;
 using Android.Util;
-using System;
 using Android.Views;
 using Android.Widget;
-using Android.Support.V7.App;
-using Android.Content;
+using System;
 
 namespace _15MinuteGoals.UI.Activities
 {
@@ -42,12 +42,12 @@ namespace _15MinuteGoals.UI.Activities
         public static TextView ConstructTitle(Context context, string Title, LinearLayout container = null, int Background = Resource.Drawable.bg_fragmentTitle, string TextColorCode = "#ffffff")
         {
             DisplayMetrics metrics = Resources.System.DisplayMetrics;
-            var layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent); 
-            if(container == null)
+            var layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent);
+            if (container == null)
             {
                 var Parameters = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent, GravityFlags.Bottom | GravityFlags.Center);
                 Parameters.BottomMargin = ((metrics.HeightPixels / 100) * 10) + ValueConverter.DpToPx(10);
-                layoutParams = Parameters; 
+                layoutParams = Parameters;
             }
             else
             {

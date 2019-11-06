@@ -1,14 +1,10 @@
-﻿using _15MinuteGoals.UI.Activities;
-using _15MinuteGoals.UI.AnimationClasses;
-using _15MinuteGoals.UI.CustomViews;
+﻿using _15MinuteGoals.UI.AnimationClasses;
 using Android.Content;
-using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
 using Android.Views.Animations;
 using Android.Widget;
-using FFImageLoading;
 using System;
 
 namespace _15MinuteGoals.UI.Fragments

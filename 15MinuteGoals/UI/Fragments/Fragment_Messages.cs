@@ -1,15 +1,14 @@
-﻿using Android.Support.V4.App;
+﻿using _15MinuteGoals.Adapter;
 using Android.OS;
-using Android.Views;
-using _15MinuteGoals.UI.CustomViews;
+using Android.Support.V4.App;
 using Android.Support.V7.Widget;
-using _15MinuteGoals.Adapter;
+using Android.Views;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace _15MinuteGoals.UI.Fragments
 {
-    public class Fragment_Messages: Fragment
+    public class Fragment_Messages : Fragment
     {
         private View mainView;
         public RecyclerView contentContainer;

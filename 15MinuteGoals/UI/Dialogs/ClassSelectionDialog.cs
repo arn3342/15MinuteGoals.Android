@@ -101,7 +101,7 @@ namespace _15MinuteGoals.UI.Dialogs
                         groupContainer1.Check(checkedId);
                         ClassSelected = true;
                     }
-                    else if(group == groupContainer2)
+                    else if (group == groupContainer2)
                     {
                         groupContainer1.ClearCheck();
                         groupContainer2.Check(checkedId);

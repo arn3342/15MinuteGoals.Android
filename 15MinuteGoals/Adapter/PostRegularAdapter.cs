@@ -1,14 +1,14 @@
 ﻿using _15MinuteGoals.Data.Models;
 using _15MinuteGoals.UI.AnimationClasses;
+using _15MinuteGoals.UI.Dialogs;
 using Android.Content;
+using Android.Support.V4.App;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Views.Animations;
 using Android.Widget;
 using FFImageLoading;
-using Android.Support.V4.App;
 using System.Collections.Generic;
-using _15MinuteGoals.UI.Dialogs;
 
 namespace _15MinuteGoals.Adapter
 {
@@ -43,7 +43,7 @@ namespace _15MinuteGoals.Adapter
 
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
-            switch(holder.ItemViewType)
+            switch (holder.ItemViewType)
             {
                 case WritePost:
                     CreatePostViewHolder vh2 = holder as CreatePostViewHolder;
@@ -133,7 +133,7 @@ namespace _15MinuteGoals.Adapter
 
                 public void OnFocusChange(View v, bool hasFocus)
                 {
-                    if(v.HasFocus)
+                    if (v.HasFocus)
                     {
                         OnClick(v);
                     }

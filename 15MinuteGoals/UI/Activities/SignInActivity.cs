@@ -92,7 +92,7 @@ namespace _15MinuteGoals.UI.Activities
             if (IsNewAccount)
             {
                 //Removing fields if required
-                
+
                 if (FieldsAdded == 0)
                 {
                     AddNewField("তোমার নাম", AutoFocus: true, GoNextOnDone: true);
@@ -112,7 +112,7 @@ namespace _15MinuteGoals.UI.Activities
             }
             else
             {
-                
+
                 if (FieldsAdded == 0)
                 {
                     AddNewField("পাসওয়ার্ড", true, true);
@@ -209,7 +209,7 @@ namespace _15MinuteGoals.UI.Activities
         {
             await Task.Delay(interval);
             Intent intent = new Intent(this, typeof(MainActivity));
-            if(IsNewAccount)
+            if (IsNewAccount)
             {
                 intent = new Intent(this, typeof(SignUpActivity));
             }

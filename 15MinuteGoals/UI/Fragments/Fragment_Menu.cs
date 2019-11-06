@@ -1,7 +1,6 @@
-﻿using Android.Support.V4.App;
-using Android.OS;
+﻿using Android.OS;
+using Android.Support.V4.App;
 using Android.Views;
-using _15MinuteGoals.UI.CustomViews;
 
 namespace _15MinuteGoals.UI.Fragments
 {

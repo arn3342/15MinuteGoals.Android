@@ -1,18 +1,15 @@
 ﻿using _15MinuteGoals.Utilities;
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-using Android.Support.V7.App;
-using Android.Views;
-using Android.Webkit;
-using Android.Widget;
-using System;
-using Android.Content;
 using Android.Provider;
 using Android.Runtime;
-using Android.Database;
-using Java.IO;
+using Android.Support.V7.App;
+using Android.Views;
+using Android.Widget;
 using FFImageLoading;
+using System;
 
 namespace _15MinuteGoals.UI.Activities
 {
@@ -59,7 +56,7 @@ namespace _15MinuteGoals.UI.Activities
                 string path = FileChooser.getPath(this, data.Data);
                 ImageService.Instance.LoadFile(path).Into(UserImageBox);
                 UserImageBox.SetImageURI(data.Data);
-                
+
             }
         }
     }

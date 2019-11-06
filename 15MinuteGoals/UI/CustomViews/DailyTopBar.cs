@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
+﻿using _15MinuteGoals.Utilities;
 using Android.Content;
-using Android.OS;
 using Android.Runtime;
 using Android.Support.Constraints;
 using Android.Util;
 using Android.Views;
-using _15MinuteGoals.Utilities;
+using System;
 
 namespace _15MinuteGoals.UI.CustomViews
 {

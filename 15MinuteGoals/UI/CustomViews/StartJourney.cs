@@ -1,12 +1,12 @@
-﻿using System;
+﻿using _15MinuteGoals.UI.Activities;
+using _15MinuteGoals.Utilities;
 using Android.Content;
 using Android.Runtime;
 using Android.Support.Constraints;
 using Android.Util;
 using Android.Views;
-using _15MinuteGoals.Utilities;
 using Android.Widget;
-using _15MinuteGoals.UI.Activities;
+using System;
 
 namespace _15MinuteGoals.UI.CustomViews
 {

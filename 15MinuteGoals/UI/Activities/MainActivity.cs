@@ -1,5 +1,4 @@
 ﻿using _15MinuteGoals.Data;
-using _15MinuteGoals.UI.CustomViews;
 using _15MinuteGoals.UI.Fragments;
 using Android.App;
 using Android.Content;
