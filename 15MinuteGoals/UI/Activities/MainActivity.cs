@@ -41,10 +41,10 @@ namespace _15MinuteGoals.UI.Activities
             //Referencing the views, populating the adapter with fragments, calling a method to populate the bottom menu
             mTabLayout = FindViewById<TabLayout>(Resource.Id.maintablayout);
             mViewPager = FindViewById<ViewPager>(Resource.Id.mainviewpager);
-            smartTutorBtn = FindViewById<TextView>(Resource.Id.smartTutorBtn);
+            //smartTutorBtn = FindViewById<TextView>(Resource.Id.smartTutorBtn);
             mainContainer = FindViewById<FrameLayout>(Resource.Id.activity_main_container);
 
-            smartTutorBtn.Click += SmartTutorBtn_Click;
+            //smartTutorBtn.Click += SmartTutorBtn_Click;
 
             ViewPagerAdapter adapter = new ViewPagerAdapter(SupportFragmentManager);
             fragments = new List<Android.Support.V4.App.Fragment>() { HomeFragment, WhatsNewFragment, ExploreFragment, MessagesFragment, MenuFragment };

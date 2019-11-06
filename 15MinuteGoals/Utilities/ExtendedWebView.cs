@@ -50,40 +50,21 @@ namespace _15MinuteGoals.Utilities
             FileStream stream = new FileStream(FilePath, FileMode.Open, FileAccess.Read);
             byte[] imageRaw;
 
-            //var options = new BitmapFactory.Options();
-            //options.InJustDecodeBounds = true;
-            //options.InSampleSize = CalculateInSampleSize(options, 250, 250);
-            //Bitmap reducedImage = BitmapFactory.DecodeStream(stream, null, options);
-            //ByteArrayOutputStream bytestream = new ByteArrayOutputStream();
-            //reducedImage.Compress(Bitmap.CompressFormat.Jpeg, 100, stream);
-            //imageRaw = bytestream.ToByteArray();
-
-            //using (MemoryStream ms = new MemoryStream())
-            //{
-            //    int read;
-            //    while ((read = stream.Read(buffer, 0, buffer.Length)) > 0)
-            //    {
-            //        ms.Write(buffer, 0, read);
-            //    }
-            //    imageRaw = ms.ToArray();
-            //}
-
-            //MemoryStream output = new MemoryStream();
-            //using (DeflateStream dstream = new DeflateStream(output, CompressionLevel.Optimal))
-            //{
-            //    dstream.Write(imageRaw, 0, imageRaw.Length);
-            //}
-            //imageRaw = output.ToArray();
-
-
             // Desired Bitmap and the html code, where you want to place it
             Bitmap bitmap = null;
-            //Java.IO.File f = new Java.IO.File(FilePath);
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.InPreferredConfig = Bitmap.Config.Argb8888;
 
             bitmap = BitmapFactory.DecodeStream(stream, null, options);
-            string html = "<html><body><img src='{IMAGE_PLACEHOLDER}' /></body></html>";
+            string html = "";
+            if (IsRounded)
+            {
+                html = $"<body><img src='IMAGE_PLACEHOLDER' alt=\"A Gif file\" width=\"100%\" height=\"100%\" style=\"width: 100%; height: auto; border-radius: 50%\"/></body>";
+            }
+            else
+            {
+                html = $"<body><img src='IMAGE_PLACEHOLDER' alt=\"A Gif file\" width=\"100%\" height=\"100%\" style=\"width: 100%; height: auto;\"/></body>";
+            }
 
             // Convert bitmap to Base64 encoded image for web
             MemoryStream byteArrayOutputStream = new MemoryStream();
@@ -93,19 +74,11 @@ namespace _15MinuteGoals.Utilities
             string image = "data:image/png;base64," + image64;
 
             // Use image for the img src parameter in your html and load to webview
-            html = html.Replace("{IMAGE_PLACEHOLDER}", image);
+            html = html.Replace("IMAGE_PLACEHOLDER", image);
 
-            //var html = "";
-            //if (IsRounded)
-            //{
-            //    html = $"<body><img src=\"data:image/jpeg;base64," + image64 + "\" alt=\"A Gif file\" width=\"100%\" height=\"100%\" style=\"width: 100%; height: auto; border-radius: 50%\"/></body>";
-            //}
-            //else
-            //{
-            //    html = $"<body><img src=\"data:image/jpeg;base64," + image64 + "\" alt=\"A Gif file\" width=\"100%\" height=\"100%\" style=\"width: 100%; height: auto;\"/></body>";
-            //}
+            
             webView.Settings.AllowFileAccess = true;
-            webView.LoadData(image64, "image/jpeg", "base64");
+            webView.LoadData(html, "text/html", "utf-8");
         }
 
         public static int CalculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight)

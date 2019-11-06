@@ -609,7 +609,7 @@
     <AndroidResource Include="Resources\drawable\icon_whiteTick.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\userDefaultFace.gif" />
+    <AndroidResource Include="Resources\drawable\userDefaultFace.gif" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_signUp.xml">
@@ -796,6 +796,12 @@
     <AndroidResource Include="Resources\Anim\scale_up.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\bg_smartTutorTop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\swipeDown_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

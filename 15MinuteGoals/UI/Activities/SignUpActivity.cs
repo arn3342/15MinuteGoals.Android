@@ -12,6 +12,7 @@ using Android.Provider;
 using Android.Runtime;
 using Android.Database;
 using Java.IO;
+using FFImageLoading;
 
 namespace _15MinuteGoals.UI.Activities
 {
@@ -19,7 +20,7 @@ namespace _15MinuteGoals.UI.Activities
     public class SignUpActivity : AppCompatActivity
     {
         Button ProceedBtn;
-        static WebView UserImageBox;
+        ImageView UserImageBox;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -27,63 +28,38 @@ namespace _15MinuteGoals.UI.Activities
             // Create your application here
 
             ProceedBtn = FindViewById<Button>(Resource.Id.proceedBtn);
-            UserImageBox = FindViewById<WebView>(Resource.Id.userImg);
+            UserImageBox = FindViewById<ImageView>(Resource.Id.userImg);
 
             ProceedBtn.Click += ProceedBtn_Click;
 
-            
-            UserImageBox.LoadAnimation(this, "userDefaultFace.gif", IsRounded: true);
-            UserImageBox.SetOnTouchListener(new OnTouchListner(this));
+
+            ImageService.Instance.LoadCompiledResource("userDefaultFace.gif").Into(UserImageBox);
+            UserImageBox.Click += UserImageBox_Click;
 
         }
 
-        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        private void UserImageBox_Click(object sender, EventArgs e)
         {
-            base.OnActivityResult(requestCode, resultCode, data);
-            if (requestCode == 1000 && resultCode == Result.Ok && data != null)
-            {
-                string path = FileChooser.getPath(this, data.Data);
-                //ICursor cursor = ContentResolver.Query(selectedImage,
-                //        null, null, null, null);
-                //cursor.MoveToFirst();
-
-                //string imageId = cursor.GetString(0);
-                //cursor.Close();
-                //cursor = ContentResolver.Query(MediaStore.Images.Media.ExternalContentUri, null, MediaStore.Images.Media.InterfaceConsts.Id + " = ? ", new String[] { imageId }, null);
-                //cursor.MoveToFirst();
-                //string path = cursor.GetString(cursor.GetColumnIndex(MediaStore.Images.Media.InterfaceConsts.Data));
-                //cursor.Close();
-
-                
-
-                UserImageBox.LoadImage(this, path, true);
-                
-            }
+            Intent intent = new Intent(Intent.ActionGetContent, MediaStore.Images.Media.ExternalContentUri);
+            intent.SetType("image/*");
+            StartActivityForResult(Intent.CreateChooser(intent, "Select image"), 1000);
         }
+
         private void ProceedBtn_Click(object sender, EventArgs e)
         {
             Intent intent = new Intent(this, typeof(MainActivity));
             StartActivity(intent);
             Finish();
         }
-
-        private class OnTouchListner : Java.Lang.Object, View.IOnTouchListener
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
-            Activity activity;
-
-            public OnTouchListner(Activity act)
+            base.OnActivityResult(requestCode, resultCode, data);
+            if (requestCode == 1000 && resultCode == Result.Ok && data != null)
             {
-                activity = act;
-            }
-            public bool OnTouch(View v, MotionEvent e)
-            {
-                if (e.Action == MotionEventActions.Down)
-                {
-                    Intent intent = new Intent(Intent.ActionGetContent, MediaStore.Images.Media.ExternalContentUri);
-                    intent.SetType("image/*");
-                    activity.StartActivityForResult(Intent.CreateChooser(intent, "Select image"), 1000); 
-                }
-                return true;
+                string path = FileChooser.getPath(this, data.Data);
+                ImageService.Instance.LoadFile(path).Into(UserImageBox);
+                UserImageBox.SetImageURI(data.Data);
+                
             }
         }
     }
