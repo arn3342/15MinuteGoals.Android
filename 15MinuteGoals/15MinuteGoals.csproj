@@ -114,6 +114,7 @@
     <Compile Include="UI\Fragments\Fragment_Messages.cs" />
     <Compile Include="UI\Fragments\Fragment_Menu.cs" />
     <Compile Include="Utilities\Animations.cs" />
+    <Compile Include="Utilities\FileChooser.cs" />
     <Compile Include="Utilities\ValueConverter.cs" />
     <Compile Include="Data\ViewModels\Vm_TopBar.cs" />
     <Compile Include="Data\ViewPagerAdapter.cs" />

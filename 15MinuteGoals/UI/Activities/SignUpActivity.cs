@@ -40,19 +40,24 @@ namespace _15MinuteGoals.UI.Activities
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
-            if (requestCode == 1 && resultCode == Result.Ok && data != null)
+            if (requestCode == 1000 && resultCode == Result.Ok && data != null)
             {
-                Android.Net.Uri selectedImage = data.Data;
-                string[] filePathColumn = { MediaStore.Images.Media.InterfaceConsts.Data };
+                string path = FileChooser.getPath(this, data.Data);
+                //ICursor cursor = ContentResolver.Query(selectedImage,
+                //        null, null, null, null);
+                //cursor.MoveToFirst();
 
-                ICursor cursor = ContentResolver.Query(selectedImage,
-                        filePathColumn, null, null, null);
-                cursor.MoveToFirst();
+                //string imageId = cursor.GetString(0);
+                //cursor.Close();
+                //cursor = ContentResolver.Query(MediaStore.Images.Media.ExternalContentUri, null, MediaStore.Images.Media.InterfaceConsts.Id + " = ? ", new String[] { imageId }, null);
+                //cursor.MoveToFirst();
+                //string path = cursor.GetString(cursor.GetColumnIndex(MediaStore.Images.Media.InterfaceConsts.Data));
+                //cursor.Close();
 
-                int columnIndex = cursor.GetColumnIndex(filePathColumn[0]);
-                string picturePath = cursor.GetString(columnIndex);
-                UserImageBox.LoadImage(picturePath, true);
-                cursor.Close();
+                
+
+                UserImageBox.LoadImage(this, path, true);
+                
             }
         }
         private void ProceedBtn_Click(object sender, EventArgs e)
@@ -72,8 +77,12 @@ namespace _15MinuteGoals.UI.Activities
             }
             public bool OnTouch(View v, MotionEvent e)
             {
-                Intent intent = new Intent(Intent.ActionPick, MediaStore.Images.Media.ExternalContentUri);
-                activity.StartActivityForResult(intent, 1);
+                if (e.Action == MotionEventActions.Down)
+                {
+                    Intent intent = new Intent(Intent.ActionGetContent, MediaStore.Images.Media.ExternalContentUri);
+                    intent.SetType("image/*");
+                    activity.StartActivityForResult(Intent.CreateChooser(intent, "Select image"), 1000); 
+                }
                 return true;
             }
         }
