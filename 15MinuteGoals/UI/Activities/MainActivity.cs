@@ -1,15 +1,20 @@
 ﻿using _15MinuteGoals.Data;
 using _15MinuteGoals.UI.Fragments;
+using _15MinuteGoals.Utilities;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.Constraints;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Android.Support.V7.App;
 using Android.Widget;
+using FFImageLoading;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using static Android.Support.Design.Widget.TabLayout;
 
 namespace _15MinuteGoals.UI.Activities
@@ -20,7 +25,9 @@ namespace _15MinuteGoals.UI.Activities
         private ViewPager mViewPager;
         private TabLayout mTabLayout;
         static List<Android.Support.V4.App.Fragment> fragments;
-        TextView smartTutorBtn;
+        ConstraintLayout smartTutorBtn;
+        ImageView smartSwipeDown;
+        float SmartTutorTranslationY;
 
         Fragment_Home HomeFragment = new Fragment_Home();
         Fragment_WhatsNew WhatsNewFragment = new Fragment_WhatsNew();
@@ -40,10 +47,15 @@ namespace _15MinuteGoals.UI.Activities
             //Referencing the views, populating the adapter with fragments, calling a method to populate the bottom menu
             mTabLayout = FindViewById<TabLayout>(Resource.Id.maintablayout);
             mViewPager = FindViewById<ViewPager>(Resource.Id.mainviewpager);
-            //smartTutorBtn = FindViewById<TextView>(Resource.Id.smartTutorBtn);
             mainContainer = FindViewById<FrameLayout>(Resource.Id.activity_main_container);
 
-            //smartTutorBtn.Click += SmartTutorBtn_Click;
+            #region Getting the smart tutor elements
+            smartTutorBtn = FindViewById<ConstraintLayout>(Resource.Id.smartTutorBtn);
+            smartSwipeDown = FindViewById<ImageView>(Resource.Id.smart_swipeDown);
+
+            //ImageService.Instance.LoadCompiledResource("gif name").Into(smartSwipeDown);
+            smartTutorBtn.Click += SmartTutorBtn_Click;
+            #endregion
 
             ViewPagerAdapter adapter = new ViewPagerAdapter(SupportFragmentManager);
             fragments = new List<Android.Support.V4.App.Fragment>() { HomeFragment, WhatsNewFragment, ExploreFragment, MessagesFragment, MenuFragment };
@@ -55,13 +67,15 @@ namespace _15MinuteGoals.UI.Activities
             PopulateMainTabIcons();
 
             Window.SetBackgroundDrawableResource(Resource.Drawable.full_white);
+            AnimateTopBar(true);
         }
 
         private void SmartTutorBtn_Click(object sender, System.EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(SmartTutorActivity));
-            StartActivity(intent);
-            OverridePendingTransition(0, 0);
+            //Intent intent = new Intent(this, typeof(SmartTutorActivity));
+            //StartActivity(intent);
+            //OverridePendingTransition(0, 0);
+            AnimateTopBar();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
@@ -69,6 +83,31 @@ namespace _15MinuteGoals.UI.Activities
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+        #region Animating the topbar
+        private async void AnimateTopBar(bool DelayAnimation = false)
+        {
+            SmartTutorTranslationY = smartTutorBtn.TranslationY;
+            if (DelayAnimation)
+            {
+                await Task.Delay(800);
+            }
+            //Animating the topbar to show it
+            TransitionDrawable transition = (TransitionDrawable)smartTutorBtn.Background;
+            Animations animation = new Animations();
+            animation.AnimateObject(smartTutorBtn, "TranslationY", 0 , 150);
+            transition.StartTransition(150);
+            ReverseAnimateTopBar();
+        }
+        private async void ReverseAnimateTopBar()
+        {
+            await Task.Delay(2150);
+            TransitionDrawable transition = (TransitionDrawable)smartTutorBtn.Background;
+            Animations animation = new Animations();
+            animation.AnimateObject(smartTutorBtn, "TranslationY", SmartTutorTranslationY, 150);
+            transition.ReverseTransition(150);
+        }
+        #endregion
 
         private void PopulateMainTabIcons()
         {
