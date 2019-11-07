@@ -29,7 +29,6 @@ namespace _15MinuteGoals.UI.Activities
         Fragment_Messages MessagesFragment = new Fragment_Messages();
         Fragment_Menu MenuFragment = new Fragment_Menu();
 
-        static FrameLayout mainContainer;
         static int[] Icons, IconsSelected;
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -42,7 +41,6 @@ namespace _15MinuteGoals.UI.Activities
             mTabLayout = FindViewById<TabLayout>(Resource.Id.maintablayout);
             mViewPager = FindViewById<ViewPager>(Resource.Id.mainviewpager);
             smartTutorBtn = FindViewById<ImageView>(Resource.Id.smartTutorBtn);
-            mainContainer = FindViewById<FrameLayout>(Resource.Id.activity_main_container);
 
             smartTutorBtn.Click += SmartTutorBtn_Click;
 
@@ -86,7 +84,6 @@ namespace _15MinuteGoals.UI.Activities
                                       Resource.Drawable.explore_icon_selected,
                                       Resource.Drawable.message_icon_selected,
                                       Resource.Drawable.menu_icon_selected};
-            //string[] Titles = new string[] { "Your goals", "Explore", "Messages", "Notifications" };
 
             for (int i = 0; i < mTabLayout.TabCount; i++)
             {
@@ -94,18 +91,12 @@ namespace _15MinuteGoals.UI.Activities
             }
             mTabLayout.GetTabAt(0).SetIcon(IconsSelected[0]);
 
-            mTabLayout.AddOnTabSelectedListener(new TabChangeListner(this));
+            mTabLayout.AddOnTabSelectedListener(new TabChangeListner());
         }
 
         internal class TabChangeListner : Java.Lang.Object, IOnTabSelectedListener
         {
-            List<int> TitlesShown = new List<int> { 0, 1, 2, 3 };
-            AppCompatActivity activity;
 
-            public TabChangeListner(AppCompatActivity mActivity)
-            {
-                activity = mActivity;
-            }
             public new void Dispose()
             {
 
@@ -123,38 +114,17 @@ namespace _15MinuteGoals.UI.Activities
                 {
 
                     case 0:
-                        if (TitlesShown.Contains(0))
-                        {
-                            activity.AnimateTitle(mainContainer, "Your goals");
-                            TitlesShown.Remove(0);
-                        }
-                        break;
 
                     case 1:
-                        if (TitlesShown.Contains(1))
-                        {
-                            activity.AnimateTitle(mainContainer, "What's new");
-                            TitlesShown.Remove(1);
-                        }
-                        break;
 
                     case 2:
-                        if (TitlesShown.Contains(2))
-                        {
-                            activity.AnimateTitle(mainContainer, "Explore feed");
-                            TitlesShown.Remove(2);
-                        }
                         var explore = fragments[2] as Fragment_Explore;
                         explore.PopulateWithPosts();
                         break;
 
                     case 3:
-                        if (TitlesShown.Contains(3))
-                        {
-                            activity.AnimateTitle(mainContainer, "Messages");
-                            TitlesShown.Remove(3);
-                        }
                         break;
+
                 }
             }
 

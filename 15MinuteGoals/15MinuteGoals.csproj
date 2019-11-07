@@ -92,6 +92,7 @@
     <Compile Include="Adapter\MessagesAdapter.cs" />
     <Compile Include="Adapter\NotificationAdapter.cs" />
     <Compile Include="Adapter\IViewAdapter.cs" />
+    <Compile Include="Extensions\ImageViewExtension.cs" />
     <Compile Include="UI\Activities\MainActivity.cs" />
     <Compile Include="UI\Activities\GradeActivity.cs" />
     <Compile Include="UI\Activities\SignUpActivity.cs" />

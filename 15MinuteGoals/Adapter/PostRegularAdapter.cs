@@ -1,4 +1,5 @@
 ﻿using _15MinuteGoals.Data.Models;
+using _15MinuteGoals.Extensions;
 using _15MinuteGoals.UI.AnimationClasses;
 using _15MinuteGoals.UI.Dialogs;
 using Android.Content;
@@ -53,7 +54,7 @@ namespace _15MinuteGoals.Adapter
                     PostRegularViewHolder vh3 = holder as PostRegularViewHolder;
                     PostRegular post = contentCollection[position] as PostRegular;
                     vh3.userFullName.Text = post.UserFullName;
-                    ImageService.Instance.LoadUrl(post.UserImageUrl).Into(vh3.userImg);
+                    vh3.userImg.SetBackgroundFromURL(post.UserImageUrl);
                     vh3.postBody.Text = post.PostBody;
                     vh3.inspireCount.Text = post.InspireCount;
                     break;
