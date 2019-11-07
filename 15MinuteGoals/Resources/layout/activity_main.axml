@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main_container"
     android:layout_width="match_parent"
@@ -10,6 +11,59 @@
         android:layout_height="match_parent"
         android:background="#fff"
         android:orientation="vertical">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_user_headerbar_textview_nonRound"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="5dp">
+            <ImageView
+                android:id="@+id/userImg"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/demo_user"/>
+            <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                app:layout_constraintTop_toTopOf="@id/userImg"
+                app:layout_constraintBottom_toTopOf="@id/coinIcon"
+                app:layout_constraintLeft_toRightOf="@id/userImg"
+                android:layout_marginLeft="10dp"
+                android:text="Aousaf R."/>
+            <ImageView
+                android:id="@+id/coinIcon"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                app:layout_constraintLeft_toLeftOf="@id/userName"
+                app:layout_constraintBottom_toBottomOf="@id/userImg"
+                app:layout_constraintTop_toBottomOf="@id/userName"
+                android:src="@drawable/coin_icon"
+                android:layout_marginTop="3dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/coinIcon"
+                app:layout_constraintLeft_toRightOf="@id/coinIcon"
+                app:layout_constraintBottom_toBottomOf="@id/coinIcon"
+                android:text="Earn points"
+                android:layout_marginLeft="3dp"
+                android:textColor="#00aeef"
+                android:textSize="13dp"
+                android:textStyle="bold"/>
+            <ImageView
+                android:id="@+id/smartTutorBtn"
+                android:layout_width="110dp"
+                android:layout_height="40dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </android.support.constraint.ConstraintLayout>
         <android.support.v4.view.ViewPager
             android:id="@+id/mainviewpager"
             android:layout_width="match_parent"
@@ -26,36 +80,4 @@
             app:tabRippleColor="@color/appThemeBlue"
             app:tabTextAppearance="@style/TabLayoutTextAppearance"/>
     </LinearLayout>
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/smartTutorBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/transition_smartTutor"
-        android:paddingTop="5dp"
-        android:paddingBottom="8dp"
-        android:translationY="-38dp">
-        <TextView
-            android:visibility="visible"
-            android:id="@+id/smartTutorTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:text="Ask the Smart Tutor"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:textAllCaps="false"
-            android:textColor="#00a8ff"
-            android:textSize="15dp"/>
-        <ImageView
-            android:id="@+id/smart_swipeDown"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            app:layout_constraintTop_toBottomOf="@id/smartTutorTitle"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginTop="3dp"/>
-    </android.support.constraint.ConstraintLayout>
 </FrameLayout>
