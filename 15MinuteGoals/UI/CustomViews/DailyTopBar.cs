@@ -38,6 +38,7 @@ namespace _15MinuteGoals.UI.CustomViews
             var inflatorService = (LayoutInflater)ctx.GetSystemService(Context.LayoutInflaterService);
             var MainView = inflatorService.Inflate(Resource.Layout.customview_dailyTop, this, false);
             AddView(MainView);
+            //Don't add view
 
             #region Animating view on load
             Alpha = 0;
