@@ -1,20 +1,27 @@
 ﻿using _15MinuteGoals.Data.Models;
 using _15MinuteGoals.UI.AnimationClasses;
+using _15MinuteGoals.UI.CustomViews;
 using _15MinuteGoals.UI.Dialogs;
+using _15MinuteGoals.Utilities;
 using Android.Content;
+using Android.Graphics;
+using Android.Graphics.Drawables;
 using Android.Support.V4.App;
 using Android.Support.V7.Widget;
 using Android.Views;
 using Android.Views.Animations;
 using Android.Widget;
-using FFImageLoading;
+using Java.Net;
+using System;
 using System.Collections.Generic;
+using System.Net;
 
 namespace _15MinuteGoals.Adapter
 {
     public class PostRegularAdapter : RecyclerView.Adapter, IViewAdapter
     {
         public List<object> contentCollection;
+        Context mContext;
         const int WritePost = 0; const int RegularPost = 1;
         static FragmentManager mFragmentManager;
 
@@ -35,13 +42,14 @@ namespace _15MinuteGoals.Adapter
             }
         }
 
-        public PostRegularAdapter(List<object> itemList, FragmentManager fragmentManager)
+        public PostRegularAdapter(Context context, List<object> itemList, FragmentManager fragmentManager)
         {
+            mContext = context;
             contentCollection = itemList;
             mFragmentManager = fragmentManager;
         }
 
-        public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
+        public override async void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             switch (holder.ItemViewType)
             {
@@ -53,13 +61,56 @@ namespace _15MinuteGoals.Adapter
                     PostRegularViewHolder vh3 = holder as PostRegularViewHolder;
                     PostRegular post = contentCollection[position] as PostRegular;
                     vh3.userFullName.Text = post.UserFullName;
-                    ImageService.Instance.LoadUrl(post.UserImageUrl).Into(vh3.userImg);
                     vh3.postBody.Text = post.PostBody;
                     vh3.inspireCount.Text = post.InspireCount;
+                    WebClient cl = new WebClient();
+
+                    //cl.DownloadDataCompleted += new DownloadDataCompletedEventHandler((s, e) => ImageDownloaded(s, e, vh3.userImg));//Cl_DownloadDataCompleted;
+                    //var image = cl.DownloadData(new Uri(post.UserImageUrl));
+                    //Bitmap bitmap = BitmapFactory.DecodeByteArray(image, 0, image.Length);
+                    //vh3.userImg.SetImageDrawable(new BitmapDrawable(mContext.Resources, bitmap));
+                    //URL url = new URL(post.UserImageUrl);
+                    //Bitmap bitmap = BitmapFactory.DecodeStream(url.OpenConnection().InputStream);
+                    ImageLoader loader = new ImageLoader(vh3.userImg, mContext);
+                    loader.LoadFromURL(post.UserImageUrl);
+
+                    //BlobCache.LocalMachine.LoadImageFromUrl(post.UserImageUrl).Wait().ToNative();//.ToNative();
+                    //IBitmap
+                    //using (MemoryStream ms = new MemoryStream(image))
+                    //{
+                    //    Bitmap bitmap = BitmapFactory.DecodeStream(ms);
+                    //    var background = new BitmapDrawable(mContext.Resources, bitmap);
+                    //    vh3.userImg.Background = background;
+                    //}
+                    //ImageService.Instance.Load(post.UserImageUrl).Into(vh3.userImg);
+
+                    #region Setting user's image from URL
+                    //WebClient client = new WebClient();
+                    //client.DownloadDataCompleted +=
+                    //    async delegate (object sender, DownloadDataCompletedEventArgs e)
+                    //    {
+                    //        byte[] imageData;
+                    //        imageData = e.Result;
+                    //        MemoryStream ms = new MemoryStream(imageData);
+                    //        Bitmap bitmap = await BitmapFactory.DecodeStreamAsync(ms);
+                    //        BitmapDrawable background = new BitmapDrawable(mContext.Resources, bitmap);
+                    //        vh3.userImg.Background = background;
+
+                    //    };
+                    //client.DownloadDataAsync(new Uri(post.UserImageUrl));
+                    #endregion
                     break;
             }
 
         }
+
+        private void ImageDownloaded(object sender, DownloadDataCompletedEventArgs e, ImageView view)
+        {
+            var image = e.Result;
+            Bitmap bitmap = BitmapFactory.DecodeByteArray(image, 0, image.Length);
+            view.SetImageDrawable(new BitmapDrawable(mContext.Resources, bitmap));
+        }
+
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
             RecyclerView.ViewHolder vh = null;

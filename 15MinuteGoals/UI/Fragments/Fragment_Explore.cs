@@ -23,7 +23,7 @@ namespace _15MinuteGoals.UI.Fragments
             contentContainer = mainView.FindViewById<RecyclerView>(Resource.Id.explore_feed_maincontainer);
 
             contentContainer.SetLayoutManager(new LinearLayoutManager(Activity));
-            postRegularAdapter = new PostRegularAdapter(contents, FragmentManager);
+            postRegularAdapter = new PostRegularAdapter(Context, contents, FragmentManager);
             contentContainer.SetAdapter(postRegularAdapter);
 
             return mainView;
@@ -44,9 +44,9 @@ namespace _15MinuteGoals.UI.Fragments
                     contents.Add(350);
                     IsWritePostCreated = true;
                 }
-                contents.Add(new PostRegular() { InspireCount = "3k", PostBody = "The harder you work for something, the greater you'll feel when you achieve it.", UserFullName = "Aousaf Rashid", UserImageUrl = "https://www.netfort.com/assets/user.png" });
-                contents.Add(new PostRegular() { InspireCount = "1k", PostBody = "Pdush yourself, because no one else is going to do it for you.", UserFullName = "Brian Smith", UserImageUrl = "https://www.netfort.com/assets/user.png" });
-                contents.Add(new PostRegular() { InspireCount = "5k", PostBody = "Completed chapter 3 of organic chemistry. I am surprised by how @Mr.Mark explained all the issues so clearly!", UserFullName = "Richard Parsons", UserImageUrl = "https://www.netfort.com/assets/user.png" });
+                contents.Add(new PostRegular() { InspireCount = "3k", PostBody = "The harder you work for something, the greater you'll feel when you achieve it.", UserFullName = "Maisha Rahman", UserImageUrl = "https://i.ibb.co/12BTPz9/model3.jpg" });
+                contents.Add(new PostRegular() { InspireCount = "1k", PostBody = "Pdush yourself, because no one else is going to do it for you.", UserFullName = "Ridoy Ahmed", UserImageUrl = "https://i.ibb.co/GtNDwtL/model2.jpg" });
+                contents.Add(new PostRegular() { InspireCount = "5k", PostBody = "Completed chapter 3 of organic chemistry. I am surprised by how @Mr.Mark explained all the issues so clearly!", UserFullName = "Sharmin Akhter", UserImageUrl = "https://i.ibb.co/m98tpJW/model1.jpg" });
                 postRegularAdapter.NotifyItemInserted(contents.Count - 1);
             }
         }

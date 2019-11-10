@@ -38,7 +38,7 @@ namespace _15MinuteGoals.UI.Fragments
             await Task.Delay(700);
             if (!MessagePopulated)
             {
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 6; i++)
                 {
                     contents.Add(null);
                 }
