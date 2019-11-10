@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_roundedTextBox"
+                android:paddingBottom="20dp"
+                android:layout_margin="6dp">
+                <TextView
+                    android:id="@+id/captionOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="স্বপ্নপূরণের পথটা \nকরে তুলো বন্ধুময় !"
+                    android:textSize="22dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:id="@+id/captionTwo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/captionOne"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:text="তোমার চলার পথে আমরা আছি সাথে, বন্ধুরা কেন পিছিয়ে থাকবে? বন্ধুদের ইনভাইট করে জিতে নাও ১০০০+ পূর্ণতা পয়েণ্টস!"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="20dp"
+                    android:singleLine="false"
+                    android:layout_marginTop="10dp"/>
+                <EditText
+                    android:id="@+id/inviteEmailBox"
+                    android:layout_width="0dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="@id/captionTwo"
+                    app:layout_constraintTop_toBottomOf="@id/captionTwo"
+                    app:layout_constraintRight_toLeftOf="@id/inviteBtn"
+                    android:hint="Email or Phone number"
+                    android:textSize="13dp"
+                    android:textColor="#8c8c8c"
+                    android:background="@drawable/bg_searchBox"/>
+                <Button
+                    android:id="@+id/inviteBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:text="Invite"
+                    android:textSize="13dp"
+                    android:textAllCaps="false"
+                    android:textColor="#fff"
+                    android:background="@drawable/bg_user_headerbar_textview_blue"
+                    app:layout_constraintTop_toTopOf="@id/inviteEmailBox"
+                    app:layout_constraintBottom_toBottomOf="@id/inviteEmailBox"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginRight="20dp"
+                    style="?android:attr/borderlessButtonStyle"/>
+            </android.support.constraint.ConstraintLayout>

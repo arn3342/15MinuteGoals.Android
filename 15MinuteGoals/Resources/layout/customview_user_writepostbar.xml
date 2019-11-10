@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/writePostContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="3dp">
+        <TextView
+            android:id="@+id/shareText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:paddingLeft="5dp"
+            android:text="Share something inspiring!"
+            android:textSize="16dp"/>
+        <EditText
+            android:id="@+id/postBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/shareText"
+            android:singleLine="false"
+            android:textSize="18dp"
+            android:background="#f2f2f2"
+            android:paddingTop="10dp"
+            android:paddingLeft="13dp"
+            android:paddingRight="13dp"
+            android:paddingBottom="20dp"
+            android:gravity="top"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            app:layout_constraintLeft_toLeftOf="@id/shareText"
+            app:layout_constraintRight_toRightOf="parent"
+            android:hint="A quote, an article, share whatever helps others!"/>
+        <Button
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:text="Post"
+            android:layout_marginTop="10dp"
+            app:layout_constraintRight_toRightOf="@id/postBox"
+            app:layout_constraintTop_toBottomOf="@id/postBox"
+            android:background="@drawable/bg_user_headerbar_textview_blue"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            style="?android:attr/borderlessButtonStyle"/>
+    </android.support.constraint.ConstraintLayout>

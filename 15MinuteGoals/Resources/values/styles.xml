@@ -1,0 +1,47 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="Theme.AppBlueTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@drawable/bg_appmain</item>
+    </style>
+    <style name="dialog_no_border" parent="Theme.AppCompat.Light.Dialog">
+      <item name="android:windowFullscreen">false</item>
+      
+      <item name="android:windowBackground">@android:color/transparent</item>
+      <item name="android:windowIsFloating">false</item>
+      
+      <item name="android:windowTitleStyle">@null</item>
+      <item name="android:colorBackgroundCacheHint">@null</item>
+      <item name="android:backgroundDimEnabled">true</item>
+    </style>
+    <string name="facebook_app_id">365038010784654</string>
+    <string name="fb_login_protocol_scheme">fb365038010784654</string>
+  <style name="TabLayoutTextAppearance" parent="TextAppearance.Design.Tab">
+    <item name="android:textSize">14sp</item>
+    <item name="textAllCaps">false</item>
+    <item name="android:textAllCaps">false</item>
+  </style>
+  <style name="DialogAnimation">
+    <item name="android:windowEnterAnimation">@anim/dialog_slideUp</item>
+    <item name="android:windowExitAnimation">@anim/dialog_slideDown</item>
+  </style>
+  <style name="GrayRoundButton" parent="Theme.AppBlueTheme">
+    <item name="android:fontFamily">sans-serif</item>
+    <item name="android:textSize">13dp</item>
+    <item name="android:paddingLeft">20dp</item>
+    <item name="android:paddingRight">20dp</item>
+    <item name="android:background">@drawable/bg_roundedGray</item>
+  </style>
+  <style name="ProgressTheme" parent="@android:style/Widget.ProgressBar.Large">
+    <item name="android:indeterminateDrawable">@drawable/spinner_holo_light</item>
+    <item name="android:animationResolution">33</item>
+  </style>
+</resources>

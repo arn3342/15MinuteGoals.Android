@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/getStartedContainer"
+                android:layout_width="0dp"
+                android:layout_height="190dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_setClassMain">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="56dp"
+                    android:layout_marginLeft="30dp"
+                    android:text="সবার সাথে তুমিও \nএগিয়ে চলো!"
+                    android:textSize="22dp"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginBottom="20dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:text="যাত্রা শুরু করো"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_user_headerbar_textview_blue"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    style="?android:attr/borderlessButtonStyle"/>
+            </android.support.constraint.ConstraintLayout>

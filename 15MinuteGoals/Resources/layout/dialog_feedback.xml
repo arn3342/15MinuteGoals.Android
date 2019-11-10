@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    android:id="@+id/feedbackDialog"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:background="@drawable/bg_writefeedback"
+    android:focusableInTouchMode="true"
+    android:minWidth="25dp"
+    android:minHeight="225dp">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Share your feedback"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="15dp"
+        android:textColor="#7d7d7d"
+        android:textSize="14dp"
+        android:textStyle="bold"/>
+    <ImageView
+        android:id="@+id/smallUserImg"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/demo_user"/>
+    <EditText
+        android:id="@+id/feedbackBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:hint="Share what you feel..."
+        android:focusedByDefault="true"
+        android:textColor="#8a8a8a"
+        android:textSize="15dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/bg_edittextBorder"
+        app:layout_constraintRight_toLeftOf="@+id/sendFeedbackBtn"
+        app:layout_constraintTop_toTopOf="@id/smallUserImg"
+        app:layout_constraintLeft_toRightOf="@id/smallUserImg"
+        android:maxLines="3"
+        android:maxLength="2000"
+        android:inputType="textCapSentences|textMultiLine"
+        app:layout_constraintBottom_toBottomOf="@id/smallUserImg" />
+    <ImageView
+        android:id="@+id/sendFeedbackBtn"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/feedbackBox"
+        app:layout_constraintBottom_toBottomOf="@id/feedbackBox"
+        android:src="@drawable/icon_send"
+        android:layout_marginRight="10dp"/>
+    <ImageView
+        android:id="@+id/closeFeedbackBtn"
+        android:layout_width="50dp"
+        android:layout_height="48dp"
+        android:src="@drawable/icon_close"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No feedback on this yet!"
+        android:textSize="18dp"
+        android:textColor="#969696"
+        app:layout_constraintTop_toBottomOf="@id/feedbackBox"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+</android.support.constraint.ConstraintLayout>
