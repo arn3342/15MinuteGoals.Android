@@ -9,7 +9,7 @@
     android:minWidth="25dp"
     android:minHeight="25dp"
     android:layout_marginBottom="3dp">
-    <ImageView
+    <_15MinuteGoals.UI.CustomViews.RoundedImageView
         android:id="@+id/feed_user_image"
         android:layout_width="45dp"
         android:layout_height="45dp"

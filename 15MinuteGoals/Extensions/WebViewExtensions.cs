@@ -16,12 +16,12 @@ namespace _15MinuteGoals.Utilities
                 string GifSource = GifName;
                 string imageWidth = GifWidth.ToString() + "%";
                 string imageHeight = GifHeight.ToString() + "%";
-                AssetManager assets = activity.Assets;
-                using (var stream = assets.Open(GifSource))
-                using (var options = new BitmapFactory.Options { InJustDecodeBounds = true })
-                {
-                    BitmapFactory.DecodeStream(stream, null, options);
-                }
+                //AssetManager assets = activity.Assets;
+                //using (var stream = assets.Open(GifSource))
+                //using (var options = new BitmapFactory.Options { InJustDecodeBounds = true })
+                //{
+                //    BitmapFactory.DecodeStream(stream, null, options);
+                //}
                 var html = "";
                 if (IsRounded)
                 {

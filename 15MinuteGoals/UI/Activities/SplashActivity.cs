@@ -18,7 +18,7 @@ namespace _15MinuteGoals.UI.Activities
     {
         static WebView logoAnim;
         private readonly int interval = 4000;
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_splash);
@@ -28,12 +28,11 @@ namespace _15MinuteGoals.UI.Activities
             ImageView progress = FindViewById<ImageView>(Resource.Id.progressBox);
             logoAnim = FindViewById<WebView>(Resource.Id.appAnimationBox);
             logoAnim.LoadAnimation(this, "appLogoAnimation.gif");
-
             ImageService.Instance.LoadCompiledResource("progressAnimation.gif").Into(progress);
-            NextActivity();
+            await NextActivity();
         }
 
-        private async void NextActivity()
+        private async Task NextActivity()
         {
             await Task.Delay(interval).ConfigureAwait(true);
             Intent intent = new Intent(this, typeof(SignInActivity));
@@ -41,7 +40,5 @@ namespace _15MinuteGoals.UI.Activities
             StartActivity(intent, options.ToBundle());
             Finish();
         }
-
-
     }
 }

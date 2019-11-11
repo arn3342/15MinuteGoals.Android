@@ -1,111 +1,125 @@
-﻿using _15MinuteGoals.UI.CustomViews;
-using Android.Content;
-using Android.Graphics;
-using Android.Graphics.Drawables;
-using Android.OS;
-using Android.Widget;
-using FFImageLoading;
+﻿using _15MinuteGoals.Data.Models;
+using Android.Support.V7.Widget;
 using Java.IO;
-using Java.Lang;
-using Java.Net;
-using Javax.Net.Ssl;
 using System;
-using System.ComponentModel;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
-using static Android.Graphics.BitmapFactory;
 
 namespace _15MinuteGoals.Utilities
 {
     public class ImageLoader
     {
-        Context mContext;
-        ImageView mImageView;
-        BitmapDrawable background;
-
-        public ImageLoader(ImageView imageView, Context context)
+        RecyclerView.Adapter mAdapter;
+        List<object> mContents;
+        public ImageLoader(RecyclerView.Adapter adapter, List<object> contents)
         {
-            mContext = context;
-            mImageView = imageView;
+            mAdapter = adapter;
+            mContents = contents;
         }
-
-        public BitmapDrawable LoadFromURL(string URL)
+        public void LoadImage(string URL, int position)
         {
             using (WebClient client = new WebClient())
             {
-                client.DownloadDataCompleted += Client_DownloadDataCompleted;
+                client.DownloadDataCompleted += (s, e) => Client_DownloadDataCompleted(s, e, URL, position);
                 client.DownloadDataAsync(new Uri(URL));
             }
-            return background;
         }
 
-        private void Client_DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e)
+        public void LoadImage(params string[] URLs)
         {
-            byte[] imageData = e.Result;
-
-            var pathToDir = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath + "/Purnota/";
-            Directory.CreateDirectory(pathToDir);
-            Random rand = new Random();
-            int next = rand.Next(200, 500);
-            Java.IO.File file = new Java.IO.File(pathToDir, next.ToString() + ".png");
-            FileOutputStream fos = new FileOutputStream(file.Path);
-            fos.Write(imageData);
-            fos.Close();
-
-            //Setting image to ImageView
             try
             {
-                var imagePath = pathToDir + next.ToString() + ".png";
-                //ImageService.Instance.LoadFile(imagePath).Into(mImageView);
-                mImageView.SetImageURI(Android.Net.Uri.Parse(imagePath));
+                Parallel.For(0, URLs.Length, index => StartWebClient(URLs[index], index));
             }
-            catch(Java.Lang.Exception ex)
+            catch (Exception ex)
             {
-                Toast.MakeText(mContext, ex.StackTrace, ToastLength.Short);
+                string e = ex.ToString();
             }
         }
 
+        private void StartWebClient(string URL, int position)
+        {
+            try
+            {
+                using (WebClient client = new WebClient())
+                {
+                    client.DownloadDataCompleted += (s, e) => Client_DownloadDataCompleted(s, e, URL, position);
+                    client.DownloadDataAsync(new Uri(URL));
+                }
+            }
+            catch (Exception ex)
+            {
+                string e = ex.ToString();
+            }
+        }
 
-        //protected override Bitmap RunInBackground(params string[] @params)
-        //{
-        //    for(int i = 0; i < @params.Length; i++)
-        //    {
-        //        using (WebClient client = new WebClient())
-        //        {
-        //            client.DownloadFileAsync(new Uri(@params[i]), "path goes here");
-        //        }
-        //        //string url = @params[i];
-        //        //BitmapFactory.Options ops = new BitmapFactory.Options();
-        //        //ops.InJustDecodeBounds = true;
+        private void Client_DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e, string url, int position)
+        {
+            try
+            {
+                WriteFileToCache(url, e.Result, position);
+            }
+            catch (Exception ex)
+            {
+                string e2 = ex.ToString();
+            }
+        }
 
-        //        ////                          Find the correct scale value. It should be the power of 2.
-        //        //int REQUIRED_SIZE = 70;
-        //        //int width_tmp = ops.OutWidth, height_tmp = ops.OutHeight;
-        //        //int scale = 1;
-        //        //while (true)
-        //        //{
-        //        //    if (width_tmp / 2 < REQUIRED_SIZE || height_tmp / 2 < REQUIRED_SIZE)
-        //        //        break;
-        //        //    width_tmp /= 2;
-        //        //    height_tmp /= 2;
-        //        //    scale *= 2;
-        //        //}
+        #region Downloading image from URL and saving to cache
+        private string GetCacheDirectory()
+        {
+            try
+            {
+                string pathToDir = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath + "/Purnota/";
+                if (!Directory.Exists(pathToDir))
+                    Directory.CreateDirectory(pathToDir);
+                return pathToDir;
+            }
+            catch (Exception ex)
+            {
+                string e2 = ex.ToString();
+            }
+            return null;
+        }
 
-        //        //ops.InJustDecodeBounds = false;
-        //        //ops.InSampleSize = scale;
-        //        //var ss = new URL(url).OpenStream();
-        //        //Bitmap bm = BitmapFactory.DecodeStream(ss, null, ops);
-        //        //return bm;
-        //    }
-        //    return null;
-        //}
-        //protected override void OnPostExecute(Bitmap result)
-        //{
-        //    base.OnPostExecute(result);
-        //    mImageView.SetImageBitmap(result);
-        //}
+        private string GetFileName(string url)
+        {
+            int index = url.LastIndexOf('/');
+            string fileName = url.Substring(index + 1);
+            return fileName;
+        }
 
+        private void WriteFileToCache(string url, byte[] data, int position)
+        {
+            byte[] imageData = data;
+            using (Java.IO.File file = new Java.IO.File(GetCacheDirectory(), GetFileName(url)))
+            {
+                if (file.Exists())
+                {
+                    UpdateRecyclerView(position, file.Path);
+                }
+                else
+                {
+                    using (FileOutputStream fos = new FileOutputStream(file.Path))
+                    {
+                        fos.Write(imageData);
+                        UpdateRecyclerView(position, file.Path);
+                    }
+                }
+                
+            }
+
+        }
+        #endregion
+
+        private void UpdateRecyclerView(int position, string path)
+        {
+            position += 1; //Increasing position by 1, because the first view is CreatePostView, not PostRegular view
+            PostRegular post = mContents[position] as PostRegular;
+            post.UserImageUrl = path;
+            mAdapter.NotifyItemChanged(position);
+        }
     }
 }

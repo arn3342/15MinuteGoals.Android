@@ -1,5 +1,6 @@
 ﻿using _15MinuteGoals.Data;
 using _15MinuteGoals.UI.Fragments;
+using _15MinuteGoals.Utilities;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -8,12 +9,10 @@ using Android.Runtime;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Android.Support.V7.App;
+using Android.Webkit;
 using Android.Widget;
 using FFImageLoading;
 using System.Collections.Generic;
-using Microsoft.AppCenter;
-using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Crashes;
 using static Android.Support.Design.Widget.TabLayout;
 
 namespace _15MinuteGoals.UI.Activities
@@ -44,12 +43,9 @@ namespace _15MinuteGoals.UI.Activities
             mTabLayout = FindViewById<TabLayout>(Resource.Id.maintablayout);
             mViewPager = FindViewById<ViewPager>(Resource.Id.mainviewpager);
             smartTutorBtn = FindViewById<ImageView>(Resource.Id.smartTutorBtn);
+            ImageService.Instance.LoadCompiledResource("smartTutorButtonAnimation.gif").Into(smartTutorBtn);
 
             smartTutorBtn.Click += SmartTutorBtn_Click;
-
-            AppCenter.Start("95081b05-1ce1-476a-95bc-89e464b0f8db",
-                   typeof(Analytics), typeof(Crashes));
-            Crashes.NotifyUserConfirmation(UserConfirmation.AlwaysSend);
 
             ViewPagerAdapter adapter = new ViewPagerAdapter(SupportFragmentManager);
             fragments = new List<Android.Support.V4.App.Fragment>() { HomeFragment, WhatsNewFragment, ExploreFragment, MessagesFragment, MenuFragment };
@@ -61,7 +57,6 @@ namespace _15MinuteGoals.UI.Activities
             PopulateMainTabIcons();
 
             Window.SetBackgroundDrawableResource(Resource.Drawable.full_white);
-            ImageService.Instance.LoadCompiledResource("smartTutorButtonAnimation.gif").Into(smartTutorBtn);
         }
 
         private void SmartTutorBtn_Click(object sender, System.EventArgs e)
@@ -79,6 +74,7 @@ namespace _15MinuteGoals.UI.Activities
 
         private void PopulateMainTabIcons()
         {
+            mViewPager.OffscreenPageLimit = 2;
             mTabLayout.SetupWithViewPager(mViewPager);
             Icons = new int[] { Resource.Drawable.home_icon,
                                       Resource.Drawable.whatsNew_icon,
@@ -125,11 +121,13 @@ namespace _15MinuteGoals.UI.Activities
                     case 1:
 
                     case 2:
-                        var explore = fragments[2] as Fragment_Explore;
-                        explore.PopulateWithPosts();
+                        //var explore = fragments[2] as Fragment_Explore;
+                        //explore.PopulateWithPosts();
                         break;
 
                     case 3:
+                        //var messages = fragments[3] as Fragment_Messages;
+                        //messages.PopulateMessages();
                         break;
 
                 }

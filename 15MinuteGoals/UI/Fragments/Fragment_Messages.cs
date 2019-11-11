@@ -33,12 +33,11 @@ namespace _15MinuteGoals.UI.Fragments
             PopulateMessages();
         }
 
-        public async void PopulateMessages()
+        public void PopulateMessages()
         {
-            await Task.Delay(700);
             if (!MessagePopulated)
             {
-                for (int i = 0; i < 6; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     contents.Add(null);
                 }
