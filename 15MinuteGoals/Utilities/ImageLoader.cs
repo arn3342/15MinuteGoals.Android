@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace _15MinuteGoals.Utilities
@@ -27,61 +28,72 @@ namespace _15MinuteGoals.Utilities
             }
         }
 
-        public void LoadImage(params string[] URLs)
+        public async void LoadImage(params string[] URLs)
         {
+            var httpClient = new HttpClient
+            {
+                Timeout = TimeSpan.FromSeconds(10)
+            };
+
+            var taskList = new List<Task<string>>();
+
+            int position = 0;
+            for (position = 0; position < URLs.Length; position++)
+            {
+                // by virtue of not awaiting each call, you've already acheived parallelism
+                taskList.Add(GetResponseAsync(URLs[position], position));
+            }
+
             try
             {
-                Parallel.For(0, URLs.Length, index => StartWebClient(URLs[index], index));
+                // asynchronously wait until all tasks are complete
+                await Task.WhenAll(taskList.ToArray());
             }
             catch (Exception ex)
             {
-                string e = ex.ToString();
+            }
+
+            async Task<string> GetResponseAsync(string ImageURL, int position)
+            {
+                // no Task.Run here!
+                var response = await httpClient.GetAsync(new Uri(ImageURL));
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    var imageData = await response.Content.ReadAsByteArrayAsync();
+                    WriteFileToCache(ImageURL, imageData, position);
+                }
+                return null;
             }
         }
 
-        private void StartWebClient(string URL, int position)
-        {
-            try
-            {
-                using (WebClient client = new WebClient())
-                {
-                    client.DownloadDataCompleted += (s, e) => Client_DownloadDataCompleted(s, e, URL, position);
-                    client.DownloadDataAsync(new Uri(URL));
-                }
-            }
-            catch (Exception ex)
-            {
-                string e = ex.ToString();
-            }
-        }
+        //public void LoadImage(params string[] URLs)
+        //{
+        //    for (int i = 0; i < URLs.Length; i++)
+        //        StartWebClient(URLs[i], i);
+
+        //}
+
+        //private void StartWebClient(string URL, int position)
+        //{
+        //    using (HttpClient client = new WebClient())
+        //    {
+        //        client.DownloadDataCompleted += (s, e) => Client_DownloadDataCompleted(s, e, URL, position);
+        //        client.DownloadDataAsync(new Uri(URL));
+        //    }
+        //}
 
         private void Client_DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e, string url, int position)
         {
-            try
-            {
-                WriteFileToCache(url, e.Result, position);
-            }
-            catch (Exception ex)
-            {
-                string e2 = ex.ToString();
-            }
+            WriteFileToCache(url, e.Result, position);
         }
 
         #region Downloading image from URL and saving to cache
         private string GetCacheDirectory()
         {
-            try
-            {
-                string pathToDir = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath + "/Purnota/";
-                if (!Directory.Exists(pathToDir))
-                    Directory.CreateDirectory(pathToDir);
-                return pathToDir;
-            }
-            catch (Exception ex)
-            {
-                string e2 = ex.ToString();
-            }
-            return null;
+            string pathToDir = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath + "/Purnota/";
+            if (!Directory.Exists(pathToDir))
+                Directory.CreateDirectory(pathToDir);
+            return pathToDir;
         }
 
         private string GetFileName(string url)
@@ -91,7 +103,7 @@ namespace _15MinuteGoals.Utilities
             return fileName;
         }
 
-        private void WriteFileToCache(string url, byte[] data, int position)
+        private async void WriteFileToCache(string url, byte[] data, int position)
         {
             byte[] imageData = data;
             using (Java.IO.File file = new Java.IO.File(GetCacheDirectory(), GetFileName(url)))
@@ -104,11 +116,11 @@ namespace _15MinuteGoals.Utilities
                 {
                     using (FileOutputStream fos = new FileOutputStream(file.Path))
                     {
-                        fos.Write(imageData);
+                        await fos.WriteAsync(imageData);
                         UpdateRecyclerView(position, file.Path);
                     }
                 }
-                
+
             }
 
         }
@@ -121,5 +133,6 @@ namespace _15MinuteGoals.Utilities
             post.UserImageUrl = path;
             mAdapter.NotifyItemChanged(position);
         }
+
     }
 }

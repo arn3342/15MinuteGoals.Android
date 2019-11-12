@@ -4,7 +4,6 @@ using Android.Support.V4.App;
 using Android.Support.V7.Widget;
 using Android.Views;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace _15MinuteGoals.UI.Fragments
 {

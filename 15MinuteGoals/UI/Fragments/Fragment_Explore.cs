@@ -36,7 +36,7 @@ namespace _15MinuteGoals.UI.Fragments
             PopulateWithPosts();
         }
 
-        public void PopulateWithPosts()
+        public async void PopulateWithPosts()
         {
             if (contents.Count == 0)
             {
