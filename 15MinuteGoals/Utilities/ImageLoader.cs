@@ -19,15 +19,6 @@ namespace _15MinuteGoals.Utilities
             mAdapter = adapter;
             mContents = contents;
         }
-        public void LoadImage(string URL, int position)
-        {
-            using (WebClient client = new WebClient())
-            {
-                client.DownloadDataCompleted += (s, e) => Client_DownloadDataCompleted(s, e, URL, position);
-                client.DownloadDataAsync(new Uri(URL));
-            }
-        }
-
         public async void LoadImage(params string[] URLs)
         {
             var httpClient = new HttpClient
@@ -64,27 +55,6 @@ namespace _15MinuteGoals.Utilities
                 }
                 return null;
             }
-        }
-
-        //public void LoadImage(params string[] URLs)
-        //{
-        //    for (int i = 0; i < URLs.Length; i++)
-        //        StartWebClient(URLs[i], i);
-
-        //}
-
-        //private void StartWebClient(string URL, int position)
-        //{
-        //    using (HttpClient client = new WebClient())
-        //    {
-        //        client.DownloadDataCompleted += (s, e) => Client_DownloadDataCompleted(s, e, URL, position);
-        //        client.DownloadDataAsync(new Uri(URL));
-        //    }
-        //}
-
-        private void Client_DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e, string url, int position)
-        {
-            WriteFileToCache(url, e.Result, position);
         }
 
         #region Downloading image from URL and saving to cache
