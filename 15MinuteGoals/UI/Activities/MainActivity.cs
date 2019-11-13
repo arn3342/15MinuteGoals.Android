@@ -43,7 +43,7 @@ namespace _15MinuteGoals.UI.Activities
             mTabLayout = FindViewById<TabLayout>(Resource.Id.maintablayout);
             mViewPager = FindViewById<ViewPager>(Resource.Id.mainviewpager);
             smartTutorBtn = FindViewById<ImageView>(Resource.Id.smartTutorBtn);
-            //ImageService.Instance.LoadCompiledResource("smartTutorButtonAnimation.gif").Into(smartTutorBtn);
+            ImageService.Instance.LoadCompiledResource("smartTutorButtonAnimation.gif").Into(smartTutorBtn);
 
             smartTutorBtn.Click += SmartTutorBtn_Click;
 

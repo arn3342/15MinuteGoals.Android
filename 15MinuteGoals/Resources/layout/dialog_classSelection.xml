@@ -1,4 +1,3 @@
-
 <android.support.constraint.ConstraintLayout
     android:id="@+id/feedbackDialog"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -8,7 +7,7 @@
     android:background="@drawable/bg_writefeedback"
     android:focusableInTouchMode="true"
     android:minWidth="25dp"
-    android:minHeight="325dp">
+    android:minHeight="235dp">
     <ImageView
         android:id="@+id/closeFeedbackBtn"
         android:layout_width="50dp"
@@ -92,52 +91,6 @@
             android:drawablePadding="10dp"
             android:layout_marginLeft="10dp"/>
     </RadioGroup>
-    <TextView
-        android:id="@+id/examTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="বাৎসরিক পরীক্ষার ধরণ"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/groupSelectionContainer2"
-        android:layout_marginTop="10dp"
-        android:textColor="#7d7d7d"
-        android:textSize="18dp" />
-    <RadioGroup
-        android:id="@+id/examSelectionContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/examTitle"
-        android:gravity="center"
-        android:orientation="horizontal">
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="২ সাময়িক পরীক্ষা"
-            android:button="@android:color/transparent"
-            android:textSize="14sp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:background="@drawable/selector_bg_roundedTextBox"
-            android:textColor="#616161"
-            android:layout_marginRight="10dp"/>
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="৩ সাময়িক পরীক্ষা"
-            android:button="@android:color/transparent"
-            android:textSize="14sp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:background="@drawable/selector_bg_roundedTextBox"
-            android:textColor="#616161"
-            android:layout_marginRight="10dp"/>
-    </RadioGroup>
     <Button
         android:id="@+id/proceedBtn"
         android:layout_width="match_parent"
@@ -148,6 +101,6 @@
         android:textSize="16dp"
         android:fontFamily="sans-serif"
         android:enabled="false"
-        app:layout_constraintTop_toBottomOf="@id/examSelectionContainer"
+        app:layout_constraintTop_toBottomOf="@id/groupSelectionContainer2"
         android:background="@drawable/bg_user_headerbar_textview"/>
 </android.support.constraint.ConstraintLayout>

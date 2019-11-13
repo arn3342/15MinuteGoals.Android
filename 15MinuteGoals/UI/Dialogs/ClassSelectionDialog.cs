@@ -15,7 +15,7 @@ namespace _15MinuteGoals.UI.Dialogs
     {
         private ImageView CloseButton { get; set; }
         RadioButton scienceBtn, commerceBtn, artsBtn;
-        static RadioGroup groupContainer1, groupContainer2, examSelectionContainer;
+        static RadioGroup groupContainer1, groupContainer2;
         private AppCompatEditText FeedbackBox { get; set; }
 
         static bool ClassSelected { get; set; }
@@ -30,12 +30,10 @@ namespace _15MinuteGoals.UI.Dialogs
             artsBtn = view.FindViewById<RadioButton>(Resource.Id.artsBtn);
             groupContainer1 = view.FindViewById<RadioGroup>(Resource.Id.groupSelectionContainer);
             groupContainer2 = view.FindViewById<RadioGroup>(Resource.Id.groupSelectionContainer2);
-            examSelectionContainer = view.FindViewById<RadioGroup>(Resource.Id.examSelectionContainer);
             proceedbtn = view.FindViewById<Button>(Resource.Id.proceedBtn);
 
             groupContainer1.SetOnCheckedChangeListener(new CheckChangedListner());
             groupContainer2.SetOnCheckedChangeListener(new CheckChangedListner());
-            examSelectionContainer.SetOnCheckedChangeListener(new CheckChangedListner());
 
             CloseButton.Click += CloseButton_Click;
             return view;
@@ -56,15 +54,15 @@ namespace _15MinuteGoals.UI.Dialogs
 
             ViewGroup.LayoutParams parameters = Dialog.Window.Attributes;
             int scale = Context.Resources.DisplayMetrics.HeightPixels / 2;
-            int MinHeight = ValueConverter.DpToPx(325);
-            if (scale >= MinHeight)
-            {
-                parameters.Height = scale;
-            }
-            else
-            {
-                parameters.Height = MinHeight;
-            }
+            int MinHeight = ValueConverter.DpToPx(235);
+            //if (scale >= MinHeight)
+            //{
+            //    parameters.Height = scale;
+            //}
+            //else
+            //{
+            //    parameters.Height = MinHeight;
+            //}
 
             parameters.Width = ViewGroup.LayoutParams.MatchParent;
             Dialog.Window.Attributes = (WindowManagerLayoutParams)parameters;
@@ -80,11 +78,6 @@ namespace _15MinuteGoals.UI.Dialogs
 
         private class CheckChangedListner : Java.Lang.Object, RadioGroup.IOnCheckedChangeListener
         {
-            public IntPtr Handle;
-
-            public void Dispose()
-            {
-            }
 
             public void OnCheckedChanged(RadioGroup group, int checkedId)
             {
@@ -100,21 +93,26 @@ namespace _15MinuteGoals.UI.Dialogs
                         groupContainer2.ClearCheck();
                         groupContainer1.Check(checkedId);
                         ClassSelected = true;
+
+                        //Enabling button
+                        EnableProceedButton();
                     }
                     else if (group == groupContainer2)
                     {
                         groupContainer1.ClearCheck();
                         groupContainer2.Check(checkedId);
                         ClassSelected = true;
-                    }
-
-                    if (examSelectionContainer.CheckedRadioButtonId != -1 && ClassSelected)
-                    {
-                        proceedbtn.Enabled = true;
-                        proceedbtn.SetTextColor(Color.White);
-                        proceedbtn.SetBackgroundResource(Resource.Drawable.selector_bg_user_headerbar_textview_blue_nonRound);
+                        //Enabling button
+                        EnableProceedButton();
                     }
                 }
+            }
+
+            private void EnableProceedButton()
+            {
+                proceedbtn.Enabled = true;
+                proceedbtn.SetBackgroundResource(Resource.Drawable.selector_bg_user_headerbar_textview_blue);
+                proceedbtn.SetTextColor(Color.White);
             }
         }
     }
