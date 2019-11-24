@@ -94,6 +94,7 @@
     <Compile Include="Adapter\MessagesAdapter.cs" />
     <Compile Include="Adapter\NotificationAdapter.cs" />
     <Compile Include="Adapter\IViewAdapter.cs" />
+    <Compile Include="UI\Activities\SubjectsActivity.cs" />
     <Compile Include="UI\CustomViews\RoundImageView.cs" />
     <Compile Include="Utilities\ImageLoader.cs" />
     <Compile Include="UI\Activities\MainActivity.cs" />

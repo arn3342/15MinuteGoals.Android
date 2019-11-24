@@ -35,8 +35,17 @@ namespace _15MinuteGoals.UI.Dialogs
             groupContainer1.SetOnCheckedChangeListener(new CheckChangedListner());
             groupContainer2.SetOnCheckedChangeListener(new CheckChangedListner());
 
+            scienceBtn.Click += ShowSubjects;
+            artsBtn.Click += ShowSubjects;
+            commerceBtn.Click += ShowSubjects;
             CloseButton.Click += CloseButton_Click;
             return view;
+        }
+
+        private void ShowSubjects(object sender, EventArgs e)
+        {
+            Intent intent = new Intent(this, typeof(SmartTutorActivity));
+            StartActivity(intent);
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
