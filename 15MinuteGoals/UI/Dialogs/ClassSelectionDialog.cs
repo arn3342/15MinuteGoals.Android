@@ -1,4 +1,5 @@
-﻿using _15MinuteGoals.Utilities;
+﻿using _15MinuteGoals.UI.Activities;
+using _15MinuteGoals.Utilities;
 using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
@@ -35,16 +36,14 @@ namespace _15MinuteGoals.UI.Dialogs
             groupContainer1.SetOnCheckedChangeListener(new CheckChangedListner());
             groupContainer2.SetOnCheckedChangeListener(new CheckChangedListner());
 
-            scienceBtn.Click += ShowSubjects;
-            artsBtn.Click += ShowSubjects;
-            commerceBtn.Click += ShowSubjects;
+            proceedbtn.Click += ShowSubjects;
             CloseButton.Click += CloseButton_Click;
             return view;
         }
 
         private void ShowSubjects(object sender, EventArgs e)
         {
-            Intent intent = new Intent(this, typeof(SmartTutorActivity));
+            Intent intent = new Intent(Context, typeof(SubjectsActivity));
             StartActivity(intent);
         }
 

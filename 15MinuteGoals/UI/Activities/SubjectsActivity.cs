@@ -19,7 +19,7 @@ namespace _15MinuteGoals.UI.Activities
         {
             base.OnCreate(savedInstanceState);
 
-            //SetContentView(Resource.Layout.act)
+            SetContentView(Resource.Layout.activity_chooseSubject);
             // Create your application here
         }
     }
