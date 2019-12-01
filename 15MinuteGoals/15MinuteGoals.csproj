@@ -95,6 +95,8 @@
     <Compile Include="Adapter\NotificationAdapter.cs" />
     <Compile Include="Adapter\IViewAdapter.cs" />
     <Compile Include="UI\Activities\SubjectsActivity.cs" />
+    <Compile Include="UI\CustomViews\TabLayout.cs" />
+    <Compile Include="UI\CustomViews\AppHeader.cs" />
     <Compile Include="UI\CustomViews\RoundImageView.cs" />
     <Compile Include="Utilities\ImageLoader.cs" />
     <Compile Include="UI\Activities\MainActivity.cs" />
@@ -839,6 +841,22 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\bg_roundCircle_sample.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\customview_appHeader.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\customview_tabLayout.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\profile_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\profile_icon_selected.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

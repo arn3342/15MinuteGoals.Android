@@ -86,7 +86,6 @@ namespace _15MinuteGoals.UI.Dialogs
 
         private class CheckChangedListner : Java.Lang.Object, RadioGroup.IOnCheckedChangeListener
         {
-
             public void OnCheckedChanged(RadioGroup group, int checkedId)
             {
                 if (group.CheckedRadioButtonId == -1)
@@ -115,7 +114,6 @@ namespace _15MinuteGoals.UI.Dialogs
                     }
                 }
             }
-
             private void EnableProceedButton()
             {
                 proceedbtn.Enabled = true;

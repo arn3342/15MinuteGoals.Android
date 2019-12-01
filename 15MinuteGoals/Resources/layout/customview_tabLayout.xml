@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/tabContainer"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:orientation="horizontal"
+    android:gravity="center">
+    <ImageView
+        android:id="@+id/homeBtn"
+        android:layout_width="0dp"
+        android:layout_weight=".25"
+        android:layout_height="50dp"
+        android:padding="15dp"
+        android:src="@drawable/home_icon"/>
+    <ImageView
+        android:id="@+id/exploreBtn"
+        android:layout_width="0dp"
+        android:layout_weight=".25"
+        android:layout_height="50dp"
+        android:padding="15dp"
+        android:src="@drawable/explore_icon"/>
+    <ImageView
+        android:id="@+id/notificationBtn"
+        android:layout_width="0dp"
+        android:layout_weight=".25"
+        android:layout_height="50dp"
+        android:padding="15dp"
+        android:src="@drawable/whatsNew_icon"/>
+    <ImageView
+        android:id="@+id/profileBtn"
+        android:layout_width="0dp"
+        android:layout_weight=".25"
+        android:layout_height="50dp"
+        android:padding="15dp"
+        android:src="@drawable/profile_icon"/>
+</LinearLayout>
