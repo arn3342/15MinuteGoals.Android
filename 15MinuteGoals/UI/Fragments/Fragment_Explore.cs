@@ -33,10 +33,9 @@ namespace _15MinuteGoals.UI.Fragments
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
-            PopulateWithPosts();
         }
 
-        public async void PopulateWithPosts()
+        public void PopulateWithPosts()
         {
             if (contents.Count == 0)
             {

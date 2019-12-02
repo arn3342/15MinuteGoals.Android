@@ -40,15 +40,11 @@ namespace _15MinuteGoals.UI.Activities
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
             //Referencing the views, populating the adapter with fragments, calling a method to populate the bottom menu
-            //mTabLayout = FindViewById<TabLayout>(Resource.Id.maintablayout);
+            mTabLayout = FindViewById<TabLayout>(Resource.Id.mainTabLayout);
             mViewPager = FindViewById<ViewPager>(Resource.Id.mainviewpager);
-            //smartTutorBtn = FindViewById<ImageView>(Resource.Id.smartTutorBtn);
-            //ImageService.Instance.LoadCompiledResource("smartTutorButtonAnimation.gif").Into(smartTutorBtn);
-
-            //smartTutorBtn.Click += SmartTutorBtn_Click;
 
             ViewPagerAdapter adapter = new ViewPagerAdapter(SupportFragmentManager);
-            fragments = new List<Android.Support.V4.App.Fragment>() { HomeFragment, WhatsNewFragment, ExploreFragment, MessagesFragment, MenuFragment };
+            fragments = new List<Android.Support.V4.App.Fragment>() { HomeFragment, WhatsNewFragment, ExploreFragment, MessagesFragment };
 
             adapter.FragmentList = fragments;
 
@@ -74,27 +70,25 @@ namespace _15MinuteGoals.UI.Activities
 
         private void PopulateMainTabIcons()
         {
-            //mViewPager.OffscreenPageLimit = 2;
-            //mTabLayout.SetupWithViewPager(mViewPager);
-            //Icons = new int[] { Resource.Drawable.home_icon,
-            //                          Resource.Drawable.whatsNew_icon,
-            //                          Resource.Drawable.explore_icon,
-            //                          Resource.Drawable.message_icon,
-            //                          Resource.Drawable.menu_icon};
+            mViewPager.OffscreenPageLimit = 2;
+            mTabLayout.SetupWithViewPager(mViewPager);
+            Icons = new int[] { Resource.Drawable.home_icon,
+                                      Resource.Drawable.whatsNew_icon,
+                                      Resource.Drawable.explore_icon,
+                                      Resource.Drawable.profile_icon};
 
-            //IconsSelected = new int[] { Resource.Drawable.home_icon_selected,
-            //                          Resource.Drawable.whatsNew_icon_selected,
-            //                          Resource.Drawable.explore_icon_selected,
-            //                          Resource.Drawable.message_icon_selected,
-            //                          Resource.Drawable.menu_icon_selected};
+            IconsSelected = new int[] { Resource.Drawable.home_icon_selected,
+                                      Resource.Drawable.whatsNew_icon_selected,
+                                      Resource.Drawable.explore_icon_selected,
+                                      Resource.Drawable.profile_icon_selected};
 
-            //for (int i = 0; i < mTabLayout.TabCount; i++)
-            //{
-            //    mTabLayout.GetTabAt(i).SetIcon(Icons[i]);
-            //}
-            //mTabLayout.GetTabAt(0).SetIcon(IconsSelected[0]);
+            for (int i = 0; i < mTabLayout.TabCount; i++)
+            {
+                mTabLayout.GetTabAt(i).SetIcon(Icons[i]);
+            }
+            mTabLayout.GetTabAt(0).SetIcon(IconsSelected[0]);
 
-            //mTabLayout.AddOnTabSelectedListener(new TabChangeListner());
+            mTabLayout.AddOnTabSelectedListener(new TabChangeListner());
         }
 
         internal class TabChangeListner : Java.Lang.Object, IOnTabSelectedListener
@@ -121,13 +115,11 @@ namespace _15MinuteGoals.UI.Activities
                     case 1:
 
                     case 2:
-                        //var explore = fragments[2] as Fragment_Explore;
-                        //explore.PopulateWithPosts();
+                        var explore = fragments[2] as Fragment_Explore;
+                        explore.PopulateWithPosts();
                         break;
 
                     case 3:
-                        //var messages = fragments[3] as Fragment_Messages;
-                        //messages.PopulateMessages();
                         break;
 
                 }

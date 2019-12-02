@@ -26,6 +26,10 @@ namespace _15MinuteGoals.Data
         {
         }
 
+        public void Clear()
+        {
+            FragmentList.Clear();
+        }
         public void AddFragment(Fragment fragment)
         {
             FragmentList.Add(fragment);

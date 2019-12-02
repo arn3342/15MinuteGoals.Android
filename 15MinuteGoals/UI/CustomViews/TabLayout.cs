@@ -12,6 +12,7 @@ namespace _15MinuteGoals.UI.CustomViews
     {
         #region Constructors & properties
         int[] DefaultIcons, SelectedIcons;
+        LinearLayout layout;
         public delegate void TabSelected(string tabTitle);
         public event TabSelected OnTabSelected;
         public TabLayout(Context context) : base(context)
@@ -40,8 +41,8 @@ namespace _15MinuteGoals.UI.CustomViews
         {
             var inflatorService = (LayoutInflater)ctx.GetSystemService(Context.LayoutInflaterService);
             var MainView = inflatorService.Inflate(Resource.Layout.customview_tabLayout, this, false);
-            LinearLayout mainLayout = MainView.FindViewById<LinearLayout>(Resource.Id.tabContainer);
-            BindToClicks(mainLayout);
+            layout = MainView.FindViewById<LinearLayout>(Resource.Id.tabContainer);
+            BindToClicks();
             AddView(MainView);
 
             DefaultIcons = new int[]
@@ -60,20 +61,26 @@ namespace _15MinuteGoals.UI.CustomViews
             };
         }
 
-        private void BindToClicks(LinearLayout layout)
+        public void SetInitialTab(string title, int index)
         {
-;            for (int i = 0; i < layout.ChildCount; i++)
+            OnTabSelected?.Invoke(title);
+            ImageView tab = (ImageView)layout.GetChildAt(index);
+            tab.SetImageResource(SelectedIcons[index]);
+        }
+        private void BindToClicks()
+        {
+            ; for (int i = 0; i < layout.ChildCount; i++)
             {
                 int index = i;
                 View tab = layout.GetChildAt(index);
-                tab.Click += ((object sender, EventArgs e) => Tab_Selected(tab, e, index, layout));
+                tab.Click += ((object sender, EventArgs e) => Tab_Selected(tab, e, index));
             }
         }
-        private void Tab_Selected(object sender, EventArgs e, int i, LinearLayout parent)
+        private void Tab_Selected(object sender, EventArgs e, int i)
         {
-            for (int index = 0; index < parent.ChildCount - index; index++)
+            for (int index = 0; index < layout.ChildCount; index++)
             {
-                ImageView tab = (ImageView)parent.GetChildAt(index);
+                ImageView tab = (ImageView)layout.GetChildAt(index);
                 tab.SetImageResource(DefaultIcons[index]);
             }
 
