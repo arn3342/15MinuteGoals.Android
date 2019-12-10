@@ -1,6 +1,6 @@
-﻿using _15MinuteGoals.Data;
+﻿using _15MinuteGoals.Adapter;
+using _15MinuteGoals.Data.Models;
 using _15MinuteGoals.UI.Fragments;
-using _15MinuteGoals.Utilities;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -9,9 +9,8 @@ using Android.Runtime;
 using Android.Support.Design.Widget;
 using Android.Support.V4.View;
 using Android.Support.V7.App;
-using Android.Webkit;
+using Android.Support.V7.Widget;
 using Android.Widget;
-using FFImageLoading;
 using System.Collections.Generic;
 using static Android.Support.Design.Widget.TabLayout;
 
@@ -23,6 +22,11 @@ namespace _15MinuteGoals.UI.Activities
         private ViewPager mViewPager;
         private TabLayout mTabLayout;
         static List<Android.Support.V4.App.Fragment> fragments;
+        RecyclerView homeContainer;
+        private HomeAdapter homeAdapter;
+        private List<object> contents = new List<object>();
+
+
         ImageView smartTutorBtn;
 
         Fragment_Home HomeFragment = new Fragment_Home();
@@ -40,19 +44,45 @@ namespace _15MinuteGoals.UI.Activities
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
             //Referencing the views, populating the adapter with fragments, calling a method to populate the bottom menu
-            mTabLayout = FindViewById<TabLayout>(Resource.Id.mainTabLayout);
-            mViewPager = FindViewById<ViewPager>(Resource.Id.mainviewpager);
+            //mTabLayout = FindViewById<TabLayout>(Resource.Id.mainTabLayout);
+            //mViewPager = FindViewById<ViewPager>(Resource.Id.mainviewpager);
 
-            ViewPagerAdapter adapter = new ViewPagerAdapter(SupportFragmentManager);
-            fragments = new List<Android.Support.V4.App.Fragment>() { HomeFragment, WhatsNewFragment, ExploreFragment, MessagesFragment };
+            //ViewPagerAdapter adapter = new ViewPagerAdapter(SupportFragmentManager);
+            //fragments = new List<Android.Support.V4.App.Fragment>() { HomeFragment};
 
-            adapter.FragmentList = fragments;
+            //adapter.FragmentList = fragments;
 
-            mViewPager.Adapter = adapter;
-            ////Populating the TabLayout with icons
-            PopulateMainTabIcons();
+            //mViewPager.Adapter = adapter;
+            //////Populating the TabLayout with icons
+            //PopulateMainTabIcons();
 
+            homeContainer = FindViewById<RecyclerView>(Resource.Id.homeContainer);
+            homeContainer.SetLayoutManager(new LinearLayoutManager(this));
+            homeAdapter = new HomeAdapter(this, contents, SupportFragmentManager);
+
+            homeContainer.SetAdapter(homeAdapter);
+
+            PopulateHome();
             Window.SetBackgroundDrawableResource(Resource.Drawable.full_white);
+        }
+
+        private void PopulateHome()
+        {
+            if (contents.Count == 0)
+            {
+
+                contents.Add(new Home() { Greeting = "শুভ সন্ধ্যা", FirstName = "Aousaf" });
+                contents.Add(new Subject() { Title = "পদার্থবিজ্ঞ্যান", BackgroundId = Resource.Drawable.subject_background, IconId = Resource.Drawable.physics_icon });
+                contents.Add(new Subject() { Title = "উচ্চতর গণিত", BackgroundId = Resource.Drawable.subject_background_2, IconId = Resource.Drawable.math_icon });
+                contents.Add(new Subject() { Title = "রষায়ন", BackgroundId = Resource.Drawable.subject_background_3, IconId = Resource.Drawable.chemistry_icon });
+                contents.Add(new Subject() { Title = "জীববিজ্ঞ্যান", BackgroundId = Resource.Drawable.subject_background_4, IconId = Resource.Drawable.biology_icon });
+                homeAdapter.NotifyItemInserted(contents.Count - 1);
+
+                #region Adding user's photo to post
+                //ImageLoader imageLoader = new ImageLoader(postRegularAdapter, contents);
+                //imageLoader.LoadImage("https://i.ibb.co/12BTPz9/model3.jpg", "https://i.ibb.co/GtNDwtL/model2.jpg", "https://i.ibb.co/m98tpJW/model1.jpg");
+                #endregion
+            }
         }
 
         private void SmartTutorBtn_Click(object sender, System.EventArgs e)

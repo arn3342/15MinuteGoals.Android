@@ -16,7 +16,7 @@ namespace _15MinuteGoals.UI.Fragments
         private View mainView;
         public RecyclerView contentContainer;
         private List<object> contents = new List<object>();
-        private PostRegularAdapter postRegularAdapter;
+        private HomeAdapter postRegularAdapter;
         private bool IsWritePostCreated;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -25,7 +25,7 @@ namespace _15MinuteGoals.UI.Fragments
             contentContainer = mainView.FindViewById<RecyclerView>(Resource.Id.explore_feed_maincontainer);
 
             contentContainer.SetLayoutManager(new LinearLayoutManager(Activity));
-            postRegularAdapter = new PostRegularAdapter(Context, contents, FragmentManager);
+            postRegularAdapter = new HomeAdapter(Context, contents, FragmentManager);
             contentContainer.SetAdapter(postRegularAdapter);
             return mainView;
         }

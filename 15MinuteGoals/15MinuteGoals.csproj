@@ -94,7 +94,11 @@
     <Compile Include="Adapter\MessagesAdapter.cs" />
     <Compile Include="Adapter\NotificationAdapter.cs" />
     <Compile Include="Adapter\IViewAdapter.cs" />
+    <Compile Include="Data\Models\Home.cs" />
+    <Compile Include="Data\Models\Subject.cs" />
     <Compile Include="UI\Activities\SubjectsActivity.cs" />
+    <Compile Include="UI\CustomViews\SubjectView.cs" />
+    <Compile Include="UI\CustomViews\HomeTop.cs" />
     <Compile Include="UI\CustomViews\TabLayout.cs" />
     <Compile Include="UI\CustomViews\AppHeader.cs" />
     <Compile Include="UI\CustomViews\RoundImageView.cs" />
@@ -106,7 +110,7 @@
     <Compile Include="UI\Activities\SmartTutorActivity.cs" />
     <Compile Include="UI\Activities\SplashActivity.cs" />
     <Compile Include="Adapter\GradesAdapter.cs" />
-    <Compile Include="Adapter\PostRegularAdapter.cs" />
+    <Compile Include="Adapter\HomeAdapter.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Authentication\FacebookAuthentication.cs" />
     <Compile Include="Authentication\GoogleAuthentication.cs" />
@@ -150,9 +154,6 @@
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_main.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\values\ic_launcher_background.xml" />
     <AndroidResource Include="Resources\values\strings.xml" />
@@ -860,6 +861,52 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_main.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\customview_homeTop.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\menu_icon_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\home_top_guy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\home_top.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\biology_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\chemistry_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\math_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\physics_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\customview_subject.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\subject_background.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\subject_background_2.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\subject_background_3.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\subject_background_4.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\go_next_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

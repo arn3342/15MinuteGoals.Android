@@ -7,20 +7,14 @@
     android:layout_height="match_parent"
     android:scrollbars="none"
     app:layout_constraintTop_toTopOf="parent"
-    android:background="@drawable/background_gradient"
+    android:background="#f7f7ff"
     app:layout_constraintBottom_toBottomOf="parent">
     <LinearLayout
         android:id="@+id/homeContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <_15MinuteGoals.UI.CustomViews.DailyTopBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <_15MinuteGoals.UI.CustomViews.StartJourney
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <_15MinuteGoals.UI.CustomViews.InviteFriendsBox
+        <_15MinuteGoals.UI.CustomViews.HomeTop
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
