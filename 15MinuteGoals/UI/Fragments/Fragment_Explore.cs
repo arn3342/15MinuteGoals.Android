@@ -22,7 +22,7 @@ namespace _15MinuteGoals.UI.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             mainView = inflater.Inflate(Resource.Layout.screen_explore, container, false);
-            contentContainer = mainView.FindViewById<RecyclerView>(Resource.Id.explore_feed_maincontainer);
+            //contentContainer = mainView.FindViewById<RecyclerView>(Resource.Id.explore_feed_maincontainer);
 
             contentContainer.SetLayoutManager(new LinearLayoutManager(Activity));
             postRegularAdapter = new HomeAdapter(Context, contents, FragmentManager);

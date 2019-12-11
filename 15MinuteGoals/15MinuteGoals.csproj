@@ -94,8 +94,10 @@
     <Compile Include="Adapter\MessagesAdapter.cs" />
     <Compile Include="Adapter\NotificationAdapter.cs" />
     <Compile Include="Adapter\IViewAdapter.cs" />
+    <Compile Include="Data\Models\Banner.cs" />
     <Compile Include="Data\Models\Home.cs" />
     <Compile Include="Data\Models\Subject.cs" />
+    <Compile Include="Data\Models\TutorAndGradeBox.cs" />
     <Compile Include="UI\Activities\SubjectsActivity.cs" />
     <Compile Include="UI\CustomViews\SubjectView.cs" />
     <Compile Include="UI\CustomViews\HomeTop.cs" />
@@ -919,6 +921,38 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon_math.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\container_flexBox.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\grade_selector_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\downArrow_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\customview_gradeButton.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\customview_banner.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\test_banner.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\customview_smartTutorButton.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_downArrowBlue.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

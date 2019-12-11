@@ -37,6 +37,7 @@ namespace _15MinuteGoals.Adapter
             var layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WrapContent, ValueConverter.DpToPx(33));
             layoutParams.TopMargin = ValueConverter.DpToPx(10);
             layoutParams.LeftMargin = ValueConverter.DpToPx(10);
+            
 
             button.LayoutParameters = layoutParams;
             button.SetAllCaps(false);
